@@ -1,0 +1,22 @@
+//
+//  TSDocDBManager.h
+//  TSDocDB
+//
+//  Created by Isaac Tewolde on 10-11-07.
+//  Copyright 2010 Ticklespace.com. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+//TokyoCabinet Stuff
+#include "tcutil.h"
+#include "tctdb.h"
+
+
+@interface TSDocDBManager : NSObject {
+}
++(TSDocDBManager *)sharedDBManager;
++(NSString *)getDBError:(int)ecode;
+-(TCTDB *)getDB:(NSString *)dbFilePath;
+-(void)recyleDBAtPath:(NSString *)dbFilePath;
+@end
