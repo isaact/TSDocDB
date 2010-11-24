@@ -1,2 +1,3 @@
 **/build/**
-StaticLibs/ios/TSDocDBStatic/build/**
+StaticLibs/ios/build/**
+StaticLibs/osx/build/**
