@@ -105,7 +105,7 @@
   }
 
   NSArray* results = [modelsDB searchForAllWords:[searchText lowercaseString] withLimit:50 andOffset:0 forDocTypes:TSDocDBTYPE,nil];
-  
+  NSLog(@"%@", results);
   for (NSDictionary* modelInfo in results) {
     [foundModels addObject:[[[CuteModel alloc] initWithDictionary:modelInfo] autorelease]];
   }
