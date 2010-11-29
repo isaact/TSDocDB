@@ -369,6 +369,20 @@
   [filterChain removeAllFilters];
   return numRows;
 }
+-(NSArray *)getRowsWithLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
+  TCTDB *tdb = [self getDB];
+  NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
+  GVargs(rowTypes, rowType, NSString);
+  [filterChain removeAllFilters];
+  if ([rowTypes count]) {
+    [self addConditionStringInSet:rowTypes toColumn:[self makeDocTypeKey]];
+  }
+  TDBQRY *qry = [filterChain getQuery:tdb];
+  [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
+  NSArray *rows = [self fetchRows:qry];
+  tctdbqrydel(qry);
+  return rows;
+}
 
 -(NSArray *)doSearchWithLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forDocTypes:(NSString *)docType,...{
   TCTDB *tdb = [self getDB];
