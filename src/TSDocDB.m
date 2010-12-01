@@ -111,14 +111,14 @@
     if(tdb){
       filterChain = [[TSDocFilterChain alloc] init];
       dbFilePath = [dbPath retain];
-      if (isNew) {
-        [self reindexDocs:nil];
-      }
     }else {
       return nil;
     }
     NSLog(@"%@", dbPath);
     _delegate = theDelegate;
+    if (isNew) {
+      [self reindexDocs:nil];
+    }
   }
   return self;
 }
@@ -231,7 +231,10 @@
 -(BOOL)deleteDoc:(NSString *)docID{
   return [self dbDel:docID];
 }
-
+-(void)resetDB{
+  TCTDB *tdb = [self getDB];
+  tctdbvanish(tdb);
+}
 #pragma mark -
 #pragma mark Ordering Methods
 -(void)setOrderByStringForColumn:(NSString *)colName isAscending:(BOOL)ascending{

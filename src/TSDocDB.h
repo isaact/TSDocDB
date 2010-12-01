@@ -52,7 +52,7 @@ typedef enum {
 -(id)initWithDBNamed:(NSString *)dbName inDirectoryAtPathOrNil:(NSString*)path delegate:(id<TSDocDBDefinitionsDelegate>)theDelegate;
 -(void)syncDB;
 -(void)reopenDB;
-
+-(void)resetDB;
 
 //Doc Management Methods
 -(void)reindexDocs:(NSString *)docTypeOrNil;
