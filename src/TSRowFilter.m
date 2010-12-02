@@ -1,15 +1,15 @@
 //
-//  TSDocFilter.m
+//  TSRowFilter.m
 //  TSDocDB
 //
 //  Created by Isaac Tewolde on 10-07-27.
 //  Copyright 2010 Ticklespace.com. All rights reserved.
 //
 
-#import "TSDocFilter.h"
+#import "TSRowFilter.h"
 
 
-@implementation TSDocFilter
+@implementation TSRowFilter
 @synthesize colName, op, matchType, filterType;
 
 
@@ -64,7 +64,7 @@
   }else {
     [valSet addObject:val];
   }
-
+  
   
 }
 -(void)addToQuery:(TDBQRY *)qry{

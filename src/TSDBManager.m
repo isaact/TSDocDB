@@ -1,17 +1,17 @@
 //
-//  TSDocDBManager.m
+//  TSDBManager.m
 //  TSDocDB
 //
 //  Created by Isaac Tewolde on 10-11-07.
 //  Copyright 2010 Ticklespace.com. All rights reserved.
 //
 
-#import "TSDocDBManager.h"
+#import "TSDBManager.h"
 #import <Foundation/Foundation.h>
 
-@interface TSDocDBManager()
+@interface TSDBManager()
 
--(id)initDocDBManager;
+-(id)initTSDBManager;
 
 #pragma mark -
 #pragma mark Utility Methods
@@ -22,34 +22,34 @@
 +(NSString *)getQueueSig;
 @end
 
-@implementation TSDocDBManager
+@implementation TSDBManager
 
-static TSDocDBManager *sharedDBManager = nil;
-static TCMAP *docDBs = NULL;
+static TSDBManager *sharedDBManager = nil;
+static TCMAP *tsDBs = NULL;
 static TCMAP *dbQueues;
-static dispatch_queue_t tsDocDBMainQueue;
+static dispatch_queue_t tsDBMainQueue;
 
-+(TSDocDBManager *)sharedDBManager{
++(TSDBManager *)sharedDBManager{
   dispatch_queue_t queue;
-  queue = dispatch_queue_create([[TSDocDBManager getQueueSig] UTF8String], NULL);
+  queue = dispatch_queue_create([[TSDBManager getQueueSig] UTF8String], NULL);
   
   dispatch_sync(queue, ^{
     if (sharedDBManager == nil) {
-      sharedDBManager = [[TSDocDBManager alloc] initDocDBManager];
+      sharedDBManager = [[TSDBManager alloc] initTSDBManager];
     }
   });
   dispatch_release(queue);
   return sharedDBManager;
 }
 
-- (id) initDocDBManager
+- (id) initTSDBManager
 {
   self = [super init];
   if (self != nil) {
     /* create a new map object */
-    docDBs = tcmapnew();
+    tsDBs = tcmapnew();
     dbQueues = tcmapnew();
-    tsDocDBMainQueue = dispatch_queue_create("com.ticklespace.tsdocdb", NULL);
+    tsDBMainQueue = dispatch_queue_create("com.ticklespace.tsdocdb", NULL);
   }
   return self;
 }
@@ -58,18 +58,18 @@ static dispatch_queue_t tsDocDBMainQueue;
 
 -(TCTDB *)getDB:(NSString *)dbFilePath{
   __block TCTDB *tdb = NULL;
-  dispatch_sync(tsDocDBMainQueue, ^{
+  dispatch_sync(tsDBMainQueue, ^{
     int sp;
-    tdb = (TCTDB *)tcmapget(docDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
+    tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
     if (!tdb) {
       
-      const char *queueKey = [[TSDocDBManager getQueueSigForDbPath:dbFilePath] UTF8String];
+      const char *queueKey = [[TSDBManager getQueueSigForDbPath:dbFilePath] UTF8String];
       dispatch_queue_t dbQueue = dispatch_queue_create(queueKey,NULL);
       tdb = [self getDBFromFile:dbFilePath];
-      tcmapput(docDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), tdb, sizeof(TCTDB));
+      tcmapput(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), tdb, sizeof(TCTDB));
       tcmapput(dbQueues, queueKey, strlen(queueKey), dbQueue, sizeof(dispatch_queue_t));
       //tctdbdel(tdb);
-      //tdb = (TCTDB *)tcmapget(docDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
+      //tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
     }
     
   });
@@ -77,17 +77,17 @@ static dispatch_queue_t tsDocDBMainQueue;
 }
 -(void)recyleDBAtPath:(NSString *)dbFilePath{
   __block TCTDB *tdb = NULL;
-  dispatch_sync(tsDocDBMainQueue, ^{
+  dispatch_sync(tsDBMainQueue, ^{
     int sp;
-    tdb = (TCTDB *)tcmapget(docDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
+    tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
     if (tdb) {
       tctdbclose(tdb);
-      tcmapout(docDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]));
+      tcmapout(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]));
       tdb = [self getDBFromFile:dbFilePath];
-      tcmapput(docDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), tdb, sizeof(TCTDB));
+      tcmapput(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), tdb, sizeof(TCTDB));
       //[dbQueues setObject:<#(id)anObject#> forKey:<#(id)aKey#>
       //tctdbdel(tdb);
-      //tdb = (TCTDB *)tcmapget(docDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
+      //tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
     }
     
   });
@@ -105,10 +105,10 @@ static dispatch_queue_t tsDocDBMainQueue;
   return [NSString stringWithFormat:@"tsqueue-%d", [dbPath hash]];
 }
 -(dispatch_queue_t)getQueueForDBPath:(NSString *)dbPath{
-  const char *queueKey = [[TSDocDBManager getQueueSigForDbPath:dbPath] UTF8String];
-  int sp;
+  //const char *queueKey = [[TSDBManager getQueueSigForDbPath:dbPath] UTF8String];
+  //int sp;
   //return (dispatch_queue_t)tcmapget(dbQueues, queueKey, strlen(queueKey), &sp);
-  return tsDocDBMainQueue;
+  return tsDBMainQueue;
 }
 
 -(TCTDB *)createDB:(NSString *)dbPath{
@@ -121,7 +121,7 @@ static dispatch_queue_t tsDocDBMainQueue;
   /* open the database */
   if(!tctdbopen(tdb, [dbPath UTF8String], HDBOWRITER | HDBOCREAT)){
     ecode = tctdbecode(tdb);
-    ALog(@"DB create error:%@", [TSDocDBManager getDBError:ecode]);
+    ALog(@"DB create error:%@", [TSDBManager getDBError:ecode]);
     return NULL;
   }
   return tdb;
@@ -143,7 +143,7 @@ static dispatch_queue_t tsDocDBMainQueue;
   /* open the database */
   if(!tctdbopen(tdb, [dbPath UTF8String], flags )){
     ecode = tctdbecode(tdb);
-    ALog(@"DB open error:%@", [TSDocDBManager getDBError:ecode]);
+    ALog(@"DB open error:%@", [TSDBManager getDBError:ecode]);
     return NULL;
   }
   return tdb;
@@ -153,13 +153,13 @@ static dispatch_queue_t tsDocDBMainQueue;
   const char *key;
   int sp;
   TCTDB *db;
-  tcmapiterinit(docDBs);
-  while((key = tcmapiternext2(docDBs)) != NULL){
-    db = (TCTDB *)tcmapget(docDBs, key, strlen(key), &sp);
+  tcmapiterinit(tsDBs);
+  while((key = tcmapiternext2(tsDBs)) != NULL){
+    db = (TCTDB *)tcmapget(tsDBs, key, strlen(key), &sp);
     tctdbclose(db);
-    tcmapout(docDBs, key, strlen(key));
+    tcmapout(tsDBs, key, strlen(key));
   }
-  tcmapdel(docDBs);
+  tcmapdel(tsDBs);
   
 }
 -(TCTDB *)getDBFromFile:(NSString *)dbFilePath{

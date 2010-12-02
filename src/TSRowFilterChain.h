@@ -1,5 +1,5 @@
 //
-//  TSDocFilterChain.h
+//  TSRowFilterChain.h
 //  TSDocDB
 //
 //  Created by Isaac Tewolde on 10-07-27.
@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TSDocFilter.h"
+#import "TSRowFilter.h"
 #include "tcutil.h"
 #include "tctdb.h"
 
-@interface TSDocFilterChain : NSObject {
+@interface TSRowFilterChain : NSObject {
 	NSMutableDictionary *filterChain;
 }
 
--(void)addFilter:(TSDocFilter *)filter withLabel:(NSString *)label;
+-(void)addFilter:(TSRowFilter *)filter withLabel:(NSString *)label;
 -(void)removeFilter:(NSString *)filterLabel;
 -(void)removeAllFilters;
 -(NSArray *)getQueryChain;

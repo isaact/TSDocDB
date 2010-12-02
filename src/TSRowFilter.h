@@ -1,5 +1,5 @@
 //
-//  TSDocFilter.h
+//  TSRowFilter.h
 //  TSDocDB
 //
 //  Created by Isaac Tewolde on 10-07-27.
@@ -22,7 +22,7 @@ typedef enum {
   numericFilter, stringFilter
 } FilterType;
 
-@interface TSDocFilter : NSObject {
+@interface TSRowFilter : NSObject {
   NSString *colName;
   OpType op;
   NSMutableSet *valSet;

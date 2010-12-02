@@ -110,6 +110,7 @@
     [foundModels addObject:[[[CuteModel alloc] initWithDictionary:modelInfo] autorelease]];
   }
   [foundModels autorelease];
+  NSLog(@"%@", foundModels);
   return [NSArray arrayWithArray:foundModels];
 
 }

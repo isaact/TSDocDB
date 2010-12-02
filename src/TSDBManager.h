@@ -1,5 +1,5 @@
 //
-//  TSDocDBManager.h
+//  TSDBManager.h
 //  TSDocDB
 //
 //  Created by Isaac Tewolde on 10-11-07.
@@ -13,9 +13,9 @@
 #include "tctdb.h"
 
 
-@interface TSDocDBManager : NSObject {
+@interface TSDBManager : NSObject {
 }
-+(TSDocDBManager *)sharedDBManager;
++(TSDBManager *)sharedDBManager;
 +(NSString *)getDBError:(int)ecode;
 +(NSString *)getQueueSigForDbPath:(NSString *)dbPath;
 -(dispatch_queue_t)getQueueForDBPath:(NSString *)dbPath;

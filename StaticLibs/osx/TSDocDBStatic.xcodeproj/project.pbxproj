@@ -43,14 +43,14 @@
 		8C5431AC129CCB2500B7900A /* tcutest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54317D129CCB2400B7900A /* tcutest.c */; };
 		8C5431AD129CCB2500B7900A /* tcutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54317E129CCB2400B7900A /* tcutil.c */; };
 		8C5431AE129CCB2500B7900A /* tcutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54317F129CCB2400B7900A /* tcutil.h */; };
-		8C5431AF129CCB2500B7900A /* TSDocDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543180129CCB2400B7900A /* TSDocDB.h */; };
-		8C5431B0129CCB2500B7900A /* TSDocDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C543181129CCB2400B7900A /* TSDocDB.m */; };
-		8C5431B1129CCB2500B7900A /* TSDocDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543182129CCB2400B7900A /* TSDocDBManager.h */; };
-		8C5431B2129CCB2500B7900A /* TSDocDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C543183129CCB2400B7900A /* TSDocDBManager.m */; };
-		8C5431B3129CCB2500B7900A /* TSDocFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543184129CCB2400B7900A /* TSDocFilter.h */; };
-		8C5431B4129CCB2500B7900A /* TSDocFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C543185129CCB2400B7900A /* TSDocFilter.m */; };
-		8C5431B5129CCB2500B7900A /* TSDocFilterChain.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543186129CCB2400B7900A /* TSDocFilterChain.h */; };
-		8C5431B6129CCB2500B7900A /* TSDocFilterChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C543187129CCB2400B7900A /* TSDocFilterChain.m */; };
+		8C5431AF129CCB2500B7900A /* TSDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543180129CCB2400B7900A /* TSDB.h */; };
+		8C5431B0129CCB2500B7900A /* TSDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C543181129CCB2400B7900A /* TSDB.m */; };
+		8C5431B1129CCB2500B7900A /* TSDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543182129CCB2400B7900A /* TSDBManager.h */; };
+		8C5431B2129CCB2500B7900A /* TSDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C543183129CCB2400B7900A /* TSDBManager.m */; };
+		8C5431B3129CCB2500B7900A /* TSRowFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543184129CCB2400B7900A /* TSRowFilter.h */; };
+		8C5431B4129CCB2500B7900A /* TSRowFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C543185129CCB2400B7900A /* TSRowFilter.m */; };
+		8C5431B5129CCB2500B7900A /* TSRowFilterChain.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543186129CCB2400B7900A /* TSRowFilterChain.h */; };
+		8C5431B6129CCB2500B7900A /* TSRowFilterChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C543187129CCB2400B7900A /* TSRowFilterChain.m */; };
 		8C5431B7129CCB2500B7900A /* NSString+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543189129CCB2500B7900A /* NSString+TSTools.h */; };
 		8C5431B8129CCB2500B7900A /* NSString+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C54318A129CCB2500B7900A /* NSString+TSTools.m */; };
 		8C5431B9129CCB2500B7900A /* TSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54318B129CCB2500B7900A /* TSMacros.h */; };
@@ -99,14 +99,14 @@
 		8C54317D129CCB2400B7900A /* tcutest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcutest.c; sourceTree = "<group>"; };
 		8C54317E129CCB2400B7900A /* tcutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcutil.c; sourceTree = "<group>"; };
 		8C54317F129CCB2400B7900A /* tcutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcutil.h; sourceTree = "<group>"; };
-		8C543180129CCB2400B7900A /* TSDocDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDocDB.h; sourceTree = "<group>"; };
-		8C543181129CCB2400B7900A /* TSDocDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDocDB.m; sourceTree = "<group>"; };
-		8C543182129CCB2400B7900A /* TSDocDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDocDBManager.h; sourceTree = "<group>"; };
-		8C543183129CCB2400B7900A /* TSDocDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDocDBManager.m; sourceTree = "<group>"; };
-		8C543184129CCB2400B7900A /* TSDocFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDocFilter.h; sourceTree = "<group>"; };
-		8C543185129CCB2400B7900A /* TSDocFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDocFilter.m; sourceTree = "<group>"; };
-		8C543186129CCB2400B7900A /* TSDocFilterChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDocFilterChain.h; sourceTree = "<group>"; };
-		8C543187129CCB2400B7900A /* TSDocFilterChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDocFilterChain.m; sourceTree = "<group>"; };
+		8C543180129CCB2400B7900A /* TSDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDB.h; sourceTree = "<group>"; };
+		8C543181129CCB2400B7900A /* TSDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDB.m; sourceTree = "<group>"; };
+		8C543182129CCB2400B7900A /* TSDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDBManager.h; sourceTree = "<group>"; };
+		8C543183129CCB2400B7900A /* TSDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDBManager.m; sourceTree = "<group>"; };
+		8C543184129CCB2400B7900A /* TSRowFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRowFilter.h; sourceTree = "<group>"; };
+		8C543185129CCB2400B7900A /* TSRowFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRowFilter.m; sourceTree = "<group>"; };
+		8C543186129CCB2400B7900A /* TSRowFilterChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRowFilterChain.h; sourceTree = "<group>"; };
+		8C543187129CCB2400B7900A /* TSRowFilterChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRowFilterChain.m; sourceTree = "<group>"; };
 		8C543189129CCB2500B7900A /* NSString+TSTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TSTools.h"; sourceTree = "<group>"; };
 		8C54318A129CCB2500B7900A /* NSString+TSTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TSTools.m"; sourceTree = "<group>"; };
 		8C54318B129CCB2500B7900A /* TSMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMacros.h; sourceTree = "<group>"; };
@@ -197,14 +197,14 @@
 			isa = PBXGroup;
 			children = (
 				8C54315D129CCB2300B7900A /* TokyoCabinet */,
-				8C543180129CCB2400B7900A /* TSDocDB.h */,
-				8C543181129CCB2400B7900A /* TSDocDB.m */,
-				8C543182129CCB2400B7900A /* TSDocDBManager.h */,
-				8C543183129CCB2400B7900A /* TSDocDBManager.m */,
-				8C543184129CCB2400B7900A /* TSDocFilter.h */,
-				8C543185129CCB2400B7900A /* TSDocFilter.m */,
-				8C543186129CCB2400B7900A /* TSDocFilterChain.h */,
-				8C543187129CCB2400B7900A /* TSDocFilterChain.m */,
+				8C543180129CCB2400B7900A /* TSDB.h */,
+				8C543181129CCB2400B7900A /* TSDB.m */,
+				8C543182129CCB2400B7900A /* TSDBManager.h */,
+				8C543183129CCB2400B7900A /* TSDBManager.m */,
+				8C543184129CCB2400B7900A /* TSRowFilter.h */,
+				8C543185129CCB2400B7900A /* TSRowFilter.m */,
+				8C543186129CCB2400B7900A /* TSRowFilterChain.h */,
+				8C543187129CCB2400B7900A /* TSRowFilterChain.m */,
 				8C543188129CCB2400B7900A /* TSTools */,
 			);
 			name = src;
@@ -278,10 +278,10 @@
 				8C5431A2129CCB2500B7900A /* tchdb.h in Headers */,
 				8C5431A7129CCB2500B7900A /* tctdb.h in Headers */,
 				8C5431AE129CCB2500B7900A /* tcutil.h in Headers */,
-				8C5431AF129CCB2500B7900A /* TSDocDB.h in Headers */,
-				8C5431B1129CCB2500B7900A /* TSDocDBManager.h in Headers */,
-				8C5431B3129CCB2500B7900A /* TSDocFilter.h in Headers */,
-				8C5431B5129CCB2500B7900A /* TSDocFilterChain.h in Headers */,
+				8C5431AF129CCB2500B7900A /* TSDB.h in Headers */,
+				8C5431B1129CCB2500B7900A /* TSDBManager.h in Headers */,
+				8C5431B3129CCB2500B7900A /* TSRowFilter.h in Headers */,
+				8C5431B5129CCB2500B7900A /* TSRowFilterChain.h in Headers */,
 				8C5431B7129CCB2500B7900A /* NSString+TSTools.h in Headers */,
 				8C5431B9129CCB2500B7900A /* TSMacros.h in Headers */,
 				8C5431BA129CCB2500B7900A /* TSTools.h in Headers */,
@@ -363,10 +363,10 @@
 				8C5431AB129CCB2500B7900A /* tcumttest.c in Sources */,
 				8C5431AC129CCB2500B7900A /* tcutest.c in Sources */,
 				8C5431AD129CCB2500B7900A /* tcutil.c in Sources */,
-				8C5431B0129CCB2500B7900A /* TSDocDB.m in Sources */,
-				8C5431B2129CCB2500B7900A /* TSDocDBManager.m in Sources */,
-				8C5431B4129CCB2500B7900A /* TSDocFilter.m in Sources */,
-				8C5431B6129CCB2500B7900A /* TSDocFilterChain.m in Sources */,
+				8C5431B0129CCB2500B7900A /* TSDB.m in Sources */,
+				8C5431B2129CCB2500B7900A /* TSDBManager.m in Sources */,
+				8C5431B4129CCB2500B7900A /* TSRowFilter.m in Sources */,
+				8C5431B6129CCB2500B7900A /* TSRowFilterChain.m in Sources */,
 				8C5431B8129CCB2500B7900A /* NSString+TSTools.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
