@@ -35,6 +35,7 @@
 -(NSString *)makeRowTextColKey;
 
 
+
 //MetaData Methods
 -(void)loadRowTypes;
 
@@ -49,7 +50,7 @@
 -(NSDictionary *)dbGet:(NSString *)rowID;
 -(BOOL)dbDel:(NSString *)rowID;
 
--(NSString *)directoryForDB:(NSString *)dbName;
+- (NSString *)directoryForDB:(NSString *)dbName withPathOrNil:(NSString *)path;
 -(NSString *)findOrCreateDirectory:(NSSearchPathDirectory)searchPathDirectory inDomain:(NSSearchPathDomainMask)domainMask appendPathComponent:(NSString *)appendComponent error:(NSError **)errorOut;
 
 -(NSString *)joinStringsFromDictionary:(NSDictionary *)dict andTargetCols:(NSArray *)keys glue:(NSString *)glue;
@@ -74,27 +75,34 @@
 -(id)initWithDBNamed:(NSString *)dbName inDirectoryAtPathOrNil:(NSString*)path delegate:(id<TSDBDefinitionsDelegate>)theDelegate{
   self = [super init];
   if (self != nil) {
-    NSString *dbPath;
-    if (path == nil) {
-      dbPath = [NSString stringWithFormat:@"%@/%@.tct", [self directoryForDB:dbName], dbName];
+    NSString *theDBPath, *theDBDir;
+    theDBDir = [self directoryForDB:dbName withPathOrNil:path];
+    theDBPath = [NSString stringWithFormat:@"%@/%@.tct", theDBDir, dbName];
+/*    if (path == nil) {
+      theDBDir = [NSString stringWithFormat:@"%@/%@", [self directoryForDB:dbName], dbName];
+      theDBPath = [NSString stringWithFormat:@"%@/%@.tct", theDBDir, dbName];
     }else {
-      dbPath = [NSString stringWithFormat:@"%@/%@.tct", path, dbName];
-    }
+      theDBPath = [NSString stringWithFormat:@"%@/%@/%@.tct", path, dbName,dbName];
+      theDBDir = [NSString stringWithFormat:@"%@/%@", path, dbName];
+    }*/
     
     NSFileManager *fm = [NSFileManager defaultManager];
     BOOL isNew = YES;
-    if([fm fileExistsAtPath:dbPath]){
+    if([fm fileExistsAtPath:theDBPath]){
       isNew = NO;
     }
     TSDBManager *dbm = [TSDBManager sharedDBManager];
-    TCTDB *tdb = [dbm getDB:dbPath];
+    TCTDB *tdb = [dbm getDB:theDBPath];
     if(tdb){
       filterChain = [[TSRowFilterChain alloc] init];
-      dbFilePath = [dbPath retain];
+      dbFilePath = [theDBPath retain];
+      dbNamePrefix = [dbName retain];
+      rootDBDir = [theDBDir retain];
+      
     }else {
       return nil;
     }
-    NSLog(@"%@", dbPath);
+    NSLog(@"%@", theDBPath);
     _delegate = theDelegate;
     if (isNew) {
       [self reindexDB:nil];
@@ -102,7 +110,6 @@
   }
   return self;
 }
-
 - (void)setDelegate:(id<TSDBDefinitionsDelegate>)aDelegate
 {
 	_delegate = aDelegate;
@@ -111,6 +118,9 @@
 - (void) dealloc
 {
   [orderBy release];
+  [dbDir release];
+  [dbNamePrefix release];
+  [rootDBDir release];
   //[rowTypeDefs release];
   [dbFilePath release];
   [filterChain release];
@@ -183,8 +193,14 @@
 }
 
 -(void)resetDB{
-  TCTDB *db = [self getDB];
-  tctdbvanish(db);
+  TSDBManager *dbm = [TSDBManager sharedDBManager];
+  [dbm removeDBFileAtPath:dbFilePath];
+  NSFileManager *fm = [NSFileManager defaultManager];
+  [fm removeItemAtPath:rootDBDir error:NULL];
+  [self directoryForDB:dbNamePrefix withPathOrNil:dbDir];
+  TCTDB *tdb = [dbm getDB:dbFilePath];
+  [self reindexDB:nil];
+  //return [dbm getDB:dbFilePath];
 }
 -(void)reopenDB{
   TSDBManager *dbm = [TSDBManager sharedDBManager];
@@ -636,20 +652,32 @@
   return [NSString stringWithUTF8String:tctdberrmsg(ecode)];
 }
 
-- (NSString *)directoryForDB:(NSString *)dbName{
-  NSString *executableName =
-  [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];
-  NSError *error;
-  NSString *result =
-  [self
-   findOrCreateDirectory:NSApplicationSupportDirectory
-   inDomain:NSUserDomainMask
-   appendPathComponent:[NSString stringWithFormat:@"%@/%@", executableName, dbName]
-   error:&error];
-  if (error)
-  {
-    NSLog(@"Unable to find or create application support directory:\n%@", error);
+- (NSString *)directoryForDB:(NSString *)dbName withPathOrNil:(NSString *)path{
+  NSString *result = nil;
+  if (path == nil) {
+    NSString *executableName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];
+    NSError *error;
+    result =
+    [self
+     findOrCreateDirectory:NSApplicationSupportDirectory
+     inDomain:NSUserDomainMask
+     appendPathComponent:[NSString stringWithFormat:@"%@/%@", executableName, dbName]
+     error:&error];
+    if (error)
+    {
+      NSLog(@"Unable to find or create application support directory:\n%@", error);
+    } 
+  }else{
+    BOOL success = [[NSFileManager defaultManager]
+     createDirectoryAtPath:[NSString stringWithFormat:@"%@/%@", path, dbName]
+     withIntermediateDirectories:YES
+     attributes:nil
+     error:NULL];
+    if (success) {
+      return [NSString stringWithFormat:@"%@/%@", path, dbName];
+    }
   }
+  
   return result;
 }
 

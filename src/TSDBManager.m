@@ -91,7 +91,19 @@ static dispatch_queue_t tsDBMainQueue;
     }
     
   });
-  
+}
+-(void)removeDBFileAtPath:(NSString *)dbFilePath{
+  __block TCTDB *tdb = NULL;
+  dispatch_sync(tsDBMainQueue, ^{
+    int sp;
+    tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
+    if (tdb) {
+      tctdbclose(tdb);
+      tcmapout(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]));
+    }
+    NSFileManager *fm = [NSFileManager defaultManager];
+    [fm removeItemAtPath:dbFilePath error:NULL];
+  });
 }
 #pragma mark -
 #pragma mark Utility Methods
