@@ -21,4 +21,5 @@
 -(dispatch_queue_t)getQueueForDBPath:(NSString *)dbPath;
 -(TCTDB *)getDB:(NSString *)dbFilePath;
 -(void)recyleDBAtPath:(NSString *)dbFilePath;
+-(void)removeDBFileAtPath:(NSString *)dbFilePath;
 @end

@@ -39,7 +39,9 @@ typedef enum {
   NSInteger direction;
   
   NSString *dbFilePath;
-  
+  NSString *dbDir;
+  NSString *dbNamePrefix;
+  NSString *rootDBDir;
   id <TSDBDefinitionsDelegate> _delegate;		//Used to store the publicly visible delegate
 }
 @property(nonatomic,readonly) NSString *dbFilePath;
