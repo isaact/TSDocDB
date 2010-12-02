@@ -20,14 +20,14 @@
   if ((self = [super init])) {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *dbDirectoryName = [documentsDirectory stringByAppendingPathComponent:TSDocDBDIR];
+    NSString *dbDirectoryName = [documentsDirectory stringByAppendingPathComponent:TSDBDIR];
     [self prepareFolderAtPath:dbDirectoryName];
     
-    modelsDB = [[TSDocDB alloc] initWithDBNamed:TSDocDBName inDirectoryAtPathOrNil:dbDirectoryName delegate:self];
+    modelsDB = [[TSDB alloc] initWithDBNamed:TSDBName inDirectoryAtPathOrNil:dbDirectoryName delegate:self];
     [modelsDB retain];
-    [modelsDB reindexDocs:nil];
+    [modelsDB reindexDB:nil];
     
-    NSArray * savedModels = [modelsDB doSearchWithLimit:100 andOffset:0 forDocTypes:TSDocDBTYPE, nil];
+    NSArray * savedModels = [modelsDB doSearchWithLimit:100 andOffset:0 forRowTypes:TSDBTYPE, nil];
     models = [[NSMutableArray alloc] initWithCapacity:1];
     [models retain];
     
@@ -104,27 +104,25 @@
 
   }
 
-  NSArray* results = [modelsDB searchForAllWords:[searchText lowercaseString] withLimit:50 andOffset:0 forDocTypes:TSDocDBTYPE,nil];
-  NSLog(@"%@", results);
+  NSArray* results = [modelsDB searchForAllWords:[searchText lowercaseString] withLimit:50 andOffset:0 forRowTypes:TSDBTYPE,nil];
   for (NSDictionary* modelInfo in results) {
     [foundModels addObject:[[[CuteModel alloc] initWithDictionary:modelInfo] autorelease]];
   }
   [foundModels autorelease];
-  NSLog(@"%@", foundModels);
   return [NSArray arrayWithArray:foundModels];
 
 }
 
 
-#pragma mark TSDocDBDefinitionsDelegate
--(NSArray *)getDocTypes
+#pragma mark TSDBDefinitionsDelegate
+-(NSArray *)TSGetRowTypes
 {
-  return [NSArray arrayWithObject:TSDocDBTYPE];
+  return [NSArray arrayWithObject:TSDBTYPE];
 }
 -(NSArray *)TSColumnsForIndexType:(TSIndexType)indexType
 {
   if (indexType == TSIndexTypeFullTextColumn) {
-    return TSDocDBCOLS;
+    return TSDBCOLS;
   }
   else {
     return nil;
@@ -132,9 +130,9 @@
 
   
 }
--(NSArray *)TSColumnsFullTextDocumentSearch:(NSString *)docType
+-(NSArray *)TSColumnsForFullTextSearch:(NSString *)rowType
 {
-  return TSDocDBCOLS;
+  return TSDBCOLS;
 }
 
 #pragma mark KVO related
@@ -171,12 +169,12 @@
 #pragma mark Add/Remove Models
 - (void)addModel:(id)newModel
 {
-  [modelsDB saveDoc:[newModel Name] withDocType:TSDocDBTYPE andDocData:[newModel modelInfo]];
+  [modelsDB replaceRow:[newModel Name] withRowType:TSDBTYPE andRowData:[newModel modelInfo]];
   [[self models] addObject:newModel];
 }
 - (void)removeModel:(id)newModel
 {
-  [modelsDB deleteDoc:[newModel Name]];
+  [modelsDB deleteRow:[newModel Name]];
   [[self models] removeObject:newModel];
 }
 

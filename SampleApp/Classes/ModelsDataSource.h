@@ -7,20 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TSDocDB.h"
+#import "TSDB.h"
 
-#define TSDocDBDIR @"TSDB" // Created in the Documents Folder
-#define TSDocDBName @"MyModels" // Name of the DB
-#define TSDocDBTYPE @"CuteModel" // Name of my Doc Type
-#define TSDocDBCOLS [NSArray arrayWithObjects:@"Name", @"Bio",@"Gender",nil] // Columns I Plan to Search on
+#define TSDBDIR @"TSDB" // Created in the Documents Folder
+#define TSDBName @"MyModels" // Name of the DB
+#define TSDBTYPE @"CuteModel" // Name of my Doc Type
+#define TSDBCOLS [NSArray arrayWithObjects:@"Name", @"Bio",@"Gender",nil] // Columns I Plan to Search on
 
-@interface ModelsDataSource : NSObject <TSDocDBDefinitionsDelegate> {
+@interface ModelsDataSource : NSObject <TSDBDefinitionsDelegate> {
   NSMutableArray *models;
-  TSDocDB *modelsDB;
+  TSDB *modelsDB;
 }
 
 @property (nonatomic, retain) NSMutableArray *models;
-@property (nonatomic, retain) TSDocDB *modelsDB;
+@property (nonatomic, retain) TSDB *modelsDB;
 
 - (id)init;
 - (id)initWithModels:(NSMutableArray*)newModels;

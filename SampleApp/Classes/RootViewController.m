@@ -191,20 +191,9 @@
 	
 	[self.filteredListContent removeAllObjects]; // First clear the filtered array.
 	NSArray *results = [dataSource filterModelsForSearchText:searchText scope:scope];
-	/*
-	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
-	 */
-	for (CuteModel *model in results)
-	{
-		if ([scope isEqualToString:@"All"] || [model.Gender isEqualToString:scope])
-		{
-			NSComparisonResult result = [model.Name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-      if (result == NSOrderedSame)
-			{
-				[self.filteredListContent addObject:model];
-      }
-		}
-	}
+	
+  [self.filteredListContent addObjectsFromArray:results];
+
 }
 
 
