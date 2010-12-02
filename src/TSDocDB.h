@@ -52,7 +52,7 @@ typedef enum {
 -(id)initWithDBNamed:(NSString *)dbName inDirectoryAtPathOrNil:(NSString*)path delegate:(id<TSDocDBDefinitionsDelegate>)theDelegate;
 -(void)syncDB;
 -(void)reopenDB;
-
+-(void)resetDB;
 
 //Doc Management Methods
 -(void)reindexDocs:(NSString *)docTypeOrNil;
@@ -87,6 +87,7 @@ typedef enum {
 //Search Methods
 -(NSUInteger)getNumDocsOfType:(NSString *)docTypeOrNil;
 -(NSUInteger)getNumResultsOfDocType:(NSString *)docTypeOrNil;
+-(NSArray *)getRowsWithLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;
 -(NSArray *)doSearchWithLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forDocTypes:(NSString *)docType,...  NS_REQUIRES_NIL_TERMINATION;
 
 //Convenient Search Methods
