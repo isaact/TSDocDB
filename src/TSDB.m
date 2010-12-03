@@ -69,7 +69,7 @@
 {
   TSDB *tableDB = [TSDB alloc];
   [tableDB initWithDBNamed:dbName inDirectoryAtPathOrNil:path delegate:theDelegate];
-  return tableDB;
+  return [tableDB autorelease];
   
 }
 -(id)initWithDBNamed:(NSString *)dbName inDirectoryAtPathOrNil:(NSString*)path delegate:(id<TSDBDefinitionsDelegate>)theDelegate{
@@ -198,7 +198,7 @@
   NSFileManager *fm = [NSFileManager defaultManager];
   [fm removeItemAtPath:rootDBDir error:NULL];
   [self directoryForDB:dbNamePrefix withPathOrNil:dbDir];
-  TCTDB *tdb = [dbm getDB:dbFilePath];
+  [dbm getDB:dbFilePath];
   [self reindexDB:nil];
   //return [dbm getDB:dbFilePath];
 }
@@ -620,6 +620,7 @@
     }
     
   }
+  [self dbDel:rowKey];
   if(!tctdbput(tdb, [rowKey UTF8String], rowKeySize, cols)){
     int ecode = tctdbecode(tdb);
     ALog(@"DB put error:%@", [TSDB getDBError:ecode]);
