@@ -122,13 +122,11 @@
 -(NSArray *)TSColumnsForIndexType:(TSIndexType)indexType
 {
   if (indexType == TSIndexTypeFullTextColumn) {
-    return TSDBCOLS;
+    return [NSArray arrayWithObjects:@"Name",@"Bio",nil];
+  }else if (indexType == TSIndexTypeString) {
+    return [NSArray arrayWithObjects:@"Gender",nil];
   }
-  else {
-    return nil;
-  }
-
-  
+  return nil;
 }
 -(NSArray *)TSColumnsForFullTextSearch:(NSString *)rowType
 {
