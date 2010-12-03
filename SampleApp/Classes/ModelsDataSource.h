@@ -12,7 +12,8 @@
 #define TSDBDIR @"TSDB" // Created in the Documents Folder
 #define TSDBName @"MyModels" // Name of the DB
 #define TSDBTYPE @"CuteModel" // Name of my Doc Type
-#define TSDBCOLS [NSArray arrayWithObjects:@"Name", @"Bio",@"Gender",nil] // Columns I Plan to Search on
+#define TSDBCOLSFULLTEXT [NSArray arrayWithObjects:@"Name", @"Bio",nil] // Columns I Plan to Search on
+#define TSDBCOLSSTRING [NSArray arrayWithObjects:@"Gender",nil] // Columns I Plan to Search on
 
 @interface ModelsDataSource : NSObject <TSDBDefinitionsDelegate> {
   NSMutableArray *models;

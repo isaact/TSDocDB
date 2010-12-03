@@ -122,9 +122,9 @@
 -(NSArray *)TSColumnsForIndexType:(TSIndexType)indexType
 {
   if (indexType == TSIndexTypeFullTextColumn) {
-    return [NSArray arrayWithObjects:@"Name",@"Bio",nil];
+    return TSDBCOLSFULLTEXT;
   }else if (indexType == TSIndexTypeString) {
-    return [NSArray arrayWithObjects:@"Gender",nil];
+    return TSDBCOLSSTRING;
   }
   return nil;
 }
