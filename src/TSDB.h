@@ -43,6 +43,7 @@ typedef enum {
   NSString *dbNamePrefix;
   NSString *rootDBDir;
   id <TSDBDefinitionsDelegate> _delegate;		//Used to store the publicly visible delegate
+  dispatch_queue_t dbQueue;
 }
 @property(nonatomic,readonly) NSString *dbFilePath;
 

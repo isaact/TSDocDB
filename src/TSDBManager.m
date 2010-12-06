@@ -27,18 +27,21 @@
 static TSDBManager *sharedDBManager = nil;
 static TCMAP *tsDBs = NULL;
 static TCMAP *dbQueues;
-static dispatch_queue_t tsDBMainQueue;
+static dispatch_queue_t tsDBManagerQueue = NULL;
+static dispatch_queue_t tsDBMainQueue = NULL;
 
 +(TSDBManager *)sharedDBManager{
   dispatch_queue_t queue;
   queue = dispatch_queue_create([[TSDBManager getQueueSig] UTF8String], NULL);
-  
-  dispatch_sync(queue, ^{
+  if (tsDBManagerQueue == NULL) {
+    tsDBMainQueue = dispatch_queue_create("com.ticklespace.tsdocdb", NULL);
+    tsDBManagerQueue = dispatch_queue_create("com.ticklespace.tsdocdbman", NULL);
+  }
+  dispatch_sync(tsDBManagerQueue, ^{
     if (sharedDBManager == nil) {
       sharedDBManager = [[TSDBManager alloc] initTSDBManager];
     }
   });
-  dispatch_release(queue);
   return sharedDBManager;
 }
 
@@ -49,7 +52,6 @@ static dispatch_queue_t tsDBMainQueue;
     /* create a new map object */
     tsDBs = tcmapnew();
     dbQueues = tcmapnew();
-    tsDBMainQueue = dispatch_queue_create("com.ticklespace.tsdocdb", NULL);
   }
   return self;
 }
@@ -58,7 +60,7 @@ static dispatch_queue_t tsDBMainQueue;
 
 -(TCTDB *)getDB:(NSString *)dbFilePath{
   __block TCTDB *tdb = NULL;
-  dispatch_sync(tsDBMainQueue, ^{
+  dispatch_sync(tsDBManagerQueue, ^{
     int sp;
     tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
     if (!tdb) {
@@ -77,7 +79,7 @@ static dispatch_queue_t tsDBMainQueue;
 }
 -(void)recyleDBAtPath:(NSString *)dbFilePath{
   __block TCTDB *tdb = NULL;
-  dispatch_sync(tsDBMainQueue, ^{
+  dispatch_sync(tsDBManagerQueue, ^{
     int sp;
     tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
     if (tdb) {
@@ -94,7 +96,7 @@ static dispatch_queue_t tsDBMainQueue;
 }
 -(void)removeDBFileAtPath:(NSString *)dbFilePath{
   __block TCTDB *tdb = NULL;
-  dispatch_sync(tsDBMainQueue, ^{
+  dispatch_sync(tsDBManagerQueue, ^{
     int sp;
     tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
     if (tdb) {
