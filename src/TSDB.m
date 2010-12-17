@@ -67,9 +67,8 @@
 #pragma mark Inits & Deallocs
 +(id)TSDBWithDBNamed:(NSString *)dbName inDirectoryAtPathOrNil:(NSString*)path delegate:(id<TSDBDefinitionsDelegate>)theDelegate
 {
-  TSDB *tableDB = [TSDB alloc];
-  [tableDB initWithDBNamed:dbName inDirectoryAtPathOrNil:path delegate:theDelegate];
-  return [tableDB autorelease];
+  TSDB *tableDB = [[[TSDB alloc] initWithDBNamed:dbName inDirectoryAtPathOrNil:path delegate:theDelegate] autorelease];
+  return tableDB;
   
 }
 -(id)initWithDBNamed:(NSString *)dbName inDirectoryAtPathOrNil:(NSString*)path delegate:(id<TSDBDefinitionsDelegate>)theDelegate{
@@ -158,11 +157,26 @@
     }
     [self indexCol:[self makeRowTextColKey] indexType:TDBITQGRAM];
     [self indexCol:[self makeRowTypeKey] indexType:TDBITTOKEN];
-    //TCTDB *tdb = [self getDB];
-    //tctdbtune(tdb, 6000000, 8, 20, TDBTLARGE);
-    //[self optimizeIndexes:nil];
-    //[self syncDB];
   });
+}
+-(void)reindexRows:(NSString *)rowType{
+  NSUInteger offset = 0;
+  [self clearFilters];
+  NSArray *rows = [self doSearchWithLimit:100 andOffset:offset forRowTypes:rowType,nil];
+  NSArray *colKeys = [_delegate TSColumnsForFullTextSearch:rowType];
+  NSString *rowTextColKey = [self makeRowTextColKey];
+  while ([rows count]) {
+    dispatch_sync(dbQueue, ^{
+      for (NSMutableDictionary *row in rows) {
+        NSString *joinedString = [[self joinStringsFromDictionary:row andTargetCols:colKeys glue:@" "] lowercaseString];
+        [row setObject:joinedString forKey:rowTextColKey];
+        NSString *rowIDKey = [self makePrimaryRowKey:rowType andRowID:[row objectForKey:[_delegate TSPrimaryColumnForRowType:rowType]]];
+        [self dbPut:rowIDKey colVals:row];
+      }
+    });
+    offset+=[rows count];
+    rows = [self doSearchWithLimit:100 andOffset:offset forRowTypes:rowType,nil];
+  }
 }
 -(void)optimizeDB{
   dispatch_sync(dbQueue, ^{
@@ -626,7 +640,7 @@
   TCLIST *res = tctdbqrysearch(qry);  
   const char *rbuf;
   int rsiz, i;
-  NSLog(@"########################num res: %d", tclistnum(res));
+  //NSLog(@"########################num res: %d", tclistnum(res));
   for(i = 0; i < tclistnum(res); i++){
     rbuf = tclistval(res, i, &rsiz);
     [rows addObject:[self dbGet:[NSString stringWithUTF8String:rbuf]]];

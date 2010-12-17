@@ -31,8 +31,6 @@ static dispatch_queue_t tsDBManagerQueue = NULL;
 static dispatch_queue_t tsDBMainQueue = NULL;
 
 +(TSDBManager *)sharedDBManager{
-  dispatch_queue_t queue;
-  queue = dispatch_queue_create([[TSDBManager getQueueSig] UTF8String], NULL);
   if (tsDBManagerQueue == NULL) {
     tsDBMainQueue = dispatch_queue_create("com.ticklespace.tsdocdb", NULL);
     tsDBManagerQueue = dispatch_queue_create("com.ticklespace.tsdocdbman", NULL);

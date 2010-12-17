@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A02664512BBCD6600761FDC /* myconf.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A02664312BBCD6500761FDC /* myconf.c */; };
+		6A02664612BBCD6600761FDC /* myconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A02664412BBCD6600761FDC /* myconf.h */; };
+		6A02666012BBCFF400761FDC /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0265D812BBC88F00761FDC /* libbz2.1.0.dylib */; };
+		6A02666512BBD09700761FDC /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A02664912BBCDB000761FDC /* libz.1.2.3.dylib */; };
 		8C54310F129CC9DE00B7900A /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5430E0129CC9DD00B7900A /* md5.c */; };
 		8C543110129CC9DE00B7900A /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C5430E1129CC9DD00B7900A /* md5.h */; };
-		8C543111129CC9DE00B7900A /* myconf.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5430E2129CC9DD00B7900A /* myconf.c */; };
-		8C543112129CC9DE00B7900A /* myconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C5430E3129CC9DD00B7900A /* myconf.h */; };
 		8C543113129CC9DE00B7900A /* tcadb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5430E4129CC9DD00B7900A /* tcadb.c */; };
 		8C543114129CC9DE00B7900A /* tcadb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C5430E5129CC9DD00B7900A /* tcadb.h */; };
 		8C543115129CC9DE00B7900A /* tcamgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5430E6129CC9DD00B7900A /* tcamgr.c */; };
@@ -46,7 +48,6 @@
 		8C54313B129CC9DE00B7900A /* TSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54310D129CC9DE00B7900A /* TSMacros.h */; };
 		8C54313C129CC9DE00B7900A /* TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54310E129CC9DE00B7900A /* TSTools.h */; };
 		8C87E3201298B7B800372881 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C87E31F1298B7B800372881 /* libz.dylib */; };
-		8C87E3231298B7D100372881 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C87E3221298B7D100372881 /* libbz2.dylib */; };
 		8CC1318C12A84B1100D7DE55 /* TSDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CC1318412A84B1100D7DE55 /* TSDB.h */; };
 		8CC1318D12A84B1100D7DE55 /* TSDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC1318512A84B1100D7DE55 /* TSDB.m */; };
 		8CC1318E12A84B1100D7DE55 /* TSDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CC1318612A84B1100D7DE55 /* TSDBManager.h */; };
@@ -91,10 +92,12 @@
 
 /* Begin PBXFileReference section */
 		32DBCF5E0370ADEE00C91783 /* TSDocDBStatic_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDocDBStatic_Prefix.pch; sourceTree = "<group>"; };
+		6A0265D812BBC88F00761FDC /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
+		6A02664312BBCD6500761FDC /* myconf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = myconf.c; sourceTree = "<group>"; };
+		6A02664412BBCD6600761FDC /* myconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myconf.h; sourceTree = "<group>"; };
+		6A02664912BBCDB000761FDC /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		8C5430E0129CC9DD00B7900A /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		8C5430E1129CC9DD00B7900A /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
-		8C5430E2129CC9DD00B7900A /* myconf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = myconf.c; sourceTree = "<group>"; };
-		8C5430E3129CC9DD00B7900A /* myconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myconf.h; sourceTree = "<group>"; };
 		8C5430E4129CC9DD00B7900A /* tcadb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcadb.c; sourceTree = "<group>"; };
 		8C5430E5129CC9DD00B7900A /* tcadb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcadb.h; sourceTree = "<group>"; };
 		8C5430E6129CC9DD00B7900A /* tcamgr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcamgr.c; sourceTree = "<group>"; };
@@ -172,7 +175,8 @@
 				BD6668570F83F84100ABF98B /* UIKit.framework in Frameworks */,
 				BD6668F80F83F87C00ABF98B /* CoreGraphics.framework in Frameworks */,
 				8C87E3201298B7B800372881 /* libz.dylib in Frameworks */,
-				8C87E3231298B7D100372881 /* libbz2.dylib in Frameworks */,
+				6A02666012BBCFF400761FDC /* libbz2.1.0.dylib in Frameworks */,
+				6A02666512BBD09700761FDC /* libz.1.2.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +203,8 @@
 				034768DFFF38A50411DB9C8B /* Products */,
 				BD80A6F10F8C87A60067878C /* UnitTest-Info.plist */,
 				BD80A79E0F8D3B310067878C /* RunIPhoneUnitTest.sh */,
+				6A0265D812BBC88F00761FDC /* libbz2.1.0.dylib */,
+				6A02664912BBCDB000761FDC /* libz.1.2.3.dylib */,
 			);
 			name = TSDocDBStatic;
 			sourceTree = "<group>";
@@ -253,10 +259,10 @@
 		8C5430DF129CC9DD00B7900A /* TokyoCabinet */ = {
 			isa = PBXGroup;
 			children = (
+				6A02664312BBCD6500761FDC /* myconf.c */,
+				6A02664412BBCD6600761FDC /* myconf.h */,
 				8C5430E0129CC9DD00B7900A /* md5.c */,
 				8C5430E1129CC9DD00B7900A /* md5.h */,
-				8C5430E2129CC9DD00B7900A /* myconf.c */,
-				8C5430E3129CC9DD00B7900A /* myconf.h */,
 				8C5430E4129CC9DD00B7900A /* tcadb.c */,
 				8C5430E5129CC9DD00B7900A /* tcadb.h */,
 				8C5430E6129CC9DD00B7900A /* tcamgr.c */,
@@ -330,7 +336,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C543110129CC9DE00B7900A /* md5.h in Headers */,
-				8C543112129CC9DE00B7900A /* myconf.h in Headers */,
 				8C543114129CC9DE00B7900A /* tcadb.h in Headers */,
 				8C54311A129CC9DE00B7900A /* tcbdb.h in Headers */,
 				8C54311F129CC9DE00B7900A /* tcfdb.h in Headers */,
@@ -344,6 +349,7 @@
 				8CC1318E12A84B1100D7DE55 /* TSDBManager.h in Headers */,
 				8CC1319012A84B1100D7DE55 /* TSRowFilter.h in Headers */,
 				8CC1319212A84B1100D7DE55 /* TSRowFilterChain.h in Headers */,
+				6A02664612BBCD6600761FDC /* myconf.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +400,7 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "TSDocDBStatic" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -456,7 +463,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C54310F129CC9DE00B7900A /* md5.c in Sources */,
-				8C543111129CC9DE00B7900A /* myconf.c in Sources */,
 				8C543113129CC9DE00B7900A /* tcadb.c in Sources */,
 				8C543115129CC9DE00B7900A /* tcamgr.c in Sources */,
 				8C543116129CC9DE00B7900A /* tcamttest.c in Sources */,
@@ -486,6 +492,7 @@
 				8CC1318F12A84B1100D7DE55 /* TSDBManager.m in Sources */,
 				8CC1319112A84B1100D7DE55 /* TSRowFilter.m in Sources */,
 				8CC1319312A84B1100D7DE55 /* TSRowFilterChain.m in Sources */,
+				6A02664512BBCD6600761FDC /* myconf.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,9 +520,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TSDocDBStatic_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DDEBUG=1";
 				PRODUCT_NAME = TSDocDBStatic;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -529,8 +537,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TSDocDBStatic_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = TSDocDBStatic;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -544,9 +554,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "./**";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -559,8 +569,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "./**";
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

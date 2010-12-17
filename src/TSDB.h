@@ -26,7 +26,7 @@ typedef enum {
 -(NSArray *)TSGetRowTypes;
 -(NSArray *)TSColumnsForIndexType:(TSIndexType)indexType;
 -(NSArray *)TSColumnsForFullTextSearch:(NSString *)rowType;
-
+-(NSString *)TSPrimaryColumnForRowType:(NSString *)rowType;
 @optional
 
 @end
@@ -59,6 +59,7 @@ typedef enum {
 
 //Table Management Methods
 -(void)reindexDB:(NSString *)rowTypeOrNil;
+-(void)reindexRows:(NSString *)rowType;
 -(void)optimizeDB;
 -(void)optimizeIndexes:(NSString *)rowTypeOrNil;
 -(void)resetDB;
