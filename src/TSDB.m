@@ -350,28 +350,35 @@
 #pragma mark Numeric Filters
 -(void)addConditionNumIsLessThan:(id)colVal toColumn:(NSString *)colName{
   if ([colVal isKindOfClass:[NSString class]] || [colVal isKindOfClass:[NSNumber class]]) {
-    TSRowFilter *filter = [[TSRowFilter alloc] initStringFilter:colName withOp:contains andVal:colVal];
+    TSRowFilter *filter = [[TSRowFilter alloc] initNumericFilter:colName withOp:lt andVal:colVal];
     [filterChain addFilter:filter withLabel:[filter getFilterSig]];
     [filter release];
   }
 }
 -(void)addConditionNumIsLessThanOrEquals:(id)colVal toColumn:(NSString *)colName{
   if ([colVal isKindOfClass:[NSString class]] || [colVal isKindOfClass:[NSNumber class]]) {
-    TSRowFilter *filter = [[TSRowFilter alloc] initStringFilter:colName withOp:contains andVal:colVal];
+    TSRowFilter *filter = [[TSRowFilter alloc] initNumericFilter:colName withOp:lte andVal:colVal];
+    [filterChain addFilter:filter withLabel:[filter getFilterSig]];
+    [filter release];
+  }
+}
+-(void)addConditionNumEquals:(id)colVal toColumn:(NSString *)colName{
+  if ([colVal isKindOfClass:[NSString class]] || [colVal isKindOfClass:[NSNumber class]]) {
+    TSRowFilter *filter = [[TSRowFilter alloc] initNumericFilter:colName withOp:eq andVal:colVal];
     [filterChain addFilter:filter withLabel:[filter getFilterSig]];
     [filter release];
   }
 }
 -(void)addConditionNumIsGreaterThan:(id)colVal toColumn:(NSString *)colName{
   if ([colVal isKindOfClass:[NSString class]] || [colVal isKindOfClass:[NSNumber class]]) {
-    TSRowFilter *filter = [[TSRowFilter alloc] initStringFilter:colName withOp:contains andVal:colVal];
+    TSRowFilter *filter = [[TSRowFilter alloc] initNumericFilter:colName withOp:gt andVal:colVal];
     [filterChain addFilter:filter withLabel:[filter getFilterSig]];
     [filter release];
   }
 }
 -(void)addConditionNumIsGreaterThanOrEquals:(id)colVal toColumn:(NSString *)colName{
   if ([colVal isKindOfClass:[NSString class]] || [colVal isKindOfClass:[NSNumber class]]) {
-    TSRowFilter *filter = [[TSRowFilter alloc] initStringFilter:colName withOp:contains andVal:colVal];
+    TSRowFilter *filter = [[TSRowFilter alloc] initNumericFilter:colName withOp:gte andVal:colVal];
     [filterChain addFilter:filter withLabel:[filter getFilterSig]];
     [filter release];
   }

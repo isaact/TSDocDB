@@ -86,6 +86,7 @@ typedef enum {
 
 -(void)addConditionNumIsLessThan:(id)colVal toColumn:(NSString *)colName;
 -(void)addConditionNumIsLessThanOrEquals:(id)colVal toColumn:(NSString *)colName;
+-(void)addConditionNumEquals:(id)colVal toColumn:(NSString *)colName;
 -(void)addConditionNumIsGreaterThan:(id)colVal toColumn:(NSString *)colName;
 -(void)addConditionNumIsGreaterThanOrEquals:(id)colVal toColumn:(NSString *)colName;
 
