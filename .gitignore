@@ -1,3 +1,17 @@
-**/build/**
-StaticLibs/ios/build/**
-StaticLibs/osx/build/**
+# xcode noise
+build/*
+*.pbxuser
+*.mode1v3
+*.mode2v3
+
+# old skool
+.svn
+
+# osx noise
+.DS_Store
+profile
+
+#External Projects
+ExternalClasses/TSDocDB
+
+
