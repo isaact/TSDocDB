@@ -92,6 +92,7 @@
     }
     TSDBManager *dbm = [TSDBManager sharedDBManager];
     TCTDB *tdb = [dbm getDB:theDBPath];
+    reuseableTCMap = tcmapnew();
     if(tdb){
       filterChain = [[TSRowFilterChain alloc] init];
       dbFilePath = [theDBPath retain];
@@ -102,7 +103,7 @@
     }else {
       return nil;
     }
-    NSLog(@"%@", theDBPath);
+    //NSLog(@"%@", theDBPath);
     _delegate = theDelegate;
     if (isNew) {
       [self reindexDB:nil];
@@ -117,6 +118,7 @@
 }
 - (void) dealloc
 {
+  tcmapdel(reuseableTCMap);
   [orderBy release];
   dispatch_release(dbQueue);
   [dbDir release];
@@ -178,10 +180,10 @@
     rows = [self doSearchWithLimit:100 andOffset:offset forRowTypes:rowType,nil];
   }
 }
--(void)optimizeDB{
+-(void)optimizeDBWithBnum:(NSInteger)bnum{
   dispatch_sync(dbQueue, ^{
     TCTDB *tdb = [self getDB];
-    tctdboptimize(tdb, -1, -1, -1, TDBTLARGE);
+    tctdboptimize(tdb, bnum, -1, -1, TDBTLARGE);
   });
 }
 -(void)optimizeIndexes:(NSString *)rowTypeOrNil{
@@ -243,7 +245,7 @@
     [tmpData setObject:joinedString forKey:[self makeRowTextColKey]];
     //ALog(@"Saving Doc: %@", realRowID);
     [self dbPut:realRowID colVals:tmpData];
-    [pool release];
+    [pool drain];
   });
 }
 
@@ -663,7 +665,8 @@
 -(BOOL)dbPut:(NSString *)rowKey colVals:(NSDictionary *)rowData{
   TCTDB *tdb = [self getDB];
   NSInteger rowKeySize = strlen([rowKey UTF8String]);
-  TCMAP *cols = tcmapnew();
+  //TCMAP *reuseableTCMap = tcmapnew();
+  tcmapclear(reuseableTCMap);
   for (NSString *colKey in [rowData allKeys]) {
     if([[rowData objectForKey:colKey] isKindOfClass:[NSString class]]){
       const char *val = [[rowData objectForKey:colKey] UTF8String];
@@ -673,22 +676,23 @@
 //      }else {
 //        tcmapput(cols, [colKey UTF8String], strlen([colKey UTF8String]), " ", strlen(" "));
       }
-      tcmapput2(cols, [colKey UTF8String], val);
+      tcmapput2(reuseableTCMap, [colKey UTF8String], val);
     }else if([[rowData objectForKey:colKey] isKindOfClass:[NSNumber class]]){
-      tcmapput2(cols, [colKey UTF8String], [[[rowData objectForKey:colKey] stringValue] UTF8String]);
+      tcmapput2(reuseableTCMap, [colKey UTF8String], [[[rowData objectForKey:colKey] stringValue] UTF8String]);
       //tcmapput(cols, [colKey UTF8String], strlen([colKey UTF8String]), [[[rowData objectForKey:colKey] stringValue] UTF8String], strlen([[[rowData objectForKey:colKey] stringValue] UTF8String]));
     } else if ([[rowData objectForKey:colKey] isKindOfClass:[NSArray class]] || [[rowData objectForKey:colKey] isKindOfClass:[NSDictionary class]]) {
-      tcmapput2(cols, [colKey UTF8String], [[[rowData objectForKey:colKey] description] UTF8String]);
+      tcmapput2(reuseableTCMap, [colKey UTF8String], [[[rowData objectForKey:colKey] description] UTF8String]);
       //tcmapput(cols, [colKey UTF8String], strlen([colKey UTF8String]), [[[rowData objectForKey:colKey] description] UTF8String], strlen([[[rowData objectForKey:colKey] description] UTF8String]));
     }
     
   }
   //[self dbDel:rowKey];
-  if(!tctdbput(tdb, [rowKey UTF8String], rowKeySize, cols)){
+  if(!tctdbput(tdb, [rowKey UTF8String], rowKeySize, reuseableTCMap)){
     int ecode = tctdbecode(tdb);
     ALog(@"DB put error:%@", [TSDB getDBError:ecode]);
   }
-  tcmapdel(cols);
+  tcmapclear(reuseableTCMap);
+  //tcmapdel(cols);
   
   return NO;
 }

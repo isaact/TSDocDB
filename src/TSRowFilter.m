@@ -137,7 +137,7 @@
     }
     count++;
   }
-  NSLog(@"%@", str);
+  //NSLog(@"%@", str);
   tctdbqryaddcond(qry, [colName UTF8String], qop, [str UTF8String]);
   [str release];
 }

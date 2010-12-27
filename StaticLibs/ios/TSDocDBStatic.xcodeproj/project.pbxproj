@@ -92,6 +92,8 @@
 
 /* Begin PBXFileReference section */
 		32DBCF5E0370ADEE00C91783 /* TSDocDBStatic_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDocDBStatic_Prefix.pch; sourceTree = "<group>"; };
+		36DB8F8812C7A1F20099751E /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
+		36DB8F8912C7A1F20099751E /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		6A0265D812BBC88F00761FDC /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
 		6A02664312BBCD6500761FDC /* myconf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = myconf.c; sourceTree = "<group>"; };
 		6A02664412BBCD6600761FDC /* myconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myconf.h; sourceTree = "<group>"; };
@@ -259,6 +261,8 @@
 		8C5430DF129CC9DD00B7900A /* TokyoCabinet */ = {
 			isa = PBXGroup;
 			children = (
+				36DB8F8812C7A1F20099751E /* ChangeLog */,
+				36DB8F8912C7A1F20099751E /* COPYING */,
 				6A02664312BBCD6500761FDC /* myconf.c */,
 				6A02664412BBCD6600761FDC /* myconf.h */,
 				8C5430E0129CC9DD00B7900A /* md5.c */,

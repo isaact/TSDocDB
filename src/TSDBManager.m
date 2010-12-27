@@ -26,7 +26,7 @@
 
 static TSDBManager *sharedDBManager = nil;
 static TCMAP *tsDBs = NULL;
-static TCMAP *dbQueues;
+//static TCMAP *dbQueues;
 static dispatch_queue_t tsDBManagerQueue = NULL;
 static dispatch_queue_t tsDBMainQueue = NULL;
 
@@ -49,7 +49,7 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   if (self != nil) {
     /* create a new map object */
     tsDBs = tcmapnew();
-    dbQueues = tcmapnew();
+    //dbQueues = tcmapnew();
   }
   return self;
 }
@@ -63,28 +63,44 @@ static dispatch_queue_t tsDBMainQueue = NULL;
     tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
     if (!tdb) {
       
-      const char *queueKey = [[TSDBManager getQueueSigForDbPath:dbFilePath] UTF8String];
-      dispatch_queue_t dbQueue = dispatch_queue_create(queueKey,NULL);
+      //const char *queueKey = [[TSDBManager getQueueSigForDbPath:dbFilePath] UTF8String];
+      //dispatch_queue_t dbQueue = dispatch_queue_create(queueKey,NULL);
       tdb = [self getDBFromFile:dbFilePath];
       tcmapput(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), tdb, sizeof(TCTDB));
-      tcmapput(dbQueues, queueKey, strlen(queueKey), dbQueue, sizeof(dispatch_queue_t));
+      //tcmapput(dbQueues, queueKey, strlen(queueKey), dbQueue, sizeof(dispatch_queue_t));
       //tctdbdel(tdb);
       //tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
     }
     
   });
+  tctdbsetcache(tdb, -1, 10, 10);
+  tctdbsetxmsiz(tdb, 6710886);
   return tdb;
 }
 -(void)recyleDBAtPath:(NSString *)dbFilePath{
-  __block TCTDB *tdb = NULL;
   dispatch_sync(tsDBManagerQueue, ^{
+    TCTDB *tdb = NULL;
     int sp;
     tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
     if (tdb) {
       tctdbclose(tdb);
+      //if (tdb) {
+      //  tctdbdel(tdb);
+      //}
+      tcmapdel(tsDBs);
+      //tcmapdel(dbQueues);
+      TCMPOOL *mpool = tcmpoolglobal();
+      if (mpool) {
+        tcmpoolclear(mpool, 1);
+      }      
+      //tcmpooldelglobal();
+      /* create a new map object */
+      tsDBs = tcmapnew();
+      //dbQueues = tcmapnew();
+      
       tcmapout(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]));
-      tdb = [self getDBFromFile:dbFilePath];
-      tcmapput(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), tdb, sizeof(TCTDB));
+      TCTDB *tdb2 = [self getDBFromFile:dbFilePath];
+      tcmapput(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), tdb2, sizeof(TCTDB));
       //[dbQueues setObject:<#(id)anObject#> forKey:<#(id)aKey#>
       //tctdbdel(tdb);
       //tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
@@ -92,6 +108,7 @@ static dispatch_queue_t tsDBMainQueue = NULL;
     
   });
 }
+
 -(void)removeDBFileAtPath:(NSString *)dbFilePath{
   __block TCTDB *tdb = NULL;
   dispatch_sync(tsDBManagerQueue, ^{
@@ -172,7 +189,6 @@ static dispatch_queue_t tsDBMainQueue = NULL;
     tcmapout(tsDBs, key, strlen(key));
   }
   tcmapdel(tsDBs);
-  
 }
 -(TCTDB *)getDBFromFile:(NSString *)dbFilePath{
   NSFileManager *fileManager = [NSFileManager defaultManager];

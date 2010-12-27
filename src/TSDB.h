@@ -44,6 +44,7 @@ typedef enum {
   NSString *rootDBDir;
   id <TSDBDefinitionsDelegate> _delegate;		//Used to store the publicly visible delegate
   dispatch_queue_t dbQueue;
+  TCMAP *reuseableTCMap;
 }
 @property(nonatomic,readonly) NSString *dbFilePath;
 
@@ -60,7 +61,7 @@ typedef enum {
 //Table Management Methods
 -(void)reindexDB:(NSString *)rowTypeOrNil;
 -(void)reindexRows:(NSString *)rowType;
--(void)optimizeDB;
+-(void)optimizeDBWithBnum:(NSInteger)bnum;
 -(void)optimizeIndexes:(NSString *)rowTypeOrNil;
 -(void)resetDB;
 
