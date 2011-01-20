@@ -53,6 +53,8 @@ typedef enum {
 //DBManagement Methods
 //-(id)initWithDB:(NSString *)dbPath;
 +(id)TSDBWithDBNamed:(NSString *)dbName inDirectoryAtPathOrNil:(NSString*)path delegate:(id<TSDBDefinitionsDelegate>)theDelegate;
++(BOOL)TSDBExistsWithName:(NSString *)dbName;
++(BOOL)TSDBExtractDBFromZipArchive:(NSString *)pathToZipFile;
 -(id)initWithDBNamed:(NSString *)dbName inDirectoryAtPathOrNil:(NSString*)path delegate:(id<TSDBDefinitionsDelegate>)theDelegate;
 -(void)syncDB;
 -(void)reopenDB;

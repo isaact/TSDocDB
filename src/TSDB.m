@@ -23,6 +23,8 @@
 #include "stdbool.h"
 #include "stdint.h"
 
+#import "ZipArchive.h"
+
 @interface TSDB()
 
 -(TCTDB *)getDB;
@@ -71,6 +73,53 @@
   return tableDB;
   
 }
++(BOOL)TSDBCopyDBWithName:(NSString *)dbName fromPath:(NSString *)srcPath{
+  // Search for the path
+  NSArray* paths = NSSearchPathForDirectoriesInDomains(DB_STORAGE_AREA, NSUserDomainMask, YES);
+  
+  // Normally only need the first path
+  NSString *resolvedPath = [paths objectAtIndex:0];
+  NSString *executableName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];
+  resolvedPath = [resolvedPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/", executableName]];
+  [[NSFileManager defaultManager] copyItemAtPath:(NSString *)srcPath toPath:(NSString *)resolvedPath error:NULL];
+  return YES;
+
+}
++(BOOL)TSDBExistsWithName:(NSString *)dbName{
+  // Search for the path
+  NSArray* paths = NSSearchPathForDirectoriesInDomains(DB_STORAGE_AREA, NSUserDomainMask, YES);
+
+  // Normally only need the first path
+  NSString *resolvedPath = [paths objectAtIndex:0];
+  NSString *executableName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];
+  resolvedPath = [resolvedPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@/%@.tct", executableName, dbName, dbName]];
+  
+  // Check if the path exists
+  BOOL exists;
+  BOOL isDirectory;
+  exists = [[NSFileManager defaultManager]
+            fileExistsAtPath:resolvedPath
+            isDirectory:&isDirectory];
+  if (exists){
+    return YES;
+  }
+  return NO;
+}
++(BOOL)TSDBExtractDBFromZipArchive:(NSString *)pathToZipFile{
+  NSArray* paths = NSSearchPathForDirectoriesInDomains(DB_STORAGE_AREA, NSUserDomainMask, YES);
+  NSString *destPath = [paths objectAtIndex:0];
+  NSString *executableName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];
+  destPath = [destPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/", executableName]];
+  NSLog(@"Extracting to: %@", destPath);
+  BOOL ret = NO;
+  ZipArchive *za = [[ZipArchive alloc] init];
+  if ([za UnzipOpenFile: pathToZipFile]) {
+    ret = [za UnzipFileTo: destPath overWrite: YES];
+    [za UnzipCloseFile];
+  }
+  [za release];
+  return ret;
+}
 -(id)initWithDBNamed:(NSString *)dbName inDirectoryAtPathOrNil:(NSString*)path delegate:(id<TSDBDefinitionsDelegate>)theDelegate{
   self = [super init];
   if (self != nil) {
@@ -90,6 +139,7 @@
     if([fm fileExistsAtPath:theDBPath]){
       isNew = NO;
     }
+    //ALog(@"%@", theDBPath);
     TSDBManager *dbm = [TSDBManager sharedDBManager];
     TCTDB *tdb = [dbm getDB:theDBPath];
     reuseableTCMap = tcmapnew();
@@ -120,7 +170,7 @@
 {
   tcmapdel(reuseableTCMap);
   [orderBy release];
-  dispatch_release(dbQueue);
+  //dispatch_release(dbQueue);
   [dbDir release];
   [dbNamePrefix release];
   [rootDBDir release];
@@ -652,7 +702,9 @@
   //NSLog(@"########################num res: %d", tclistnum(res));
   for(i = 0; i < tclistnum(res); i++){
     rbuf = tclistval(res, i, &rsiz);
-    [rows addObject:[self dbGet:[NSString stringWithUTF8String:rbuf]]];
+    NSString *key = [NSString stringWithUTF8String:rbuf];
+    //NSLog(@"k: %@", key);
+    [rows addObject:[self dbGet:key]];
   }  
   tclistdel(res);
   [filterChain removeAllFilters];
@@ -703,14 +755,18 @@
   const char *name;
   if(cols){
     tcmapiterinit(cols);
-    rowData = [NSMutableDictionary dictionaryWithCapacity:1];;
+    rowData = [[NSMutableDictionary alloc] initWithCapacity:1];
+    NSAutoreleasePool *pool;
     while((name = tcmapiternext2(cols)) != NULL){
+      pool = [[NSAutoreleasePool alloc] init];
+      //NSLog(@"Getting %s", name);
       [rowData setObject:[NSString stringWithUTF8String:tcmapget2(cols, name)] 
                   forKey:[NSString stringWithUTF8String:name]];
+      [pool drain];
     }
     tcmapdel(cols);
   }  
-  return rowData;
+  return [rowData autorelease];
 }
 -(BOOL)dbDel:(NSString *)rowID{
   TCTDB *tdb = [self getDB];
@@ -727,7 +783,7 @@
     NSError *error;
     result =
     [self
-     findOrCreateDirectory:NSApplicationSupportDirectory
+     findOrCreateDirectory:DB_STORAGE_AREA
      inDomain:NSUserDomainMask
      appendPathComponent:[NSString stringWithFormat:@"%@/%@", executableName, dbName]
      error:&error];
@@ -748,7 +804,6 @@
   
   return result;
 }
-
 - (NSString *)findOrCreateDirectory:(NSSearchPathDirectory)searchPathDirectory inDomain:(NSSearchPathDomainMask)domainMask appendPathComponent:(NSString *)appendComponent error:(NSError **)errorOut{
   // Search for the path
   NSArray* paths = NSSearchPathForDirectoriesInDomains(
