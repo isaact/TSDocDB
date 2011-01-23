@@ -18,8 +18,9 @@
 		8C089F53129D87C500AA6D06 /* CuteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C089F52129D87C500AA6D06 /* CuteModel.m */; };
 		8C089F5F129D8A7200AA6D06 /* libTSDocDBStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C089F5A129D8A5E00AA6D06 /* libTSDocDBStatic.a */; };
 		8C089F6A129D8D2000AA6D06 /* ModelsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C089F69129D8D2000AA6D06 /* ModelsDataSource.m */; };
-		8C08A11A129DC06F00AA6D06 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C08A119129DC06F00AA6D06 /* libbz2.dylib */; };
 		8C08A11C129DC07800AA6D06 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C08A11B129DC07800AA6D06 /* libz.dylib */; };
+		8C44C2E112BBD7B3002EA001 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C44C2E012BBD7B3002EA001 /* libbz2.1.0.dylib */; };
+		8C44C33D12BBDC3F002EA001 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C44C33C12BBDC3F002EA001 /* MainWindow-iPad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,8 +65,9 @@
 		8C089F54129D8A5E00AA6D06 /* TSDocDBStatic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TSDocDBStatic.xcodeproj; path = ../StaticLibs/ios/TSDocDBStatic.xcodeproj; sourceTree = SOURCE_ROOT; };
 		8C089F68129D8D2000AA6D06 /* ModelsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelsDataSource.h; sourceTree = "<group>"; };
 		8C089F69129D8D2000AA6D06 /* ModelsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelsDataSource.m; sourceTree = "<group>"; };
-		8C08A119129DC06F00AA6D06 /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
 		8C08A11B129DC07800AA6D06 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		8C44C2E012BBD7B3002EA001 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
+		8C44C33C12BBDC3F002EA001 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SampleApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleApp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,8 +80,8 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
-				8C08A11A129DC06F00AA6D06 /* libbz2.dylib in Frameworks */,
 				8C08A11C129DC07800AA6D06 /* libz.dylib in Frameworks */,
+				8C44C2E112BBD7B3002EA001 /* libbz2.1.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +118,7 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				8C44C33B12BBDC3C002EA001 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -144,11 +147,11 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8C08A119129DC06F00AA6D06 /* libbz2.dylib */,
 				8C08A11B129DC07800AA6D06 /* libz.dylib */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+				8C44C2E012BBD7B3002EA001 /* libbz2.1.0.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,6 +163,14 @@
 				8C089F5C129D8A5E00AA6D06 /* UnitTest.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8C44C33B12BBDC3C002EA001 /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				8C44C33C12BBDC3F002EA001 /* MainWindow-iPad.xib */,
+			);
+			name = "Resources-iPad";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +201,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SampleApp" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -237,6 +249,7 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
+				8C44C33D12BBDC3F002EA001 /* MainWindow-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +283,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -277,6 +291,8 @@
 				GCC_PREFIX_HEADER = SampleApp_Prefix.pch;
 				INFOPLIST_FILE = "SampleApp-Info.plist";
 				PRODUCT_NAME = SampleApp;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -284,11 +300,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SampleApp_Prefix.pch;
 				INFOPLIST_FILE = "SampleApp-Info.plist";
 				PRODUCT_NAME = SampleApp;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -303,7 +322,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "../src/**";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -318,7 +337,7 @@
 				HEADER_SEARCH_PATHS = "../src/**";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
