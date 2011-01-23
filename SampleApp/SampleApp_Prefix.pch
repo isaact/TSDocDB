@@ -12,3 +12,6 @@
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
 #endif
+
+//Disabling Tokyo Cabinet BZLib support
+#define _MYNOBZIP      0
