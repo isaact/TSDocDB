@@ -15,3 +15,5 @@
 
 //Disabling Tokyo Cabinet BZLib support
 #define _MYNOBZIP      0
+
+#define DB_STORAGE_AREA NSDocumentDirectory
