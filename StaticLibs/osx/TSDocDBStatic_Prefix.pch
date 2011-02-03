@@ -7,3 +7,4 @@
     #import "TSTools.h"
 #endif
 
+#define DB_STORAGE_AREA NSApplicationSupportDirectory

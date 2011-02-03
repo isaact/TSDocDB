@@ -64,13 +64,14 @@ typedef enum {
 -(void)reindexDB:(NSString *)rowTypeOrNil;
 -(void)reindexRows:(NSString *)rowType;
 -(void)optimizeDBWithBnum:(NSInteger)bnum;
+-(void)optimizeDB;
 -(void)optimizeIndexes:(NSString *)rowTypeOrNil;
 -(void)resetDB;
 
 -(void)replaceRow:(NSString *)rowID withRowType:(NSString *)rowType andRowData:(NSDictionary *)rowData;
 -(NSDictionary *)getRowByStringID:(NSString *)rowID forType:(NSString *)rowType;
 -(NSDictionary *)getRowByIntegerID:(NSInteger)rowID forType:(NSString *)rowType;
--(BOOL)deleteRow:(NSString *)rowID;
+-(BOOL)deleteRow:(NSString *)rowID forType:(NSString *)rowType;
 
 //Ordering Methods
 -(void)setOrderByStringForColumn:(NSString *)colName isAscending:(BOOL)ascending;

@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A282EF812FB21960057E525 /* ZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EEC12FB21960057E525 /* ZipArchive.h */; };
+		6A282EF912FB21960057E525 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6A282EED12FB21960057E525 /* ZipArchive.mm */; };
+		6A282EFA12FB21960057E525 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EEF12FB21960057E525 /* crypt.h */; };
+		6A282EFB12FB21960057E525 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A282EF012FB21960057E525 /* ioapi.c */; };
+		6A282EFC12FB21960057E525 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EF112FB21960057E525 /* ioapi.h */; };
+		6A282EFD12FB21960057E525 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A282EF212FB21960057E525 /* mztools.c */; };
+		6A282EFE12FB21960057E525 /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EF312FB21960057E525 /* mztools.h */; };
+		6A282EFF12FB21960057E525 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A282EF412FB21960057E525 /* unzip.c */; };
+		6A282F0012FB21960057E525 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EF512FB21960057E525 /* unzip.h */; };
+		6A282F0112FB21960057E525 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A282EF612FB21960057E525 /* zip.c */; };
+		6A282F0212FB21960057E525 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EF712FB21960057E525 /* zip.h */; };
 		6A3F3DBC1297098700205B30 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3F3DBB1297098700205B30 /* libz.1.2.3.dylib */; };
 		6A3F3DCC12970A5400205B30 /* libbz2.1.0.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3F3DCB12970A5400205B30 /* libbz2.1.0.5.dylib */; };
 		8C54318D129CCB2500B7900A /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54315E129CCB2400B7900A /* md5.c */; };
@@ -63,6 +74,17 @@
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF5E0370ADEE00C91783 /* TSDocDBStatic_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDocDBStatic_Prefix.pch; sourceTree = "<group>"; };
+		6A282EEC12FB21960057E525 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		6A282EED12FB21960057E525 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		6A282EEF12FB21960057E525 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		6A282EF012FB21960057E525 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		6A282EF112FB21960057E525 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		6A282EF212FB21960057E525 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		6A282EF312FB21960057E525 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		6A282EF412FB21960057E525 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		6A282EF512FB21960057E525 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		6A282EF612FB21960057E525 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		6A282EF712FB21960057E525 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		6A3F3DBB1297098700205B30 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		6A3F3DCB12970A5400205B30 /* libbz2.1.0.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.5.dylib; path = usr/lib/libbz2.1.0.5.dylib; sourceTree = SDKROOT; };
 		8C54315E129CCB2400B7900A /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
@@ -193,9 +215,36 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		6A282EEB12FB21960057E525 /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				6A282EEC12FB21960057E525 /* ZipArchive.h */,
+				6A282EED12FB21960057E525 /* ZipArchive.mm */,
+				6A282EEE12FB21960057E525 /* minizip */,
+			);
+			path = ZipArchive;
+			sourceTree = "<group>";
+		};
+		6A282EEE12FB21960057E525 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				6A282EEF12FB21960057E525 /* crypt.h */,
+				6A282EF012FB21960057E525 /* ioapi.c */,
+				6A282EF112FB21960057E525 /* ioapi.h */,
+				6A282EF212FB21960057E525 /* mztools.c */,
+				6A282EF312FB21960057E525 /* mztools.h */,
+				6A282EF412FB21960057E525 /* unzip.c */,
+				6A282EF512FB21960057E525 /* unzip.h */,
+				6A282EF612FB21960057E525 /* zip.c */,
+				6A282EF712FB21960057E525 /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
 		8C54315C129CCB2300B7900A /* src */ = {
 			isa = PBXGroup;
 			children = (
+				6A282EEB12FB21960057E525 /* ZipArchive */,
 				8C54315D129CCB2300B7900A /* TokyoCabinet */,
 				8C543180129CCB2400B7900A /* TSDB.h */,
 				8C543181129CCB2400B7900A /* TSDB.m */,
@@ -285,6 +334,12 @@
 				8C5431B7129CCB2500B7900A /* NSString+TSTools.h in Headers */,
 				8C5431B9129CCB2500B7900A /* TSMacros.h in Headers */,
 				8C5431BA129CCB2500B7900A /* TSTools.h in Headers */,
+				6A282EF812FB21960057E525 /* ZipArchive.h in Headers */,
+				6A282EFA12FB21960057E525 /* crypt.h in Headers */,
+				6A282EFC12FB21960057E525 /* ioapi.h in Headers */,
+				6A282EFE12FB21960057E525 /* mztools.h in Headers */,
+				6A282F0012FB21960057E525 /* unzip.h in Headers */,
+				6A282F0212FB21960057E525 /* zip.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +424,11 @@
 				8C5431B4129CCB2500B7900A /* TSRowFilter.m in Sources */,
 				8C5431B6129CCB2500B7900A /* TSRowFilterChain.m in Sources */,
 				8C5431B8129CCB2500B7900A /* NSString+TSTools.m in Sources */,
+				6A282EF912FB21960057E525 /* ZipArchive.mm in Sources */,
+				6A282EFB12FB21960057E525 /* ioapi.c in Sources */,
+				6A282EFD12FB21960057E525 /* mztools.c in Sources */,
+				6A282EFF12FB21960057E525 /* unzip.c in Sources */,
+				6A282F0112FB21960057E525 /* zip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

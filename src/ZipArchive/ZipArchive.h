@@ -11,7 +11,7 @@
 //    10-18-2009 version 1.1    support password protected zip files
 //    10-21-2009 version 1.2    fix date bug
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 #include "minizip/zip.h"
 #include "minizip/unzip.h"

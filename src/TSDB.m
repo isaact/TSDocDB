@@ -168,14 +168,16 @@
 }
 - (void) dealloc
 {
-  tcmapdel(reuseableTCMap);
-  [orderBy release];
-  //dispatch_release(dbQueue);
-  [dbDir release];
-  [dbNamePrefix release];
-  [rootDBDir release];
-  [dbFilePath release];
-  [filterChain release];
+  dispatch_sync(dbQueue, ^{
+    tcmapdel(reuseableTCMap);
+    [orderBy release];
+    //dispatch_release(dbQueue);
+    [dbDir release];
+    [dbNamePrefix release];
+    [rootDBDir release];
+    [dbFilePath release];
+    [filterChain release];
+  });
   [super dealloc];
 }
 -(void)syncDB{
@@ -229,6 +231,9 @@
     offset+=[rows count];
     rows = [self doSearchWithLimit:100 andOffset:offset forRowTypes:rowType,nil];
   }
+}
+-(void)optimizeDB{
+  [self optimizeDBWithBnum:0];
 }
 -(void)optimizeDBWithBnum:(NSInteger)bnum{
   dispatch_sync(dbQueue, ^{
@@ -311,10 +316,11 @@
   NSString *stringRowID = [NSString stringWithFormat:@"%d", rowID];
   return [self getRowByStringID:stringRowID forType:rowType];
 }
--(BOOL)deleteRow:(NSString *)rowID{
+-(BOOL)deleteRow:(NSString *)rowID forType:(NSString *)rowType{
+  NSString *realRowID = [self makePrimaryRowKey:rowType andRowID:rowID];
   __block BOOL success;
   dispatch_sync(dbQueue, ^{
-    success= [self dbDel:rowID];
+    success= [self dbDel:realRowID];
   });
   return success;
 }
