@@ -98,6 +98,7 @@ typedef enum {
 -(NSUInteger)getNumRowsOfType:(NSString *)rowTypeOrNil;
 -(NSUInteger)getNumResultsOfRowType:(NSString *)rowTypeOrNil;
 -(NSArray *)doSearchWithLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;
+-(BOOL)deleteMatchingRowsForRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;
 
 //Convenient Search Methods
 -(NSArray *)searchForPhrase:(NSString *)phrase withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,... NS_REQUIRES_NIL_TERMINATION;

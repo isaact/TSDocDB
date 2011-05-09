@@ -51,6 +51,7 @@
 -(BOOL)dbPut:(NSString *)key colVals:(NSDictionary *)colVals;
 -(NSDictionary *)dbGet:(NSString *)rowID;
 -(BOOL)dbDel:(NSString *)rowID;
+-(BOOL)dbSearchAndDelete:(TDBQRY *)qry;
 
 - (NSString *)directoryForDB:(NSString *)dbName withPathOrNil:(NSString *)path;
 -(NSString *)findOrCreateDirectory:(NSSearchPathDirectory)searchPathDirectory inDomain:(NSSearchPathDomainMask)domainMask appendPathComponent:(NSString *)appendComponent error:(NSError **)errorOut;
@@ -492,6 +493,21 @@
   });
   return rows;
 }
+-(BOOL)deleteMatchingRowsForRowTypes:(NSString *)rowType,...{
+  NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
+  GVargs(rowTypes, rowType, NSString);
+  __block BOOL result;
+  dispatch_sync(dbQueue, ^{
+    TCTDB *tdb = [self getDB];
+    if ([rowTypes count]) {
+      [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
+    }
+    TDBQRY *qry = [filterChain getQuery:tdb];
+    result =  [self dbSearchAndDelete:qry];
+    tctdbqrydel(qry);
+  });
+  return result;
+}
 -(NSArray *)searchForPhrase:(NSString *)phrase withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
   NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
   GVargs(rowTypes, rowType, NSString);
@@ -778,6 +794,11 @@
   TCTDB *tdb = [self getDB];
   return tctdbout(tdb, [rowID UTF8String], strlen([rowID UTF8String]));
 }
+-(BOOL)dbSearchAndDelete:(TDBQRY *)qry{
+  [filterChain removeAllFilters];
+  return tctdbqrysearchout(qry);
+}
+
 +(NSString *)getDBError:(int)ecode{
   return [NSString stringWithUTF8String:tctdberrmsg(ecode)];
 }
