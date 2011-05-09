@@ -367,17 +367,17 @@
   [filter release];
 }
 -(void)addConditionContainsAllWordsInString:(NSString *)words toColumn:(NSString *)colName{
-  TSRowFilter *filter = [[TSRowFilter alloc] initStringFilter:colName withOp:contains andVal:words];
+  TSRowFilter *filter = [[TSRowFilter alloc] initStringFilter:colName withOp:contains andVal:[words lowercaseString]];
   [filterChain addFilter:filter withLabel:[filter getFilterSig]];
   [filter release];
 }
 -(void)addConditionContainsAnyWordInString:(NSString *)words toColumn:(NSString *)colName{
-  TSRowFilter *filter = [[TSRowFilter alloc] initStringFilter:colName withOp:anyword andVal:words];
+  TSRowFilter *filter = [[TSRowFilter alloc] initStringFilter:colName withOp:anyword andVal:[words lowercaseString]];
   [filterChain addFilter:filter withLabel:[filter getFilterSig]];
   [filter release];
 }
 -(void)addConditionContainsPhrase:(NSString *)thePhrase toColumn:(NSString *)colName{
-  TSRowFilter *filter = [[TSRowFilter alloc] initStringFilter:colName withOp:phrase andVal:thePhrase];
+  TSRowFilter *filter = [[TSRowFilter alloc] initStringFilter:colName withOp:phrase andVal:[thePhrase lowercaseString]];
   [filterChain addFilter:filter withLabel:[filter getFilterSig]];
   [filter release];
   
