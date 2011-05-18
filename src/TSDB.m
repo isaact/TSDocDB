@@ -294,7 +294,11 @@
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     NSString *realRowID = [self makePrimaryRowKey:rowType andRowID:rowID];
     //NSLog(@"%@", rowData);
-    NSMutableDictionary *tmpData = [NSMutableDictionary dictionaryWithDictionary:rowData];
+    NSMutableDictionary *tmpData = [NSMutableDictionary dictionaryWithCapacity:[rowData count]];
+    for (NSString *key in [rowData allKeys]) {
+      if([rowData objectForKey:key] != [NSNull null])
+        [tmpData setObject:[rowData objectForKey:key] forKey:key];
+    }
     [tmpData setObject:rowType forKey:[self makeRowTypeKey]];
     NSArray *colKeys = [_delegate TSColumnsForFullTextSearch:rowType];
     NSString *joinedString = [[self joinStringsFromDictionary:rowData andTargetCols:colKeys glue:@" "] lowercaseString];
@@ -744,12 +748,12 @@
   for (NSString *colKey in [rowData allKeys]) {
     if([[rowData objectForKey:colKey] isKindOfClass:[NSString class]]){
       const char *val = [[rowData objectForKey:colKey] UTF8String];
-      if (strlen(val) <= 0) {
-        val = " ";
+      //if (strlen(val) <= 0) {
+      //  val = " ";
 //        tcmapput(cols, [colKey UTF8String], strlen([colKey UTF8String]), [[rowData objectForKey:colKey] UTF8String], strlen([[rowData objectForKey:colKey] UTF8String]));
 //      }else {
 //        tcmapput(cols, [colKey UTF8String], strlen([colKey UTF8String]), " ", strlen(" "));
-      }
+      //}
       tcmapput2(reuseableTCMap, [colKey UTF8String], val);
     }else if([[rowData objectForKey:colKey] isKindOfClass:[NSNumber class]]){
       tcmapput2(reuseableTCMap, [colKey UTF8String], [[[rowData objectForKey:colKey] stringValue] UTF8String]);
