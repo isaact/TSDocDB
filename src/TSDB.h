@@ -107,6 +107,9 @@ typedef enum {
 -(NSArray *)searchForAllWords:(NSString *)words withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,... NS_REQUIRES_NIL_TERMINATION;
 -(NSArray *)searchForAnyWord:(NSString *)words withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,... NS_REQUIRES_NIL_TERMINATION;
 
+//DB streaming methods
+-(void)doSearchWithProcessingBlock:(void(^)(id))processingBlock withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;
+
 //Asynchronous Search Methods
 -(void)getNumRowsWithAsyncNotification:(NSString *)notificationNameOrNil ofRowTypeOrNil:(NSString *)rowType;
 -(void)doSearchWithAsyncNotification:(NSString *)notificationNameOrNil resultLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;

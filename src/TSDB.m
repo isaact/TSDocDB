@@ -47,6 +47,7 @@
 -(void)postNotificationWithNotificationName:(NSString *)notificationName andData:(id)data;
 -(void)adjustQuery:(TDBQRY *)qry withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger) resultOffset;
 -(NSArray *)fetchRows:(TDBQRY *)qry;
+-(void)fetchRows:(TDBQRY *)qry andProcessWithBlock:(void(^)(id))processingBlock;
 -(BOOL)indexCol:(NSString *)colName indexType:(NSInteger)colType;
 -(BOOL)dbPut:(NSString *)key colVals:(NSDictionary *)colVals;
 -(id)dbGet:(NSString *)rowID;
@@ -553,6 +554,21 @@
   //});
   return rows;
 }
+
+#pragma mark DB streaming methods
+-(void)doSearchWithProcessingBlock:(void(^)(id))processingBlock withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
+  NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
+  GVargs(rowTypes, rowType, NSString);
+  TCTDB *tdb = [self getDB];
+  if ([rowTypes count]) {
+    [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
+  }
+  TDBQRY *qry = [filterChain getQuery:tdb];
+  [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
+  [self fetchRows:qry andProcessWithBlock:processingBlock];
+  tctdbqrydel(qry);
+}
+
 #pragma mark Asynchronous Convenient Search Methods
 -(void)getNumRowsWithAsyncNotification:(NSString *)notificationNameOrNil ofRowTypeOrNil:(NSString *)rowType{
   dispatch_queue_t queue;
@@ -739,6 +755,24 @@
   [filterChain removeAllFilters];
   return rows;
 }
+-(void)fetchRows:(TDBQRY *)qry andProcessWithBlock:(void(^)(id))processingBlock{
+  __block TCLIST *res;
+  dispatch_sync(dbQueue, ^{
+    res = tctdbqrysearch(qry);  
+  });
+  const char *rbuf;
+  int rsiz, i;
+  //NSLog(@"########################num res: %d", tclistnum(res));
+  for(i = 0; i < tclistnum(res); i++){
+    rbuf = tclistval(res, i, &rsiz);
+    NSString *key = [NSString stringWithUTF8String:rbuf];
+    //NSLog(@"k: %@", key);
+    processingBlock([self dbGet:key]);
+  }  
+  tclistdel(res);
+  [filterChain removeAllFilters];
+}
+
 -(BOOL)indexCol:(NSString *)colName indexType:(NSInteger)colType{
   TCTDB *tdb = [self getDB];
   return tctdbsetindex(tdb, [colName UTF8String], colType);

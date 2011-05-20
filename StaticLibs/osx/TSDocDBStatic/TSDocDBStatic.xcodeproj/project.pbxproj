@@ -1,0 +1,233 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6AFA1246138447D00031D4B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFA1245138447D00031D4B8 /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6AFA1242138447D00031D4B8 /* libTSDocDBStatic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTSDocDBStatic.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AFA1245138447D00031D4B8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		6AFA1248138447D00031D4B8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		6AFA1249138447D00031D4B8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6AFA124A138447D00031D4B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6AFA124D138447D00031D4B8 /* TSDocDBStatic-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TSDocDBStatic-Prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6AFA123F138447D00031D4B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AFA1246138447D00031D4B8 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6AFA1237138447D00031D4B8 = {
+			isa = PBXGroup;
+			children = (
+				6AFA124B138447D00031D4B8 /* TSDocDBStatic */,
+				6AFA1244138447D00031D4B8 /* Frameworks */,
+				6AFA1243138447D00031D4B8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6AFA1243138447D00031D4B8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6AFA1242138447D00031D4B8 /* libTSDocDBStatic.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6AFA1244138447D00031D4B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AFA1245138447D00031D4B8 /* Cocoa.framework */,
+				6AFA1247138447D00031D4B8 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6AFA1247138447D00031D4B8 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AFA1248138447D00031D4B8 /* AppKit.framework */,
+				6AFA1249138447D00031D4B8 /* CoreData.framework */,
+				6AFA124A138447D00031D4B8 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		6AFA124B138447D00031D4B8 /* TSDocDBStatic */ = {
+			isa = PBXGroup;
+			children = (
+				6AFA124C138447D00031D4B8 /* Supporting Files */,
+			);
+			path = TSDocDBStatic;
+			sourceTree = "<group>";
+		};
+		6AFA124C138447D00031D4B8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6AFA124D138447D00031D4B8 /* TSDocDBStatic-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6AFA1240138447D00031D4B8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		6AFA1241138447D00031D4B8 /* TSDocDBStatic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AFA1250138447D00031D4B8 /* Build configuration list for PBXNativeTarget "TSDocDBStatic" */;
+			buildPhases = (
+				6AFA123E138447D00031D4B8 /* Sources */,
+				6AFA123F138447D00031D4B8 /* Frameworks */,
+				6AFA1240138447D00031D4B8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TSDocDBStatic;
+			productName = TSDocDBStatic;
+			productReference = 6AFA1242138447D00031D4B8 /* libTSDocDBStatic.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6AFA1239138447D00031D4B8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Gelakins Inc.";
+			};
+			buildConfigurationList = 6AFA123C138447D00031D4B8 /* Build configuration list for PBXProject "TSDocDBStatic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6AFA1237138447D00031D4B8;
+			productRefGroup = 6AFA1243138447D00031D4B8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6AFA1241138447D00031D4B8 /* TSDocDBStatic */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6AFA123E138447D00031D4B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6AFA124E138447D00031D4B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6AFA124F138447D00031D4B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6AFA1251138447D00031D4B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TSDocDBStatic/TSDocDBStatic-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6AFA1252138447D00031D4B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TSDocDBStatic/TSDocDBStatic-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6AFA123C138447D00031D4B8 /* Build configuration list for PBXProject "TSDocDBStatic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AFA124E138447D00031D4B8 /* Debug */,
+				6AFA124F138447D00031D4B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AFA1250138447D00031D4B8 /* Build configuration list for PBXNativeTarget "TSDocDBStatic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AFA1251138447D00031D4B8 /* Debug */,
+				6AFA1252138447D00031D4B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6AFA1239138447D00031D4B8 /* Project object */;
+}
