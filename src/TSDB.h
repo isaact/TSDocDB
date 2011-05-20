@@ -27,7 +27,9 @@ typedef enum {
 -(NSArray *)TSColumnsForIndexType:(TSIndexType)indexType;
 -(NSArray *)TSColumnsForFullTextSearch:(NSString *)rowType;
 -(NSString *)TSPrimaryColumnForRowType:(NSString *)rowType;
+
 @optional
+-(id)TSModelObjectForData:(NSDictionary *)rowData andRowType:(NSString *)rowType;
 
 @end
 

@@ -49,7 +49,7 @@
 -(NSArray *)fetchRows:(TDBQRY *)qry;
 -(BOOL)indexCol:(NSString *)colName indexType:(NSInteger)colType;
 -(BOOL)dbPut:(NSString *)key colVals:(NSDictionary *)colVals;
--(NSDictionary *)dbGet:(NSString *)rowID;
+-(id)dbGet:(NSString *)rowID;
 -(BOOL)dbDel:(NSString *)rowID;
 -(BOOL)dbSearchAndDelete:(TDBQRY *)qry;
 
@@ -485,7 +485,7 @@
   NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
   GVargs(rowTypes, rowType, NSString);
   __block NSArray *rows;
-  dispatch_sync(dbQueue, ^{
+  //dispatch_sync(dbQueue, ^{
     TCTDB *tdb = [self getDB];
     if ([rowTypes count]) {
       [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
@@ -494,7 +494,7 @@
     [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
     rows = [self fetchRows:qry];
     tctdbqrydel(qry);
-  });
+  //});
   return rows;
 }
 -(BOOL)deleteMatchingRowsForRowTypes:(NSString *)rowType,...{
@@ -521,7 +521,7 @@
   NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
   GVargs(rowTypes, rowType, NSString);
   __block NSArray *rows;
-  dispatch_sync(dbQueue, ^{
+  //dispatch_sync(dbQueue, ^{
     TCTDB *tdb = [self getDB];
     if ([rowTypes count]) {
       [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
@@ -532,14 +532,14 @@
     [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
     rows = [self fetchRows:qry];
     tctdbqrydel(qry);
-  });
+  //});
   return rows;
 }
 -(NSArray *)searchForAnyWord:(NSString *)words withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
   NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
   GVargs(rowTypes, rowType, NSString);
   __block NSArray *rows;
-  dispatch_sync(dbQueue, ^{
+  //dispatch_sync(dbQueue, ^{
     TCTDB *tdb = [self getDB];
     if ([rowTypes count]) {
       [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
@@ -550,7 +550,7 @@
     [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
     rows = [self fetchRows:qry];
     tctdbqrydel(qry);
-  });
+  //});
   return rows;
 }
 #pragma mark Asynchronous Convenient Search Methods
@@ -571,7 +571,7 @@
   queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
   __block NSArray *ret;
   dispatch_async(queue, ^{
-    dispatch_sync(dbQueue, ^{
+    //dispatch_sync(dbQueue, ^{
       TCTDB *tdb = [self getDB];
       if ([rowTypes count]) {
         [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
@@ -581,7 +581,7 @@
       ret = [self fetchRows:qry];
       [self postNotificationWithNotificationName:notificationNameOrNil andData:ret];
       tctdbqrydel(qry);
-    });
+    //});
   });
 }
 -(void)searchForPhraseWithAsyncNotification:(NSString *)notificationNameOrNil forPhrase:(NSString *)thePhrase withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
@@ -591,7 +591,7 @@
   queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
   __block NSArray *ret;
   dispatch_async(queue, ^{
-    dispatch_sync(dbQueue, ^{
+    //dispatch_sync(dbQueue, ^{
       TCTDB *tdb = [self getDB];
       if ([rowTypes count]) {
         [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
@@ -603,7 +603,7 @@
       ret = [self fetchRows:qry];
       [self postNotificationWithNotificationName:notificationNameOrNil andData:ret];
       tctdbqrydel(qry);
-    });
+    //});
   });
 }
 -(void)searchForAllWordsWithAsyncNotification:(NSString *)notificationNameOrNil forWords:(NSString *)words withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
@@ -613,7 +613,7 @@
   queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
   __block NSArray *ret;
   dispatch_async(queue, ^{
-    dispatch_sync(dbQueue, ^{
+    //dispatch_sync(dbQueue, ^{
       TCTDB *tdb = [self getDB];
       if ([rowTypes count]) {
         [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
@@ -625,7 +625,7 @@
       ret = [self fetchRows:qry];
       [self postNotificationWithNotificationName:notificationNameOrNil andData:ret];
       tctdbqrydel(qry);
-    });
+    //});
   });
 }
 -(void)searchForAnyWordWithAsyncNotification:(NSString *)notificationNameOrNil forWords:(NSString *)words withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
@@ -635,7 +635,7 @@
   queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
   __block NSArray *ret;
   dispatch_async(queue, ^{
-    dispatch_sync(dbQueue, ^{
+    //dispatch_sync(dbQueue, ^{
       TCTDB *tdb = [self getDB];
       if ([rowTypes count]) {
         [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
@@ -647,7 +647,7 @@
       ret = [self fetchRows:qry];
       [self postNotificationWithNotificationName:notificationNameOrNil andData:ret];
       tctdbqrydel(qry);
-    });
+    //});
   });
 }
 
@@ -722,7 +722,10 @@
 }
 -(NSArray *)fetchRows:(TDBQRY *)qry{
   NSMutableArray *rows = [NSMutableArray arrayWithCapacity:1];
-  TCLIST *res = tctdbqrysearch(qry);  
+  __block TCLIST *res;
+  dispatch_sync(dbQueue, ^{
+    res = tctdbqrysearch(qry);  
+  });
   const char *rbuf;
   int rsiz, i;
   //NSLog(@"########################num res: %d", tclistnum(res));
@@ -774,10 +777,13 @@
   
   return NO;
 }
--(NSDictionary *)dbGet:(NSString *)rowID{
+-(id)dbGet:(NSString *)rowID{
   TCTDB *tdb = [self getDB];
   NSMutableDictionary *rowData = nil;
-  TCMAP *cols = tctdbget(tdb, [rowID UTF8String], strlen([rowID UTF8String]));
+  __block TCMAP *cols;
+  dispatch_sync(dbQueue, ^{
+   cols = tctdbget(tdb, [rowID UTF8String], strlen([rowID UTF8String]));
+  });
   const char *name;
   if(cols){
     tcmapiterinit(cols);
@@ -791,7 +797,9 @@
       [pool drain];
     }
     tcmapdel(cols);
-  }  
+  }
+  if([_delegate respondsToSelector:@selector(TSModelObjectForData:andRowType:)])
+    return [_delegate TSModelObjectForData:rowData andRowType:[rowData objectForKey:[self makeRowTypeKey]]];
   return [rowData autorelease];
 }
 -(BOOL)dbDel:(NSString *)rowID{
