@@ -13,6 +13,9 @@
 
 #import "TSRowFilter.h"
 
+//Predefined query objects
+#import "TSDBQuery.h"
+
 //TickleSpace Macros
 #import "TSMacros.h"
 
@@ -47,7 +50,7 @@
 -(void)postNotificationWithNotificationName:(NSString *)notificationName andData:(id)data;
 -(void)adjustQuery:(TDBQRY *)qry withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger) resultOffset;
 -(NSArray *)fetchRows:(TDBQRY *)qry;
--(void)fetchRows:(TDBQRY *)qry andProcessWithBlock:(void(^)(id))processingBlock;
+-(void)fetchRows:(TDBQRY *)qry andProcessWithBlock:(BOOL(^)(id))processingBlock;
 -(BOOL)indexCol:(NSString *)colName indexType:(NSInteger)colType;
 -(BOOL)dbPut:(NSString *)key colVals:(NSDictionary *)colVals;
 -(id)dbGet:(NSString *)rowID;
@@ -156,7 +159,7 @@
       return nil;
     }
     //NSLog(@"%@", theDBPath);
-    _delegate = theDelegate;
+    _delegate = [theDelegate retain];
     if (isNew) {
       [self reindexDB:nil];
     }
@@ -179,6 +182,7 @@
     [rootDBDir release];
     [dbFilePath release];
     [filterChain release];
+    [_delegate release];
   });
   [super dealloc];
 }
@@ -358,6 +362,7 @@
 #pragma mark Filtering Methods
 //Filtering Methods
 -(void)clearFilters{
+  [self clearFilters];
 }
 
 
@@ -556,7 +561,7 @@
 }
 
 #pragma mark DB streaming methods
--(void)doSearchWithProcessingBlock:(void(^)(id))processingBlock withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
+-(void)doSearchWithProcessingBlock:(BOOL(^)(id))processingBlock withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
   NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
   GVargs(rowTypes, rowType, NSString);
   TCTDB *tdb = [self getDB];
@@ -566,7 +571,7 @@
   TDBQRY *qry = [filterChain getQuery:tdb];
   [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
   [self fetchRows:qry andProcessWithBlock:processingBlock];
-  tctdbqrydel(qry);
+//  tctdbqrydel(qry);
 }
 
 #pragma mark Asynchronous Convenient Search Methods
@@ -668,6 +673,38 @@
 }
 
 #pragma mark -
+#pragma mark Predefined query search methods
+-(TSDBQuery *)getQueryObjectForRowTypes:(NSString *)rowType,...{
+  NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
+  GVargs(rowTypes, rowType, NSString);
+  if ([rowTypes count]) {
+    [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
+  }
+  TSRowFilterChain *newFilter = [[filterChain copy] autorelease];
+  [filterChain removeAllFilters];
+  return [TSDBQuery TSDBQueryWithFilters:newFilter forDB:self];
+}
+-(TDBQRY *)getQueryObjectForFilterChain:(TSRowFilterChain *)theFilterChain{
+  TCTDB *db = [self getDB];
+  return [theFilterChain getQuery:db];
+}
+-(void)doPredifinedSearchWithQuery:(TDBQRY *)query andProcessingBlock:(BOOL(^)(id))processingBlock{
+  [self fetchRows:query andProcessWithBlock:processingBlock];
+}
+-(NSArray *)doPredifinedSearchWithQuery:(TDBQRY *)query{
+  return [self fetchRows:query];
+}
+-(NSInteger)getRowCountForQuery:(TDBQRY *)query{
+  __block NSUInteger numRows;
+  dispatch_sync(dbQueue, ^{
+    TCLIST *res = tctdbqrysearch(query);  
+    numRows = tclistnum(res);
+    tclistdel(res);
+  });
+  return numRows;
+}
+
+#pragma mark -
 #pragma mark ------Private Methods-------
 #pragma mark Key Formatting Methods
 -(NSString *)makePrimaryRowKey:(NSString *)rowType andRowID:(NSString *)rowID{
@@ -755,21 +792,26 @@
   [filterChain removeAllFilters];
   return rows;
 }
--(void)fetchRows:(TDBQRY *)qry andProcessWithBlock:(void(^)(id))processingBlock{
+-(void)fetchRows:(TDBQRY *)qry andProcessWithBlock:(BOOL(^)(id))processingBlock{
   __block TCLIST *res;
   dispatch_sync(dbQueue, ^{
     res = tctdbqrysearch(qry);  
   });
   const char *rbuf;
   int rsiz, i;
+  BOOL stop;
   //NSLog(@"########################num res: %d", tclistnum(res));
   for(i = 0; i < tclistnum(res); i++){
     rbuf = tclistval(res, i, &rsiz);
     NSString *key = [NSString stringWithUTF8String:rbuf];
     //NSLog(@"k: %@", key);
-    processingBlock([self dbGet:key]);
+    stop = processingBlock([self dbGet:key]);
+    if(stop){
+      break;
+    }
   }  
   tclistdel(res);
+  tctdbqrydel(qry);
   [filterChain removeAllFilters];
 }
 
@@ -821,7 +863,7 @@
   const char *name;
   if(cols){
     tcmapiterinit(cols);
-    rowData = [[NSMutableDictionary alloc] initWithCapacity:1];
+    rowData = [[[NSMutableDictionary alloc] initWithCapacity:1] autorelease];
     NSAutoreleasePool *pool;
     while((name = tcmapiternext2(cols)) != NULL){
       pool = [[NSAutoreleasePool alloc] init];
@@ -834,7 +876,7 @@
   }
   if([_delegate respondsToSelector:@selector(TSModelObjectForData:andRowType:)])
     return [_delegate TSModelObjectForData:rowData andRowType:[rowData objectForKey:[self makeRowTypeKey]]];
-  return [rowData autorelease];
+  return rowData;
 }
 -(BOOL)dbDel:(NSString *)rowID{
   TCTDB *tdb = [self getDB];

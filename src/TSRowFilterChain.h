@@ -1,6 +1,6 @@
 //
 //  TSRowFilterChain.h
-//  TSDocDB
+//  TSDB
 //
 //  Created by Isaac Tewolde on 10-07-27.
 //  Copyright 2010 Ticklespace.com. All rights reserved.
@@ -11,7 +11,7 @@
 #include "tcutil.h"
 #include "tctdb.h"
 
-@interface TSRowFilterChain : NSObject {
+@interface TSRowFilterChain : NSObject <NSCopying>{
 	NSMutableDictionary *filterChain;
 }
 

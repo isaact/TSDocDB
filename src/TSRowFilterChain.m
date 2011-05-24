@@ -1,6 +1,6 @@
 //
 //  TSRowFilterChain.m
-//  Get2Human
+//  TSDB
 //
 //  Created by Isaac Tewolde on 10-07-27.
 //  Copyright 2010 Ticklespace.com. All rights reserved.
@@ -10,6 +10,13 @@
 
 @implementation TSRowFilterChain
 
+-(id)initWithFilterChain:(NSMutableDictionary *)theFilterChain {
+  self = [super init];
+  if (self) {
+    filterChain = [[NSMutableDictionary alloc] initWithDictionary:theFilterChain];
+  }
+  return self;
+}
 -(void) addFilter:(TSRowFilter *)filter withLabel:(NSString *)label{
   if(filterChain == nil)
     filterChain = [[NSMutableDictionary alloc] init];
@@ -36,5 +43,9 @@
 	[filterChain release];
 	[super dealloc];
 }
-
+- (id)copyWithZone:(NSZone *)zone{
+  TSRowFilterChain *copy = [[[self class] allocWithZone:zone] initWithFilterChain:filterChain];
+  //TSRowFilterChain *copy = [[TSRowFilterChain alloc] initWithFilterChain:filterChain];
+  return copy;
+}
 @end

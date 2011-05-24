@@ -32,7 +32,7 @@ typedef enum {
 -(id)TSModelObjectForData:(NSDictionary *)rowData andRowType:(NSString *)rowType;
 
 @end
-
+@class TSDBQuery;
 @interface TSDB : NSObject {
   TSRowFilterChain *filterChain;
   NSString *selectedRowType;
@@ -108,7 +108,7 @@ typedef enum {
 -(NSArray *)searchForAnyWord:(NSString *)words withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,... NS_REQUIRES_NIL_TERMINATION;
 
 //DB streaming methods
--(void)doSearchWithProcessingBlock:(void(^)(id))processingBlock withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;
+-(void)doSearchWithProcessingBlock:(BOOL(^)(id))processingBlock withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;
 
 //Asynchronous Search Methods
 -(void)getNumRowsWithAsyncNotification:(NSString *)notificationNameOrNil ofRowTypeOrNil:(NSString *)rowType;
@@ -119,6 +119,12 @@ typedef enum {
 -(void)searchForAllWordsWithAsyncNotification:(NSString *)notificationNameOrNil forWords:(NSString *)words withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,... NS_REQUIRES_NIL_TERMINATION;
 -(void)searchForAnyWordWithAsyncNotification:(NSString *)notificationNameOrNil forWords:(NSString *)words withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,... NS_REQUIRES_NIL_TERMINATION;
 
+//Predefined query search methods
+-(TSDBQuery *)getQueryObjectForRowTypes:(NSString *)rowType,... NS_REQUIRES_NIL_TERMINATION;
+-(TDBQRY *)getQueryObjectForFilterChain:(TSRowFilterChain *)theFilterChain;
+-(void)doPredifinedSearchWithQuery:(TDBQRY *)query andProcessingBlock:(BOOL(^)(id))processingBlock;
+-(NSArray *)doPredifinedSearchWithQuery:(TDBQRY *)query;
+-(NSInteger)getRowCountForQuery:(TDBQRY *)query;
 @end
 
 

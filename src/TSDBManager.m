@@ -1,6 +1,6 @@
 //
 //  TSDBManager.m
-//  TSDocDB
+//  TSDB
 //
 //  Created by Isaac Tewolde on 10-11-07.
 //  Copyright 2010 Ticklespace.com. All rights reserved.

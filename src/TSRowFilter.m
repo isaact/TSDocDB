@@ -1,6 +1,6 @@
 //
 //  TSRowFilter.m
-//  TSDocDB
+//  TSDB
 //
 //  Created by Isaac Tewolde on 10-07-27.
 //  Copyright 2010 Ticklespace.com. All rights reserved.
@@ -12,14 +12,29 @@
 @implementation TSRowFilter
 @synthesize colName, op, matchType, filterType;
 
-
+- (id)initWithColname:(NSString *)theColName op:(OpType)theOpType valueSet:(NSSet *)theValSet matchType:(MatchType)theMatchType andFilterType:(FilterType)theFilterType{
+  self = [super init];
+  if (self) {
+    colName = [theColName copy];
+    op = theOpType;
+    valSet = [theValSet copy];
+    matchType = theMatchType;
+    filterType = theFilterType;
+  }
+  return self;
+}
+- (id)copyWithZone:(NSZone *)zone{
+  TSRowFilter *copy = [[[self class] allocWithZone:zone] initWithColname:colName op:op valueSet:valSet matchType:matchType andFilterType:filterType];
+  //TSRowFilterChain *copy = [[TSRowFilterChain alloc] initWithFilterChain:filterChain];
+  return copy;
+}
 -(id)initStringFilter:(NSString *)columName withOp:(OpType)opType andVal:(id)val{
   self = [super init];
   if (self != nil) {
     matchType = matchAll;
     filterType = stringFilter;
     valSet = [[NSMutableSet alloc] init];
-    colName = columName;
+    colName = [columName copy];
     op = opType;
     [self setVal:val];
   }
@@ -32,7 +47,7 @@
     matchType = matchAll;
     filterType = numericFilter;
     valSet = [[NSMutableSet alloc] init];
-    colName = columName;
+    colName = [columName copy];
     op = opType;
     [self setVal:val];
   }
@@ -41,6 +56,7 @@
 
 - (void) dealloc
 {
+  [colName release];
   [valSet release];
   [super dealloc];
 }

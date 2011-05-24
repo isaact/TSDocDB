@@ -1,6 +1,6 @@
 //
 //  TSRowFilter.h
-//  TSDocDB
+//  TSDB
 //
 //  Created by Isaac Tewolde on 10-07-27.
 //  Copyright 2010 Ticklespace.com. All rights reserved.
@@ -22,7 +22,7 @@ typedef enum {
   numericFilter, stringFilter
 } FilterType;
 
-@interface TSRowFilter : NSObject {
+@interface TSRowFilter : NSObject<NSCopying> {
   NSString *colName;
   OpType op;
   NSMutableSet *valSet;
@@ -34,7 +34,7 @@ typedef enum {
 @property(nonatomic,readwrite) OpType op;
 @property(nonatomic,readwrite) FilterType filterType;
 @property(nonatomic,readwrite) MatchType matchType;
-
+- (id)initWithColname:(NSString *)theColName op:(OpType)theOpType valueSet:(NSSet *)theValSet matchType:(MatchType)theMatchType andFilterType:(FilterType)theFilterType;
 -(id)initStringFilter:(NSString *)columName withOp:(OpType)opType andVal:(id)val;
 -(id)initNumericFilter:(NSString *)columName withOp:(OpType)opType andVal:(id)val;
 -(NSString *)getVal;

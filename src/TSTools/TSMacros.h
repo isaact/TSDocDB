@@ -1,6 +1,6 @@
 /*
  *  TSMacros.h
- *  iPhone_Wallpaper
+ *  TSTools
  *
  *  Created by Isaac Tewolde on 10-08-03.
  *  Copyright 2010 Ticklespace.com All rights reserved.
