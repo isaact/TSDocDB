@@ -11,6 +11,22 @@
 
 @implementation TSRowFilter
 @synthesize colName, op, matchType, filterType;
+#pragma mark Class methods
++(NSString *)makePrimaryRowKey:(NSString *)rowType andRowID:(NSString *)rowID{
+  return [NSString stringWithFormat:@"_TSDB.DT:%@;_TSDB.DK:%@", rowType, rowID];
+}
++(NSString *)makeRowDefinitionKey:(NSString *)rowType{
+  return [NSString stringWithFormat:@"_TSDB.DTD:%@", rowType];
+}
++(NSString *)makeRowTypeKey{
+  return [NSString stringWithFormat:@"_TSDB.DT"];
+}
++(NSString *)makeRowVersionKey{
+  return [NSString stringWithFormat:@"_TSDB.DTVer"];
+}
++(NSString *)makeRowTextColKey{
+  return [NSString stringWithFormat:@"_TSDB.TXT"];
+}
 
 - (id)initWithColname:(NSString *)theColName op:(OpType)theOpType valueSet:(NSSet *)theValSet matchType:(MatchType)theMatchType andFilterType:(FilterType)theFilterType{
   self = [super init];
@@ -52,6 +68,24 @@
     [self setVal:val];
   }
   return self;
+}
+- (id)initWithAllWordsFilter:(NSString *)words{
+  self = [super init];
+  if (self != nil) {
+    matchType = matchAll;
+    filterType = stringFilter;
+    valSet = [[NSMutableSet alloc] init];
+    colName = [[TSRowFilter makeRowTextColKey] retain];
+    op = contains;
+    [self setVal:words];
+  }
+  return self;
+}
+- (id)initWithPhraseFilter:(NSString *)words{
+  return nil;
+}
+- (id)initWithAnyWordsFilter:(NSString *)words{
+  return nil;
 }
 
 - (void) dealloc

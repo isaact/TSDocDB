@@ -34,8 +34,21 @@ typedef enum {
 @property(nonatomic,readwrite) OpType op;
 @property(nonatomic,readwrite) FilterType filterType;
 @property(nonatomic,readwrite) MatchType matchType;
+
++(NSString *)makePrimaryRowKey:(NSString *)rowType andRowID:(NSString *)rowID;
++(NSString *)makeRowDefinitionKey:(NSString *)rowType;
++(NSString *)makeRowTypeKey;
++(NSString *)makeRowVersionKey;
++(NSString *)makeRowTextColKey;
+
+
+
 - (id)initWithColname:(NSString *)theColName op:(OpType)theOpType valueSet:(NSSet *)theValSet matchType:(MatchType)theMatchType andFilterType:(FilterType)theFilterType;
--(id)initStringFilter:(NSString *)columName withOp:(OpType)opType andVal:(id)val;
+- (id)initStringFilter:(NSString *)columName withOp:(OpType)opType andVal:(id)val;
+- (id)initWithAllWordsFilter:(NSString *)words;
+- (id)initWithPhraseFilter:(NSString *)words;
+- (id)initWithAnyWordsFilter:(NSString *)words;
+
 -(id)initNumericFilter:(NSString *)columName withOp:(OpType)opType andVal:(id)val;
 -(NSString *)getVal;
 -(NSArray *)getVals;

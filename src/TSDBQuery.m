@@ -44,6 +44,14 @@
   tctdbqrysetlimit(qry, resultLimit, resultOffset);
   [db doPredifinedSearchWithQuery:qry andProcessingBlock:processingBlock];
 }
+-(void)searchForAllWords:(NSString *)words withLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset andProcessingBlock:(BOOL(^)(id))processingBlock{
+  TSRowFilterChain *newChain = [filterChain copy];
+  TSRowFilter *newFilter = [[[TSRowFilter alloc] initWithAllWordsFilter:words] autorelease];
+  [newChain addFilter:newFilter withLabel:@"searchText"];
+  TDBQRY *qry = [db getQueryObjectForFilterChain:newChain];
+  tctdbqrysetlimit(qry, resultLimit, resultOffset);
+  [db doPredifinedSearchWithQuery:qry andProcessingBlock:processingBlock];
+}
 -(NSInteger)numRows{
   TDBQRY *qry = [db getQueryObjectForFilterChain:filterChain];
   NSInteger count = [db getRowCountForQuery:qry];

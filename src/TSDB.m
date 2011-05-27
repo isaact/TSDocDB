@@ -708,19 +708,19 @@
 #pragma mark ------Private Methods-------
 #pragma mark Key Formatting Methods
 -(NSString *)makePrimaryRowKey:(NSString *)rowType andRowID:(NSString *)rowID{
-  return [NSString stringWithFormat:@"_TSDB.DT:%@;_TSDB.DK:%@", rowType, rowID];
+  return [TSRowFilter makePrimaryRowKey:rowType andRowID:rowID];
 }
 -(NSString *)makeRowDefinitionKey:(NSString *)rowType{
-  return [NSString stringWithFormat:@"_TSDB.DTD:%@", rowType];
+  return [TSRowFilter makeRowDefinitionKey:rowType];
 }
 -(NSString *)makeRowTypeKey{
-  return [NSString stringWithFormat:@"_TSDB.DT"];
+  return [TSRowFilter makeRowTypeKey];
 }
 -(NSString *)makeRowVersionKey{
-  return [NSString stringWithFormat:@"_TSDB.DTVer"];
+  return [TSRowFilter makeRowVersionKey];
 }
 -(NSString *)makeRowTextColKey{
-  return [NSString stringWithFormat:@"_TSDB.TXT"];
+  return [TSRowFilter makeRowTextColKey];
 }
 -(NSString *)joinStringsFromDictionary:(NSDictionary *)dict andTargetCols:(NSArray *)keys glue:(NSString *)glue{
   NSArray *strings = [dict objectsForKeys:keys notFoundMarker:@" "];

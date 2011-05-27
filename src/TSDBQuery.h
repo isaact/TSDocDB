@@ -19,5 +19,6 @@
 -(id)initWithDB:(TSDB *)theDB andFilters:(TSRowFilterChain *)theFilters;
 -(NSArray *)doSearchWithLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset;
 -(void)doSearchWithLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset andProcessingBlock:(BOOL(^)(id))processingBlock;
+-(void)searchForAllWords:(NSString *)words withLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset andProcessingBlock:(BOOL(^)(id))processingBlock;
 -(NSInteger)numRows;
 @end
