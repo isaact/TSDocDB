@@ -8,6 +8,9 @@
 
 #import "TSDBQuery.h"
 
+@interface TSDBQuery()
+-(void)adjustQuery:(TDBQRY *)qry withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger) resultOffset;
+@end
 
 @implementation TSDBQuery
 @synthesize filterChain, db;
@@ -34,14 +37,14 @@
 #pragma mark Fetching methods
 -(NSArray *)doSearchWithLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset{
   TDBQRY *qry = [db getQueryObjectForFilterChain:filterChain];
-  tctdbqrysetlimit(qry, resultLimit, resultOffset);
+  [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
   NSArray *rows= [db doPredifinedSearchWithQuery:qry];
   tctdbqrydel(qry);
   return rows;
 }
 -(void)doSearchWithLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset andProcessingBlock:(BOOL(^)(id))processingBlock{
   TDBQRY *qry = [db getQueryObjectForFilterChain:filterChain];
-  tctdbqrysetlimit(qry, resultLimit, resultOffset);
+  [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
   [db doPredifinedSearchWithQuery:qry andProcessingBlock:processingBlock];
 }
 -(void)searchForAllWords:(NSString *)words withLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset andProcessingBlock:(BOOL(^)(id))processingBlock{
@@ -49,7 +52,8 @@
   TSRowFilter *newFilter = [[[TSRowFilter alloc] initWithAllWordsFilter:words] autorelease];
   [newChain addFilter:newFilter withLabel:@"searchText"];
   TDBQRY *qry = [db getQueryObjectForFilterChain:newChain];
-  tctdbqrysetlimit(qry, resultLimit, resultOffset);
+  //tctdbqrysetlimit(qry, resultLimit, resultOffset);
+  [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
   [db doPredifinedSearchWithQuery:qry andProcessingBlock:processingBlock];
 }
 -(NSInteger)numRows{
@@ -57,5 +61,37 @@
   NSInteger count = [db getRowCountForQuery:qry];
   tctdbqrydel(qry);
   return count;
+}
+
+#pragma mark -
+#pragma mark Ordering methods
+-(void)setOrderByStringForColumn:(NSString *)colName isAscending:(BOOL)ascending{
+  if(orderBy == nil)
+    orderBy = [[NSMutableString alloc] init];
+  [orderBy setString:colName];
+  if(ascending){
+    direction = TDBQOSTRASC;
+  }else {
+    direction = TDBQOSTRDESC;
+  }
+}
+-(void)setOrderByNumericForColumn:(NSString *)colName isAscending:(BOOL)ascending{
+  if(orderBy == nil)
+    orderBy = [[NSMutableString alloc] init];
+  [orderBy setString:colName];
+  if(ascending){
+    direction = TDBQONUMASC;
+  }else {
+    direction = TDBQONUMDESC;
+  }
+}
+-(void)adjustQuery:(TDBQRY *)qry withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger) resultOffset{
+  //NSLog(@"Yoyuoyoyoy %@", orderBy);
+  if(orderBy != nil){
+    tctdbqrysetorder(qry, [orderBy UTF8String], direction);
+    [orderBy release];
+    orderBy = nil;
+  }
+  tctdbqrysetlimit(qry, resultLimit, resultOffset);
 }
 @end

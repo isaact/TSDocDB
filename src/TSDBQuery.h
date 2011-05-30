@@ -12,6 +12,8 @@
 @interface TSDBQuery : NSObject {
   TSRowFilterChain *filterChain;
   TSDB *db;
+  NSMutableString *orderBy;
+  NSInteger direction;
 }
 @property(nonatomic,readonly) TSRowFilterChain *filterChain;
 @property(nonatomic,readonly) TSDB *db;
@@ -21,4 +23,6 @@
 -(void)doSearchWithLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset andProcessingBlock:(BOOL(^)(id))processingBlock;
 -(void)searchForAllWords:(NSString *)words withLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset andProcessingBlock:(BOOL(^)(id))processingBlock;
 -(NSInteger)numRows;
+-(void)setOrderByStringForColumn:(NSString *)colName isAscending:(BOOL)ascending;
+-(void)setOrderByNumericForColumn:(NSString *)colName isAscending:(BOOL)ascending;
 @end
