@@ -52,6 +52,7 @@
   TSRowFilter *newFilter = [[[TSRowFilter alloc] initWithAllWordsFilter:words] autorelease];
   [newChain addFilter:newFilter withLabel:@"searchText"];
   TDBQRY *qry = [db getQueryObjectForFilterChain:newChain];
+  [newChain release];
   //tctdbqrysetlimit(qry, resultLimit, resultOffset);
   [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
   [db doPredifinedSearchWithQuery:qry andProcessingBlock:processingBlock];

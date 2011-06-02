@@ -362,7 +362,7 @@
 #pragma mark Filtering Methods
 //Filtering Methods
 -(void)clearFilters{
-  [self clearFilters];
+  [filterChain removeAllFilters];
 }
 
 
