@@ -316,10 +316,11 @@
 
 -(NSDictionary *)getRowByStringID:(NSString *)rowID forType:(NSString *)rowType{
   __block NSDictionary *row;
-  dispatch_sync(dbQueue, ^{
+  //dispatch_sync(dbQueue, ^{
     NSString *realRowID = [self makePrimaryRowKey:rowType andRowID:rowID];
+    NSLog(@"%@", realRowID);
     row = [self dbGet:realRowID];
-  });
+  //});
   return row;
 }
 -(NSDictionary *)getRowByIntegerID:(NSInteger)rowID forType:(NSString *)rowType{

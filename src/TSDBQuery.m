@@ -29,6 +29,7 @@
 
 - (void)dealloc
 {
+  [orderBy release];
   [filterChain release];
   [db release];
   [super dealloc];
