@@ -7,67 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		367DB34713876D060041DF70 /* TSDBQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 367DB34513876D060041DF70 /* TSDBQuery.h */; };
+		367DB34713876D060041DF70 /* TSDBQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 367DB34513876D060041DF70 /* TSDBQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		367DB34813876D060041DF70 /* TSDBQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 367DB34613876D060041DF70 /* TSDBQuery.m */; };
-		6A282EF812FB21960057E525 /* ZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EEC12FB21960057E525 /* ZipArchive.h */; };
+		6A282EF812FB21960057E525 /* ZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EEC12FB21960057E525 /* ZipArchive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A282EF912FB21960057E525 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6A282EED12FB21960057E525 /* ZipArchive.mm */; };
-		6A282EFA12FB21960057E525 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EEF12FB21960057E525 /* crypt.h */; };
+		6A282EFA12FB21960057E525 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EEF12FB21960057E525 /* crypt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A282EFB12FB21960057E525 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A282EF012FB21960057E525 /* ioapi.c */; };
-		6A282EFC12FB21960057E525 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EF112FB21960057E525 /* ioapi.h */; };
+		6A282EFC12FB21960057E525 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EF112FB21960057E525 /* ioapi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A282EFD12FB21960057E525 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A282EF212FB21960057E525 /* mztools.c */; };
-		6A282EFE12FB21960057E525 /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EF312FB21960057E525 /* mztools.h */; };
+		6A282EFE12FB21960057E525 /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EF312FB21960057E525 /* mztools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A282EFF12FB21960057E525 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A282EF412FB21960057E525 /* unzip.c */; };
-		6A282F0012FB21960057E525 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EF512FB21960057E525 /* unzip.h */; };
+		6A282F0012FB21960057E525 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EF512FB21960057E525 /* unzip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A282F0112FB21960057E525 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A282EF612FB21960057E525 /* zip.c */; };
-		6A282F0212FB21960057E525 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EF712FB21960057E525 /* zip.h */; };
+		6A282F0212FB21960057E525 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A282EF712FB21960057E525 /* zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A3F3DBC1297098700205B30 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3F3DBB1297098700205B30 /* libz.1.2.3.dylib */; };
 		6A3F3DCC12970A5400205B30 /* libbz2.1.0.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3F3DCB12970A5400205B30 /* libbz2.1.0.5.dylib */; };
 		8C54318D129CCB2500B7900A /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54315E129CCB2400B7900A /* md5.c */; };
-		8C54318E129CCB2500B7900A /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54315F129CCB2400B7900A /* md5.h */; };
+		8C54318E129CCB2500B7900A /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54315F129CCB2400B7900A /* md5.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C54318F129CCB2500B7900A /* myconf.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543160129CCB2400B7900A /* myconf.c */; };
-		8C543190129CCB2500B7900A /* myconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543161129CCB2400B7900A /* myconf.h */; };
+		8C543190129CCB2500B7900A /* myconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543161129CCB2400B7900A /* myconf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C543191129CCB2500B7900A /* tcadb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543162129CCB2400B7900A /* tcadb.c */; };
-		8C543192129CCB2500B7900A /* tcadb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543163129CCB2400B7900A /* tcadb.h */; };
+		8C543192129CCB2500B7900A /* tcadb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543163129CCB2400B7900A /* tcadb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C543193129CCB2500B7900A /* tcamgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543164129CCB2400B7900A /* tcamgr.c */; };
 		8C543194129CCB2500B7900A /* tcamttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543165129CCB2400B7900A /* tcamttest.c */; };
 		8C543195129CCB2500B7900A /* tcatest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543166129CCB2400B7900A /* tcatest.c */; };
 		8C543196129CCB2500B7900A /* tcawmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543167129CCB2400B7900A /* tcawmgr.c */; };
 		8C543197129CCB2500B7900A /* tcbdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543168129CCB2400B7900A /* tcbdb.c */; };
-		8C543198129CCB2500B7900A /* tcbdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543169129CCB2400B7900A /* tcbdb.h */; };
+		8C543198129CCB2500B7900A /* tcbdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543169129CCB2400B7900A /* tcbdb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C543199129CCB2500B7900A /* tcbmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54316A129CCB2400B7900A /* tcbmgr.c */; };
 		8C54319A129CCB2500B7900A /* tcbmttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54316B129CCB2400B7900A /* tcbmttest.c */; };
 		8C54319B129CCB2500B7900A /* tcbtest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54316C129CCB2400B7900A /* tcbtest.c */; };
 		8C54319C129CCB2500B7900A /* tcfdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54316D129CCB2400B7900A /* tcfdb.c */; };
-		8C54319D129CCB2500B7900A /* tcfdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54316E129CCB2400B7900A /* tcfdb.h */; };
+		8C54319D129CCB2500B7900A /* tcfdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54316E129CCB2400B7900A /* tcfdb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C54319E129CCB2500B7900A /* tcfmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54316F129CCB2400B7900A /* tcfmgr.c */; };
 		8C54319F129CCB2500B7900A /* tcfmttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543170129CCB2400B7900A /* tcfmttest.c */; };
 		8C5431A0129CCB2500B7900A /* tcftest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543171129CCB2400B7900A /* tcftest.c */; };
 		8C5431A1129CCB2500B7900A /* tchdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543172129CCB2400B7900A /* tchdb.c */; };
-		8C5431A2129CCB2500B7900A /* tchdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543173129CCB2400B7900A /* tchdb.h */; };
+		8C5431A2129CCB2500B7900A /* tchdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543173129CCB2400B7900A /* tchdb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C5431A3129CCB2500B7900A /* tchmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543174129CCB2400B7900A /* tchmgr.c */; };
 		8C5431A4129CCB2500B7900A /* tchmttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543175129CCB2400B7900A /* tchmttest.c */; };
 		8C5431A5129CCB2500B7900A /* tchtest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543176129CCB2400B7900A /* tchtest.c */; };
 		8C5431A6129CCB2500B7900A /* tctdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543177129CCB2400B7900A /* tctdb.c */; };
-		8C5431A7129CCB2500B7900A /* tctdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543178129CCB2400B7900A /* tctdb.h */; };
+		8C5431A7129CCB2500B7900A /* tctdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543178129CCB2400B7900A /* tctdb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C5431A8129CCB2500B7900A /* tctmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C543179129CCB2400B7900A /* tctmgr.c */; };
 		8C5431A9129CCB2500B7900A /* tctmttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54317A129CCB2400B7900A /* tctmttest.c */; };
 		8C5431AA129CCB2500B7900A /* tcttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54317B129CCB2400B7900A /* tcttest.c */; };
 		8C5431AB129CCB2500B7900A /* tcumttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54317C129CCB2400B7900A /* tcumttest.c */; };
 		8C5431AC129CCB2500B7900A /* tcutest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54317D129CCB2400B7900A /* tcutest.c */; };
 		8C5431AD129CCB2500B7900A /* tcutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C54317E129CCB2400B7900A /* tcutil.c */; };
-		8C5431AE129CCB2500B7900A /* tcutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54317F129CCB2400B7900A /* tcutil.h */; };
-		8C5431AF129CCB2500B7900A /* TSDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543180129CCB2400B7900A /* TSDB.h */; };
+		8C5431AE129CCB2500B7900A /* tcutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54317F129CCB2400B7900A /* tcutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C5431AF129CCB2500B7900A /* TSDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543180129CCB2400B7900A /* TSDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C5431B0129CCB2500B7900A /* TSDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C543181129CCB2400B7900A /* TSDB.m */; };
-		8C5431B1129CCB2500B7900A /* TSDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543182129CCB2400B7900A /* TSDBManager.h */; };
+		8C5431B1129CCB2500B7900A /* TSDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543182129CCB2400B7900A /* TSDBManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C5431B2129CCB2500B7900A /* TSDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C543183129CCB2400B7900A /* TSDBManager.m */; };
-		8C5431B3129CCB2500B7900A /* TSRowFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543184129CCB2400B7900A /* TSRowFilter.h */; };
+		8C5431B3129CCB2500B7900A /* TSRowFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543184129CCB2400B7900A /* TSRowFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C5431B4129CCB2500B7900A /* TSRowFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C543185129CCB2400B7900A /* TSRowFilter.m */; };
-		8C5431B5129CCB2500B7900A /* TSRowFilterChain.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543186129CCB2400B7900A /* TSRowFilterChain.h */; };
+		8C5431B5129CCB2500B7900A /* TSRowFilterChain.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543186129CCB2400B7900A /* TSRowFilterChain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C5431B6129CCB2500B7900A /* TSRowFilterChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C543187129CCB2400B7900A /* TSRowFilterChain.m */; };
-		8C5431B7129CCB2500B7900A /* NSString+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543189129CCB2500B7900A /* NSString+TSTools.h */; };
+		8C5431B7129CCB2500B7900A /* NSString+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C543189129CCB2500B7900A /* NSString+TSTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C5431B8129CCB2500B7900A /* NSString+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C54318A129CCB2500B7900A /* NSString+TSTools.m */; };
-		8C5431B9129CCB2500B7900A /* TSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54318B129CCB2500B7900A /* TSMacros.h */; };
-		8C5431BA129CCB2500B7900A /* TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54318C129CCB2500B7900A /* TSTools.h */; };
+		8C5431B9129CCB2500B7900A /* TSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54318B129CCB2500B7900A /* TSMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C5431BA129CCB2500B7900A /* TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C54318C129CCB2500B7900A /* TSTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D2AAC088055469A000DB518D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -325,6 +325,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C5431AF129CCB2500B7900A /* TSDB.h in Headers */,
+				367DB34713876D060041DF70 /* TSDBQuery.h in Headers */,
 				8C54318E129CCB2500B7900A /* md5.h in Headers */,
 				8C543190129CCB2500B7900A /* myconf.h in Headers */,
 				8C543192129CCB2500B7900A /* tcadb.h in Headers */,
@@ -333,7 +335,6 @@
 				8C5431A2129CCB2500B7900A /* tchdb.h in Headers */,
 				8C5431A7129CCB2500B7900A /* tctdb.h in Headers */,
 				8C5431AE129CCB2500B7900A /* tcutil.h in Headers */,
-				8C5431AF129CCB2500B7900A /* TSDB.h in Headers */,
 				8C5431B1129CCB2500B7900A /* TSDBManager.h in Headers */,
 				8C5431B3129CCB2500B7900A /* TSRowFilter.h in Headers */,
 				8C5431B5129CCB2500B7900A /* TSRowFilterChain.h in Headers */,
@@ -346,7 +347,6 @@
 				6A282EFE12FB21960057E525 /* mztools.h in Headers */,
 				6A282F0012FB21960057E525 /* unzip.h in Headers */,
 				6A282F0212FB21960057E525 /* zip.h in Headers */,
-				367DB34713876D060041DF70 /* TSDBQuery.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,9 +455,12 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TSDocDBStatic_Prefix.pch;
-				INSTALL_PATH = /usr/local/lib;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TSDocDBStatic;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYMROOT = "/Volumes/MacDisk/xcode-build";
 			};
 			name = Debug;
 		};
@@ -470,9 +473,12 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TSDocDBStatic_Prefix.pch;
-				INSTALL_PATH = /usr/local/lib;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TSDocDBStatic;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYMROOT = "/Volumes/MacDisk/xcode-build";
 			};
 			name = Release;
 		};
@@ -488,6 +494,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
+				SYMROOT = "/Volumes/MacDisk/xcode-build";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -502,6 +509,7 @@
 				HEADER_SEARCH_PATHS = "./**";
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
+				SYMROOT = "/Volumes/MacDisk/xcode-build";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
