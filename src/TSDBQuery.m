@@ -90,10 +90,10 @@
 -(void)adjustQuery:(TDBQRY *)qry withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger) resultOffset{
   //NSLog(@"Yoyuoyoyoy %@", orderBy);
   if(orderBy != nil){
-    tctdbqrysetorder(qry, [orderBy UTF8String], direction);
+    tctdbqrysetorder(qry, [orderBy UTF8String], (int)direction);
     [orderBy release];
     orderBy = nil;
   }
-  tctdbqrysetlimit(qry, resultLimit, resultOffset);
+  tctdbqrysetlimit(qry, (int)resultLimit, (int)resultOffset);
 }
 @end

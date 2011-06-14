@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'TSDocDB.OSX' target in the 'TSDocDB.OSX' project
+//
+#ifdef __OBJC__
+#import <Cocoa/Cocoa.h>
+#endif
+
+#define DB_STORAGE_AREA NSApplicationSupportDirectory

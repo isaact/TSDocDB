@@ -6,11 +6,13 @@
 //  Copyright 2010 Ticklespace.com All rights reserved.
 //
 
-
-
 #import "NSString+TSTools.h"
 #import <CommonCrypto/CommonDigest.h>
 #include <sys/utsname.h>
+
+void useTSStringTools(){
+  //Do nothing
+}
 
 @implementation NSString(TSTools)
 
@@ -65,7 +67,7 @@
 {
   const char *cStr = [self UTF8String];
   unsigned char result[16];
-  CC_MD5( cStr, strlen(cStr), result );
+  CC_MD5( cStr, (int)strlen(cStr), result );
   return [NSString stringWithFormat:
           @"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",
           result[0], result[1], result[2], result[3], 
@@ -75,4 +77,15 @@
           ];  
 }
 
+-(NSDictionary *)splitOnDelimiter:(NSString *)delimiter withColumnNames:(NSArray *)colNames{
+  NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+  NSArray *colValues = [self componentsSeparatedByString:delimiter];
+  for (int i=0; i < [colNames count]; i++) {
+    if (i< [colValues count]) {
+      [dict setObject:[colValues objectAtIndex:i] forKey:[colNames objectAtIndex:i]];
+    }else
+      break;
+  }
+  return dict;
+}
 @end

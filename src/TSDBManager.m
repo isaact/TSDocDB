@@ -8,6 +8,7 @@
 
 #import "TSDBManager.h"
 #import <Foundation/Foundation.h>
+#import "TSMacros.h"
 
 @interface TSDBManager()
 
@@ -60,13 +61,16 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   __block TCTDB *tdb = NULL;
   dispatch_sync(tsDBManagerQueue, ^{
     int sp;
-    tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
+    tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]), &sp);
     if (!tdb) {
       
       //const char *queueKey = [[TSDBManager getQueueSigForDbPath:dbFilePath] UTF8String];
       //dispatch_queue_t dbQueue = dispatch_queue_create(queueKey,NULL);
       tdb = [self getDBFromFile:dbFilePath];
-      tcmapput(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), tdb, sizeof(TCTDB));
+      //tctdboptimize(tdb, 0, -1, -1, TDBTLARGE);
+      tctdbsetindex(tdb, "_TSDB.TXT", TDBITQGRAM);
+      tctdbsetindex(tdb, "_TSDB.DT", TDBITLEXICAL);
+      tcmapput(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]), tdb, sizeof(TCTDB));
       //tcmapput(dbQueues, queueKey, strlen(queueKey), dbQueue, sizeof(dispatch_queue_t));
       //tctdbdel(tdb);
       //tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
@@ -81,7 +85,7 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   dispatch_sync(tsDBManagerQueue, ^{
     TCTDB *tdb = NULL;
     int sp;
-    tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
+    tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]), &sp);
     if (tdb) {
       tctdbclose(tdb);
       //if (tdb) {
@@ -98,9 +102,9 @@ static dispatch_queue_t tsDBMainQueue = NULL;
       tsDBs = tcmapnew();
       //dbQueues = tcmapnew();
       
-      tcmapout(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]));
+      tcmapout(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]));
       TCTDB *tdb2 = [self getDBFromFile:dbFilePath];
-      tcmapput(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), tdb2, sizeof(TCTDB));
+      tcmapput(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]), tdb2, sizeof(TCTDB));
       //[dbQueues setObject:<#(id)anObject#> forKey:<#(id)aKey#>
       //tctdbdel(tdb);
       //tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
@@ -113,10 +117,10 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   __block TCTDB *tdb = NULL;
   dispatch_sync(tsDBManagerQueue, ^{
     int sp;
-    tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
+    tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]), &sp);
     if (tdb) {
       tctdbclose(tdb);
-      tcmapout(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]));
+      tcmapout(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]));
     }
     NSFileManager *fm = [NSFileManager defaultManager];
     [fm removeItemAtPath:dbFilePath error:NULL];
@@ -148,7 +152,7 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   tdb = tctdbnew();
   
   /* open the database */
-  if(!tctdbopen(tdb, [dbPath UTF8String], HDBOWRITER | HDBOCREAT)){
+  if(!tctdbopen(tdb, [dbPath UTF8String], TDBOWRITER | TDBOCREAT|TDBOTSYNC)){
     ecode = tctdbecode(tdb);
     ALog(@"DB create error:%@", [TSDBManager getDBError:ecode]);
     return NULL;
@@ -164,9 +168,9 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   /* create the object */
   tdb = tctdbnew();
   if (writeMode) {
-    flags = TDBOWRITER;
+    flags = TDBOWRITER|TDBOTSYNC;
   }else {
-    flags = TDBOREADER;
+    flags = TDBOREADER|TDBOTSYNC;
   }
   
   /* open the database */
@@ -177,17 +181,23 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   }
   return tdb;
 }
-
++(void)closeAll{
+  TSDBManager *dbm = [TSDBManager sharedDBManager];
+  [dbm closeAllDBs];
+}
 -(void)closeAllDBs{
   const char *key;
   int sp;
   TCTDB *db;
   tcmapiterinit(tsDBs);
   while((key = tcmapiternext2(tsDBs)) != NULL){
-    db = (TCTDB *)tcmapget(tsDBs, key, strlen(key), &sp);
+    NSLog(@"Closing : %s", key);
+    db = (TCTDB *)tcmapget(tsDBs, key, (int)strlen(key), &sp);
+    tctdbsync(db);
     tctdbclose(db);
-    tcmapout(tsDBs, key, strlen(key));
+    tcmapout(tsDBs, key, (int)strlen(key));
   }
+  NSLog(@"Done");
   tcmapdel(tsDBs);
 }
 -(TCTDB *)getDBFromFile:(NSString *)dbFilePath{

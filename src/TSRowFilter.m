@@ -187,7 +187,7 @@
     }
     count++;
   }
-  //NSLog(@"%@", str);
+  //NSLog(@"#######Looking for %@: %@", colName, str);
   tctdbqryaddcond(qry, [colName UTF8String], qop, [str UTF8String]);
   [str release];
 }

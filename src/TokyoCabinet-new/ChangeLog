@@ -1,0 +1,1302 @@
+2010-08-15  FAL Labs  <info@fallabs.com>
+
+	* tchdb.cc (tchdbfbpmerge): size checking was added.
+
+	* tcbdb.cc (tcbdbrangeimpl): a bug of dead locking was fixed.
+
+	- Release: 1.4.47
+
+2010-08-01  FAL Labs  <info@fallabs.com>
+
+	- site documents were modified.
+
+	- Release: 1.4.46
+
+2010-04-27  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdboutlist): a bug related to reorganizing tree was fixed.
+
+	- Release: 1.4.45
+
+2010-04-23  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdbrangefwm): a bug related to empty list was fixed.
+
+	* tcadb.c (tcadbmulopen): a bug related to handling table indices was fixed.
+
+	- Release: 1.4.44
+
+2010-01-26  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapout): a useless condition was fixed.
+
+	* tchdb.h, tcbdb.h: some members have volatile flag now.
+
+	- Release: 1.4.43
+
+2010-01-01  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbnew, tchdbsetmutex): a useless lock object was removed.
+
+	* tcutil.c (tcsysinfo): CPU information was added.
+
+	* tchmgr.c (runput, procput): addint and adddouble ouput the result now.
+
+	* tcbmgr.c (runput, procput): addint and adddouble ouput the result now.
+
+	* tcfmgr.c (runput, procput): addint and adddouble ouput the result now.
+
+	- Release: 1.4.42
+
+2009-12-07  FAL Labs  <info@fallabs.com>
+
+	* tctdb.c (tctdbidxputtoken, tctdbidxputqgram): domain overflow checking was added.
+
+	- Release: 1.4.41
+
+2009-11-24  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbputimpl): efficiency of using the free block pool was improved.
+
+	* tchdb.c (tchdboptimizeimpl): the behaviour in no lock mode was modified.
+
+	- Release: 1.4.40
+
+2009-11-11  FAL Labs  <info@fallabs.com>
+
+	* tcutil.h (TCALIGNOF, tcgeneric_t): new macros.
+
+	* tcutil.h (TCALIGNPAD): the alignment is now calculated by the generic union.
+
+	* myconf.h (_alignof, _issigned, _maxof): new macros.
+
+	- Release: 1.4.39
+
+2009-11-09  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcsysinfo): FreeBSD and Mac OS X are now supported.
+
+	* tcutil.c (tcmpoolclear): new function.
+
+	* tchdb.c (tchdbputproc): a potential bug of memory aligment violation was fixed.
+
+	* tcbdb.c (tcbdbputproc): a potential bug of memory aligment violation was fixed.
+
+	* tcfdb.c (tcfdbputproc): a potential bug of memory aligment violation was fixed.
+
+	- Release: 1.4.38
+
+2009-10-27  FAL Labs  <info@fallabs.com>
+
+	* tctdb.c (tctdbcacheclear, tctdbcacheclearimpl): new functions.
+
+	* tcadb.c (tcadbmisc): "getpart", "cacheclear", and "regex" functions were added.
+
+	- Release: 1.4.37
+
+2009-10-26  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcwwwformdecode2): a bug related to multiple cookie handling was fixed.
+
+	* tcadb.c (tcadbmisc): the "error" functions were added.
+
+	- Release: 1.4.36
+
+2009-10-06  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbseekwrite): a bug related to emulation of the UBC was fixed.
+
+	* tchdb.c (tchdbvanishimpl): potential memory leak was removed.
+
+	* tcfdb.c (tcfdbvanishimpl): potential memory leak was removed.
+
+	* tcadb.c (tcadbsetskelmulti, tcadbmulnew, tcadbmuldel): new functions.
+
+	* tcadb.c (tcadbmisc): "range" sub function for B+ tree was added.
+
+	* tcamgr.c (setskeltran): new function.
+
+	* tcamttest.c: new file.
+
+	- Release: 1.4.35
+
+2009-09-11  FAL Labs  <info@fallabs.com>
+
+	* myconf.h: a macro for environment without "nanl" was added.
+
+	* tctdbmetasearch (tctdbmetasearch): a bug related to the limit parameters was fixed.
+
+	- Release: 1.4.34
+
+2009-08-31  FAL Labs  <info@fallabs.com>
+
+	* tcutil.h, tchdb.h, tcbdb.h, tcfdb.h, tctdb.h, tcadb.h: including stdbool.h was wrapped.
+
+	* tcutil.c (tccmpdecimal): accuracy was improved and now real number is supported.
+
+	* tctdb.c (tctdbqrycondmatch): accuracy of decimal operators was improved.
+
+	- Release: 1.4.33
+
+2009-08-14  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tctmpldumpeval): "INC", "PRT" operators and "SET" directive were added.
+
+	* tcutil.c (tcwwwformdecode2): a bug of memory corruption was fixed.
+
+	* tchdb.c (tchdbgetimpl): a bug related to caching large records was fixed.
+
+	- Release: 1.4.32
+
+2009-07-23  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmpoolpop, tcstatfile): new functions.
+
+	* tcutil.c (tcwwwformdecode2, tcarccipher): new functions.
+
+	* tcutil.c (tctmpldumpeval, tctmpldumpevalvar): type checking was improved.
+
+	- Release: 1.4.31
+
+2009-07-13  FAL Labs  <info@fallabs.com>
+
+	* tctdb.c (tctdbstrtometasearcytype): new function.
+
+	* tcadb.c (tcadbmisc): "metasearch" command was added.
+
+	- Release: 1.4.30
+
+2009-07-03  FAL Labs  <info@fallabs.com>
+
+	* tctdb.c (tctdbidxgetbyftsunion): efficiency counting sort was improved.
+
+	- Release: 1.4.29
+
+2009-06-22  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcstrutfnorm, tcstrkwic, tcstrtokenize): new functions.
+
+	* tcutil.c (tcstrutfnorm, tcstrucsnorm): "TCUNWIDTH" option was added.
+
+	* tctdb.c (tctdbsetinvcache, tctdbidxsyncicc, tctdbidxcmpkey): new functions.
+
+	* tctdb.c (tctdbmetasearch, tctdbget4, tctdbqrykwic): new functions.
+
+	* tctdb.c (tctdbsetindeximpl): the xmsiz parameter is now configured.
+
+	- Release: 1.4.28
+
+2009-06-16  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcstrskipspc, tcstrucsnorm): new functions.
+
+	* tctdb.c (tctdbqryaddcond): full-text search operators were added.
+
+	* tctdb.c (tctdbsetindex): q-gram inverted index was added.
+
+	* tctdb.c (tctdbidxputqgram, tctdbidxoutqgram, tctdbidxgetbyfts): new functions.
+
+	- Release: 1.4.27
+
+2009-06-13  FAL Labs  <info@fallabs.com>
+
+	* tctdb.c (tctdbsetindex, tctdbsearchimpl): token inverted index was added.
+
+	* tctdb.c (tctdbidxputone, tctdbidxoutone): new functions.
+
+	* tctdb.c (tctdbidxputtoken, tctdbidxouttoken, tctdbidxgetbytokens): new functions.
+
+	* tcadb.c (tcadbput, tcadbputkeep, tcadbputcat): capnum behaviour was modified.
+
+	- Release: 1.4.26
+
+2009-06-09  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tccstrescape, tccstrunescape, tcjsonescape, tcjsonunescape): new functions.
+
+	* tcutil.c (tcpathlock, tcpathunlock): new functions.
+
+	* tchdb.c (tchdbopen): double opening detection was added.
+
+	* tchdb.c (tchdbtranbegin): a bug of invalid flag setting was fixed.
+
+	* tcfdb.c (tcfdbopen): double opening detection was added.
+
+	* tcfdb.c (tcfdbtranbegin): a bug of invalid flag setting was fixed.
+
+	* tctdb.c (tctdbiternext3): new function.
+
+	- Release: 1.4.25
+
+2009-06-04  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcwwwformencode, tcwwwformdecode): new functions.
+
+	* tcutil.c (tctmplnew, tctmpldel, tctmplload, tctmpldump): new functions.
+
+	* tcutil.c (tcmapget4, tctreeget4): new functions.
+
+	* tcutil.c (tclistprintf, tcmapprintf, tctreeprintf): new functions.
+
+	* tcucodec.c (runtmpl, proctmpl): new functions.
+
+	- Release: 1.4.24
+
+2009-05-24  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapiterinit2, tcmdbiterinit2): new functions.
+
+	* tchdb.c (tchdbiterinit2, tchdbiterjumpimpl): new functions.
+
+	* tcfdb.c (tcfdbiterinit2, tcfdbiterjumpimpl): new functions.
+
+	* tctdb.c (tctdbiterinit2): new function.
+
+	- Release: 1.4.23
+
+2009-05-21  FAL Labs  <info@fallabs.com>
+
+	* tcadb.c (tcadbmisc): "sync", "optimize", "vanish" commands were added.
+
+	- Release: 1.4.22
+
+2009-05-10  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbsetdfunit, tchdbdfunit, tchdbdefrag): new functions.
+
+	* tchdb.c (tchdbdefragimpl, tchdbfbptrim, tchdbshiftrec): new functions.
+
+	* tcbdb.c (tcbdbsetdfunit, tcbdbdfunit, tcbdbdefrag): new functions.
+
+	* tctdb.c (tctdbsetdfunit, tctdbdfunit, tctdbdefrag): new functions.
+
+	* tcadb.c (tcadbopen): "dfunit" parameter was added.
+
+	* tcadb.c (tcadbmisc): "defrag" command was added.
+
+	- Release: 1.4.21
+
+2009-05-08  FAL Labs  <info@fallabs.com>
+
+	* tcutil.h: signedness of some members of TCMAP and TCTREE were changed.
+
+	* tcutil.c (tchexdecode): a bug related to handling space characters was fixed.
+
+	- Release: 1.4.20
+
+2009-04-30  FAL Labs  <info@fallabs.com>
+
+	* tctdb.c (tctdbidxhash, tctdbqryproc2, tctdbqrysearchout2): new functions.
+
+	* tctdb.c (tctdbsearchimpl, tctdbidxput, tctdbidxout): the index format was modified.
+
+	* tcadb.c (tcadbmisc): "out" option of "search" command became non-atomic.
+
+	- Release: 1.4.19
+
+2009-04-25  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcatoih): new function.
+
+	* tcbdb.c (tcbdbputimpl): cache adjustment on the putkeep mode was added.
+
+	* tcadb.c (tcadbsetskel): new function.
+
+	- Release: 1.4.18
+
+2009-04-23  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapput, tcmapout, tcmapget): memory usage was reduced.
+
+	* tcutil.c (tcsysinfo): new function.
+
+	* tcutil.c (tcatoix): "strtold" was replaced by own implementation.
+
+	* tctdb.c (tctdbqryidxfetch): new function.
+
+	- Release: 1.4.17
+
+2009-04-20  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdbcuroutimpl): shift mechanism of cursors on deleted leaves was added.
+
+	* tcbdb.c (tcbdbleafcheck): new function.
+
+	- Release: 1.4.16
+
+2009-04-08  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcsleep): new function.
+
+	* tchdb.c (tchdbtranbegin): locking algorithm was modified.
+
+	* tchdb.c (tchdblocktran, tchdbunlocktran): abolished.
+
+	* tcbdb.c (tcbdbtranbegin): locking algorithm was modified.
+
+	* tcbdb.c (tcbdbcurjumpimpl): a bug related to cursor initialization was fixed.
+
+	* tcfdb.c (tcbdbtranbegin): locking algorithm was modified.
+
+	* tcfdb.c (tcfdblocktran, tcfdbunlocktran): abolished.
+
+	* tctdb.c (tctdbqryallcondmatch): a bug related to handling null value was fixed.
+
+	* tcadb.c (tcadboptimize, tcadbpath): new functions.
+
+	- Release: 1.4.15
+
+2009-04-07  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdbputimpl, tcbdbcurputimpl): page size limitation was added.
+
+	* tcbdb.c (tcbdbleafdatasize): removed.
+
+	* tctdb.c (tctdbsetindeximpl): inner indexes were tuned.
+
+	- Release: 1.4.14
+
+2009-04-02  FAL Labs  <info@fallabs.com>
+
+	* configure.in: a bug related to support for traditional shells was fixed.
+
+	* tcfdb.c (tcfdbtranbegin, tcfdbtrancommit, tcfdbtranabort): new functions.
+
+	* tcadb.c (tcadbtranbegin, tcadbtrancommit, tcadbtranabort): new functions.
+
+	- Release: 1.4.13
+
+2009-03-21  FAL Labs  <info@fallabs.com>
+
+	* tctdb.c (tctdbqrycount): new function.
+
+	* tcadb.c (tcadbmisc): "count" option was added.
+
+	- Release: 1.4.12
+
+2009-03-11  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tctopsort): new function.
+
+	* tchdb.c (tchdbfbpinsert, tchdbfbpsearch, tchdbfbpsplice): performance was improved.
+
+	* tchdb.c (tchdbwriterec): concurrency was improved.
+
+	* tctdb.c (tctdbqrysearchimpl): a bug related to the skip parameter was fixed.
+
+	* tctdb.c (tctdbputimpl, tctdbidxout, tctdbqrysearchimpl): performance was improved.
+
+	- Release: 1.4.11
+
+2009-03-02  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmdbputproc, tcndbputfunc): removing mechanism was added.
+
+	* tchdb.c (tchdbwalrestore): a bug of memory corruption was fixed.
+
+	* tchdb.c (tchdbremoverec): new function.
+
+	* tchdb.c (tchdbputproc): removing mechanism was added.
+
+	* tcbdb.c (tchdbputproc): removing mechanism was added.
+
+	* tcfdb.c (tcfdbputproc): removing mechanism was added.
+
+	* tctdb.c (tctdbsetlimit): new function instead of "tctdbqrysetmax".
+
+	* tcadb.c (tcadbmisc): "setlimit" parameter was added.
+
+	- Release: 1.4.10
+
+2009-02-18  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdbnodesubidx): a bug related to tree reconstruction was fixed.
+
+	* tcbdb.c (tcbdboptimizeimpl): memory usage was reduced.
+
+	- Release: 1.4.9
+
+2009-02-18  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tclrand): bias of random numbers was lightened.
+
+	* tchdb.c (tchdbsetecode): a trick to print fatal errors only was added.
+
+	* tcbdb.c (tcbdbputimpl): a bug of mixing an useless entry on division was fixed.
+
+	* tcbdb.c (tcbdbnodesubidx): regions of useless nodes are now removed recursively.
+
+	* tcadb.c (tcadbopen): aliases of the database suffixes were added.
+
+	- Release: 1.4.8
+
+2009-02-15  FAL Labs  <info@fallabs.com>
+
+	* tctdb.c (tctdbsetindex): "TDBITOPT" option was added.
+
+	- Release: 1.4.7
+
+2009-02-13  FAL Labs  <info@fallabs.com>
+
+	* tctdb.c (tctdbgenuidimpl): the meta data format was normalized to the big endian.
+
+	* tctdb.c (tctdbsetuidseed): new function.
+
+	* tcadb.c (tcadbmisc): "get" function of the table database was enhanced.
+
+	- Release: 1.4.6
+
+2009-02-02  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbput, tchdbget, tchdbout): bugs related to race condition were fixed.
+
+	* tchdb.c (tchdbputimpl): bugs related to race condition were fixed.
+
+	* tchmttest.c (runrace, procrace): new functions.
+
+	* tcbmttest.c (runrace, procrace): new functions.
+
+	- Release: 1.4.5
+
+2009-01-29  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapputproc, tctreeputproc, tcmdbputproc, tcndbputproc): new functions.
+
+	* tchdb.c (tchdbputproc): new function.
+
+	* tchdb.c (TDBTHREADYIELD): "sched_yield" is now used instead of "pthread_yield".
+
+	* tcbdb.c (tcbdbputproc): new function.
+
+	* tcbdb.c (tcbdbcurkey, tcbdbcurval): the type of the return value was modified.
+
+	* tcfdb.c (tcfdbputproc): new function.
+
+	* tcadb.c (tcadbputproc): new function.
+
+	* tcadb.c (tcadbmisc): sub funcitons "put", "out", and "get" were added.
+
+	* tcadb.c (tcstrisnum): new function.
+
+	- Release: 1.4.4
+
+2009-01-26  FAL Labs  <info@fallabs.com>
+
+	* tctdb.c (tctdbqryprocout): renamed as "tctdbqrysearchout".
+
+	* tcadb.c (tcadbmisc): sub functions "searchget" and "searchget" were integrated.
+
+	- Release: 1.4.3
+
+2009-01-21  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcatof): new function.
+
+	* tcbdb.c (tcbdbleafaddrec): allocation tuning of duplicated records was modified.
+
+	* tcadb.c: all methods now support the table database API.
+
+	- Release: 1.4.2
+
+2009-01-19  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tctdbsearchimpl): optimized with macros.
+
+	* tcbdb.c (tcbdbcurjumpimpl): a bug related to backword positioning was fixed.
+
+	* tctdb.c (tctdbsearchimpl): a bug related to numeric range search was fixed.
+
+	* tctdb.c (tctdbsetcache, tctdbforeach, tctdbqryproc): new functions.
+
+	* tctdb.c (tctdbqryonecondmatch): new function.
+
+	- Release: 1.4.1
+
+2009-01-04  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tccmpdecimal): equal numbers are now distinct by lexical order.
+
+	* tcutil.c (tclistnew3, tcmapnew3): new functions.
+
+	* tcutil.c (tcatoix, tclistinvert, tclog2l, tclog2d): new functions.
+
+	* tcutil.c (tcstrsplit2, tcstrsplit3, tcstrsplit4): new functions.
+
+	* tcutil.c (tcstrjoin2, tcstrjoin3, tcstrjoin4): new functions.
+
+	* tchdb.c (tchdbputimpl): a bug of memory corruption was fixed.
+
+	* tchdb.c (tchdbgetnext3): new function.
+
+	* tcbdb.c (tcbdbleafaddrec): a bug of memory corruption was fixed.
+
+	* tcbdb.c (tcbdboptimizeimpl): a bug related to parameter accession was fixed.
+
+	* tctdb.h, tctdb.c, tcttest.c, tctmttest.c, tctmgr.c: new files.
+
+	- Release: 1.4.0
+
+2008-12-27  FAL Labs  <info@fallabs.com>
+
+	* tcadb.c (tcadbmisc): the return value of "getlist" function was modified.
+
+	- Release: 1.3.27
+
+2008-12-17  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbforeach): global locking was replaced by record locking.
+
+	* tcbdb.c (tcbdbforeachimpl): cache adjustment was added.
+
+	* tcadb.c (tcadbmisc): new function.
+
+	- Release: 1.3.26
+
+2008-12-16  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdbsearchleaf): performance was improved.
+
+	- Release: 1.3.25
+
+2008-12-08  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmdbforeach, tcmdbforeachimpl): new functions.
+
+	* tcutil.c (tcndbforeach, tcndbforeachimpl): new functions.
+
+	* tcutil.c (tctreenew2, tcndbnew2): type of the comparison function was modified.
+
+	* tcutil.c (tcstrdist, tcstrdistutf): maximum memory usage was limited.
+
+	* tchdb.c (tchdbforeach, tchdbforeachimpl): new functions.
+
+	* tchdb.c (tchdboptimizeimpl): performance was improved.
+
+	* tcbdb.c (tcbdbforeach, tcbdbforeachimpl): new functions.
+
+	* tcbdb.c (tcbdbsetcmpfunc): BDBCMP was changed to TCCMP.
+
+	* tcbdb.c (tcbdbcmplexical, tcbdbcmpdecimal, tcbdbcmpint32, tcbdbcmpint64): removed.
+
+	* tcfdb.c (tcfdbforeach, tcfdbforeachimpl): new functions.
+
+	* tcadb.c (tcadbomode, tcadbreveal): new functions.
+
+	- Release: 1.3.24
+
+2008-12-03  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdbtranbegin): conbination of non-transaction and transaction became safer.
+
+	- Release: 1.3.23
+
+2008-11-28  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapput3, tcmdbput3, tcmapputcat3, tcmdbputcat3): new functions.
+
+	* tcutil.c (tctreeput3, tcndbput3): new functions.
+
+	* tcadb.c (tcadbput, tcadbputcat): LRU rule is now strictly applied.
+
+	- Release: 1.3.22
+
+2008-11-22  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbwalrestore): a bug on systems without unified buffer cache was fixed.
+
+	- Release: 1.3.21
+
+2008-11-21  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbtranbegin, tchdbtrancommit, tchdbtranabort): new functions.
+
+	- Release: 1.3.20
+
+2008-11-19  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbaddint, tchdbadddouble): bugs related to the return value were fixed.
+
+	- Release: 1.3.19
+
+2008-11-10  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcptrlistnew, tcptrlistdel): new functions.
+
+	* tcbdb.c (tcbdbputimpl, tcbdboutimpl, tcbdbgetimpl): new functions.
+
+	- Release: 1.3.18
+
+2008-11-07  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmdbnew, tcmdbdel, tcmdbopen, tcmdbclose): new functions.
+
+	* tcadb.c (tcadbnew, tcadbdel): on-memory tree database is now supported.
+
+	- Release: 1.3.17
+
+2008-10-30  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapdup): performance was improved.
+
+	* tcutil.c (tctreenew, tctreedel, tctreeopen, tctreeclose): new functions.
+
+	* tcutil.c (tcsystem): new function.
+
+	* tchdb.c (tchdbopenimpl): memory usage of reader declined.
+
+	* tcadb.c (tcadbsync, tcadbcopy): on-memory database is now supported.
+
+	- Release: 1.3.16
+
+2008-10-20  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapput, tcmapout, tcmapget): performance was improved.
+
+	* tcutil.c (tcnumtobinstr): new function.
+
+	* tchdb.c (tchdbbidx): performance was improved.
+
+	- Release: 1.3.15
+
+2008-10-05  FAL Labs  <info@fallabs.com>
+
+	* myconf.h: missing features of PATH_MAX and nan is now emulated.
+
+	* tcutil.c (tczeromap, tczerounmap): new functions.
+
+	- Release: 1.3.14
+
+2008-10-19  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmdbadddouble): NAN were replaced by the nan function.
+
+	* Makefile.in: the compilation command now supports Solaris.
+
+	- Release: 1.3.13
+
+2008-10-05  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tchexencode, tchexdecode): new functions.
+
+	* tchdb.c (tchdbaddint): a bug of error code setting was fixed.
+
+	- Release: 1.3.12
+
+2008-09-23  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbputimpl): performance of the ADDINT mode was improved.
+
+	* tcbdb.c (tcbdbleafaddrec): performance of the ADDINT mode was improved.
+
+	* tcfdb.c (tcfdbputimpl): performance of the ADDINT mode was improved.
+
+	* tcutil.c (tcpagealign): new function.
+
+	* tchdb.c (tchdbsetxmsiz): the parameter is now rounded up to multiple of the page size.
+
+	* tcfdb.c (tcfdbtune): the parameter is now rounded up to multiple of the page size.
+
+	* tchdb.c (tcseekwrite, tcseekread, tcseekreadtry): page border handling was added.
+
+	- Release: 1.3.11
+
+2008-09-20  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcunlock): new function.
+
+	* tchdb.c (tchdbsetmutex): useless locking was eliminated.
+
+	* tcbdb.c (tcbdbsetmutex): useless locking was eliminated.
+
+	* tcfdb.c (tcfdbsetmutex): useless locking was eliminated.
+
+	- Release: 1.3.10
+
+2008-09-10  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdblockallrecords, tchdbunlockallrecords): new functions.
+
+	* tcfdb.c (tcfdblockallrecords, tcfdbunlockallrecords): new functions.
+
+	- Release: 1.3.9
+
+2008-09-05  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapaddint, tcmapadddouble): checking data size was added.
+
+	- Release: 1.3.8
+
+2008-09-03  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapaddint, tcmapadddouble): type of the return value was changed.
+
+	* tcfdb.c (tcfdbkeytoid): added as API.
+
+	* tcadb.c (tcadbaddint, tcadbadddouble): new functions.
+
+	- Release: 1.3.7
+
+2008-09-03  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tclrand, tcdrand): a bug of overflow on 64-bit environment was fixed.
+
+	* tcutil.c (tcmdbaddint, tcmdbadddouble): new functions.
+
+	* tchdb.c (tchdbaddint, tchdbadddouble): new functions.
+
+	* tcbdb.c (tcbdbaddint, tcbdbadddouble): new functions.
+
+	* tcfdb.c (tcfdbaddint, tcfdbadddouble): new functions.
+
+	- Release: 1.3.6
+
+2008-08-25  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcatoi): new function.
+
+	* tchdb.c (HDBDEFBNUM): increased for typical usecases.
+
+	* tcbdb.c (BDBDEFBNUM): increased for typical usecases.
+
+	* tchdb.c (tchdbsetxmsiz, tchdbxmsiz): new functions.
+
+	- Release: 1.3.5
+
+2008-08-23  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tcseekreadtry): new function.
+
+	- Release: 1.3.4
+
+2008-08-20  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdblockrecord, tchdbunlockrecord): new functions.
+
+	* tchdb.c (tchdbputimpl, tchdboutimpl, tchdbgutimpl): concurrency was improved.
+
+	- Release: 1.3.3
+
+2008-08-01  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapaddint, tcmapput3, tcmdbput3): mismatch of signature was fixed.
+
+	* tcutil.c (tcmapadddouble): new function.
+
+	- Release: 1.3.2
+
+2008-07-29  FAL Labs  <info@fallabs.com>
+
+	* tcadb.c (tcadbopen): "opts=b" option is now supported.
+
+	- Release: 1.3.1
+
+2008-07-15  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmd5hash): new function.
+
+	* tcutil.c (tcchidxnew, tcchidxdel, tcchidxhash): refactoring.
+
+	* tcutil.c (tcbzipencode, tcbzipdecode): new functions.
+
+	* tchdb.c (tchdbsetcodecfunc, tchdbcodecfunc): new functions.
+
+	* tcbdb.c (tcbdbsetcodecfunc, tcbdbcodecfunc): new functions.
+
+	* md5.h, md5.c: new files, whose author is L. Peter Deutsch.
+
+	* myconf.c (_tc_bzcompress_impl, _tc_bzdecompress_impl): new functions.
+
+	* myconf.c (_tc_recencode, _tc_recdecode): new functions.
+
+	- Release: 1.3.0
+
+2008-07-11  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbcacheclear): new function.
+
+	* tcbdb.c (tcbdbcacheclear): new function.
+
+	- Release: 1.2.12
+
+2008-07-08  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapkeys2, tcmapvals2): new functions.
+
+	* tchdb.c (tchdboptimizeimpl): user meta data is now to be copied.
+
+	- Release: 1.2.11
+
+2008-07-01  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcjetlag): missing of "timezone" variable is now allowed.
+
+	- Release: 1.2.10
+
+2008-06-17  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcjetlag): new function.
+
+	* tcutil.c (tcmkgmtime): a bug related to time difference was fixed.
+
+	* tchdb.c (tchdbgetnext, tchdbgetnext2): new functions.
+
+	* tchtest.c (runwrite, procwrite): "-rnd" option was added.
+
+	* tcbtest.c (runwrite, procwrite): "-rnd" option was added.
+
+	* tcftest.c (runwrite, procwrite): "-rnd" option was added.
+
+	- Release: 1.2.9
+
+2008-06-01  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcerrmsg): new function.
+
+	* tcfdb.h, tcfdb.c: new files.
+
+	* tcadb.c: fixed-length database is now supported.
+
+	- Release: 1.2.8
+
+2008-05-23  FAL Labs  <info@fallabs.com>
+	
+	* tcutil.c (tcchordnew, tcchorddel, tcchordhash): new functions.
+
+	* tcbdb.c (tcbdbleafload, tcbdbnodeload): memory leak bugs with multi-thread were fixed.
+
+	- Release: 1.2.7
+
+2008-05-01  FAL Labs  <info@fallabs.com>
+
+	* myconf.h: code cleanup.
+
+	* tcutil.c (tcmimebreak, tcmimeparts): new functions.
+
+	* tchdb.c, tcbdb.c, tcadb.c: "free" was replaced by "tcfree".
+
+	* tcbdb.c (tcbdbtrancommit, tcbdbtranabort): cache adjustment was added.
+
+	* tchdb.c (tchdbsetecode): a bug of processing unopened files was fixed.
+
+	* tcawmgr.c: new file.
+
+	- Release: 1.2.6
+
+2008-04-22  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdbcmpdecimal, tcbdbcmpint32, tcbdbcmpint64): bugs of overflow were fixed.
+
+	- Release: 1.2.5
+
+2008-04-13  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdbopenimpl): comparison function checking was added.
+
+	* tcadb.c (tcadbopen): "capnum" option is now supported for B+ tree.
+
+	- Release: 1.2.4
+
+2008-04-07  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcregexmatch, tcregexreplace, tcglobpat): new functions.
+
+	* tcbdb.c (tcbdbcmpfunc, tcbdbcmpop): new functions.
+
+	* tcbdb.c (tcbdboptimizeimpl): leaf size limitation is now implemented.
+
+	* tcbdb.c (tcbdbsetcapnum): new function.
+
+	- Release: 1.2.3
+
+2008-03-19  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapnew2): "calloc" is now used.
+
+	* tcbdb.c (tcbdbputimpl): algorithm to divide large leaves was modified.
+
+	- Release: 1.2.2
+
+2008-03-13  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tclistelemcmp, tclistelemcmpci): bugs about multibyte ordering were fixed.
+
+	* tcutil.c (tclistsortex): new function.
+
+	* tcbdb.c (tcbdbsetecode): new function.
+
+	* tcadb.c (tcadbopen): "c", "t", "e", and "w" options were added.
+
+	- Release: 1.2.1
+
+2008-02-18  FAL Labs  <info@fallabs.com>
+
+	* tcmdb.c (tcmdbfwmkeys, tcmdbfwmkeys2): new functions.
+
+	* tchdb.c (tchdbfwmkeys, tchdbfwmkeys2): new functions.
+
+	* tcbdb.c (tcbdbfwmkeys, tcbdbfwmkeys2): new functions instead of "tcbdbrange3".
+
+	* tcadb.c (tcadbfwmkeys, tcadbfwmkeys2): new functions.
+
+	* tcbdb.c (tcbdbrangeimpl): a bug related to mutex operation was fixed.
+
+	- The library version was bumped up for some binary packages.
+
+	- Release: 1.2.0
+
+2008-02-15  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcbwtsortchrcount): time efficiency was improved.
+
+	- The library version was bumped up for some binary packages.
+
+	- Release: 1.1.15
+
+2008-02-05  FAL Labs  <info@fallabs.com>
+
+	* tcatest.c (runwicked, procwicked): new functions.
+
+	- Release: 1.1.14
+
+2008-01-30  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tctime): measure unit was changed to in seconds.
+
+	* tchdb.c (tchdbcopy): shared lock is now used.
+
+	* tcadb.c (tcadbsync, tcadbcopy): new functions.
+
+	- Release: 1.1.13
+
+2008-01-23  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdbleafkill, tcbdbnodesubidx): new functions.
+
+	* tcbtest.c (runqueue, procqueue): new functions.
+
+	- Release: 1.1.12
+
+2008-01-20  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmapmsiz, tcmdbmsiz, tcadbsize): new functions.
+
+	* tcutil.c (tcglobalmutexshared): new function.
+
+	* tcutil.c (tcglobalmutexinit, tcglobalmutexdestroy): new functions.
+
+	* tcutil.c (tcreadfile): a bug related to the size assignment was fixed.
+
+	* tcadb.c (tcadbopen): "capsiz" parameter was added.
+
+	- Release: 1.1.11
+
+2008-01-17  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tclistshift, tclistshift2): memory alignment was improved.
+
+	* tcutil.c (tcvxstrprintf): a bug related to format of long long integer was fixed.
+
+	- Release: 1.1.10
+
+2008-01-10  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmdbvsiz, tcmdbvsiz2): new functions.
+
+	* tcutil.c (tcmdbiternext): a bug related to handling sparse map was fixed.
+
+	* tcadb.h, tcadb.c: new files.
+
+	* tcatest.c, tcadb.c: new files.
+
+	- Release: 1.1.9
+
+2008-01-03  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcstrutftoucs, tcstrucstoutf, tcstrjoin): new function.
+
+	* tcutil.c (tcstrdist, tcstrdistutf): new function.
+
+	- Release: 1.1.8
+
+2007-12-28  FAL Labs  <info@fallabs.com>
+
+	* myconf.h: some header includings were removed for environments not conforming to C99.
+
+	* tcutil.c (tctccalendar, tcdatestrwww, tcdatestrhttp): new functions.
+
+	* tcutil.c (tcmapaddint): new function.
+
+	* tcucodec.c (rundate, procdate): new functions.
+
+	- Release: 1.1.7
+
+2007-12-24  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tcseekread, tcseekwrite): pread and pwrite were to be used.
+
+	- Release: 1.1.6
+
+2007-12-21  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmdbnew, tcmdbput, tcmdbget): concurrency was improved.
+
+	* tcutil.c (tcmapcutfront, tcmdbcutfront): new functions.
+
+	* tchdb.c (tchdbasyncimpl): large deferred buffer was to be flushed.
+
+	* tcumttest.c: new file.
+
+	- Release: 1.1.5
+
+2007-12-19  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tclrand, tcdrand, tcdrandnd): new functions.
+
+	* tchdb.c (tchdbcacheadjust): count checking was removed.
+
+	* tchmttest.c (myrandnd): new function.
+
+	* tcbmttest.c (myrandnd): new function.
+
+	- Release: 1.1.4
+
+2007-12-10  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcglobalmutexlock): the type of the global mutex was changed to rwlock.
+
+	* tchdb.c (tchdbsetmutex, tchdbopenimpl): multiple reading file descriptors were added.
+
+	* tchmttest.c (runtypical, proctypical): reading ratio assignment was added.
+
+	* tcbmttest.c (runtypical, proctypical): reading ratio assignment was added.
+
+	- Release: 1.1.3
+
+2007-12-08  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcmpoolput): mutex for operations was added.
+
+	- Release: 1.1.2
+
+2007-12-08  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcberencode, tcberdecode): new functions.
+
+	* tcbdb.c (tcbdbleafload): speed was improved.
+
+	- Release: 1.1.1
+
+2007-12-07  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbsetcache): new function.
+
+	* tchmttest.c (procwrite, procread): random mode was added.
+
+	* tcbmttest.c (procwrite, procread): random mode was added.
+
+	- Release: 1.1.0
+
+2007-12-01  FAL Labs  <info@fallabs.com>
+
+	* tchmgr.c (procget): a bug related to the open omode was fixed.
+
+	* tchdb.c (tchdbreadrec): a bug related to overflow on 32-bit environment was fixed.
+
+	* tchdb.c (tchdbgetbucket): the type of the return value was changed.
+
+	* tcbdb.c (tcbdbcurfirst, tcbdbcurnext): cache adjustment was to be performed.
+
+	* tcbdb.c (tcbdbrange, tcbdbrange2, tcbdbrange3): new functions.
+
+	* tchmgr.c (proclist): "-m" option was added.
+
+	* tchmgr.c (procimporttsv): new function.
+
+	* tcbmgr.c (proclist): "-m", "-rb", and "-rp" options were added.
+
+	* tcbmgr.c (procimporttsv): new function.
+
+	- Release: 1.0.9
+
+2007-11-28  FAL Labs  <info@fallabs.com>
+
+	* tchmttest.c (threadtypical): a test case was added.
+
+	* tchdb.c (tchdbfbpmerge): a bug related to iterator was fixed.
+
+	* tcbdb.c (tcbdbgetimpl): a bug related to concurrent cache cleaning was fixed.
+
+	- Release: 1.0.8
+
+2007-11-20  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdblockmethod): a bug related to R/W lock was fixed.
+
+	* tcbdb.c (tcbdblockmethod): a bug related to R/W lock was fixed.
+
+	* tchdb.c, tcbdb.c: locking functions were re-imlemented as macros.
+
+	* tchmttest.c, tcbmttest.c: test cases of typical operations were added.
+
+	* tokyocabinet.idl: methods handling list parameters were added.
+
+	- Release: 1.0.7
+
+2007-11-15  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdboptimize): the default behaviour of bnum was changed.
+
+	- Release: 1.0.6
+
+2007-11-10  FAL Labs  <info@fallabs.com>
+
+	* tcutil.c (tcrealpath, tccopyfile): new functions.
+
+	* tchdb.c (tchdbcopy): new function.
+
+	* tcbdb.c (tcbdbcopy): new function.
+
+	- Release: 1.0.5
+
+2007-11-10  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdbtune): comparing functions were optimized with macros.
+
+	* tcbdb.c (tcbdbsetlsmax): new function.
+
+	* myconf.c, tcutil.c, tchdb.c, tcbdb.c: code cleanup and optimization.
+
+	- Release: 1.0.4
+
+2007-11-08  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdbleafsave, tcbdbleafload): warnings on 64-bit system were cleared.
+
+	* configure.in: 64-bit offset mode for 32-bit system was added.
+
+	* Makefile.in: Mac OS X is now supported.
+
+	- Release: 1.0.3
+
+2007-11-01  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tcbdbdel): a bug that opened database was not closed was fixed.
+
+	* tcbdb.c (tcbdbcurout): a bug of deleting always the first value was fixed.
+
+	* tcbdb.c (tcbdbopenimpl): a potential bug of not initializing meta data was fixed.
+
+	* tcutil.h, tchdb.h, tcbdb.h: wrapped in C linkage block for C++.
+
+	* tokyocabinet.idl: definition of constants were added.
+
+	- commands for performance test were added.
+
+	- Release: 1.0.2
+
+2007-10-28  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tchdboptimize): a bug related to custom comparison function was fixed.
+
+	* tcbdb.c (tcbdbleafsave): empty pages was to be removed for time space efficiency.
+
+	* tcbdb.c (tcbdbputdup3): new function.
+
+	* tchdb.c (tchdbvanish): new function.
+
+	* tcbdb.c (tcbdbvanish): new function.
+
+	* tokyocabinet.idl: new file.
+
+	- Release: 1.0.1
+
+2007-10-24  FAL Labs  <info@fallabs.com>
+
+	* tokyocabinet.pc.in: new file.
+
+	- document files were fulfilled.
+
+	- Release: 1.0.0
+
+2007-10-15  FAL Labs  <info@fallabs.com>
+
+	* tcbdb.c (tchdbtranbegin): locking mode was aolished.
+
+	* tcbdb.c (tcbdbsetcmpfunc): new function.
+
+	- Release: 0.4.1
+
+2007-10-11  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbopenimpl): database corruption was to be handled automatically.
+
+	* tcbdb.c, tcbtest.c, tcbmttest.c, tcbmgr.c: new files.
+
+	- Release: 0.4.0
+
+2007-09-09  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbsetmutex, tchdblockobj, tchdbunlockobj): new functions.
+
+	* tchmttest.c: new file.
+
+	- Release: 0.3.4
+
+2007-09-05  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbopen): TCBS compression mode is now supported.
+
+	- Release: 0.3.3
+
+2007-09-01  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tcbsencode, tcbsdecode): new functions.
+
+	- Release: 0.3.2
+
+2007-08-25  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tcpackencode, tcpackdecode): new functions.
+
+	* tchdb.c (tcbwtencode, tcbwtdecode): new functions.
+
+	- Release: 0.3.1
+
+2007-08-22  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbputasync, tchdbputasync2): new functions.
+
+	- Release: 0.3.0
+
+2007-08-18  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdboptimize): a bug causing data corruption was fixed.
+
+	- Release: 0.2.8
+
+2007-08-15  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdboptimize): new function.
+
+	- Release: 0.2.7
+
+2007-08-14  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbsavefbp, tchdbloadfbp): a bug related to 64-bit support was fixed.
+
+	* tchdb.c (tchdbreadrec, tchdbwriterec): a bug related to 64-bit support was fixed.
+
+	- Release: 0.2.6
+
+2007-08-13  FAL Labs  <info@fallabs.com>
+
+	* tchdb.c (tchdbsavefbp, tchdbloadfbp): new functions.
+
+	- Release: 0.2.5
+
+2007-08-12  FAL Labs  <info@fallabs.com>
+
+	- The initial version.
+
+	- Release: 0.2.4
+

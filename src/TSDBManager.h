@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 //TokyoCabinet Stuff
+
 #include "tcutil.h"
 #include "tctdb.h"
 
@@ -18,6 +19,7 @@
 +(TSDBManager *)sharedDBManager;
 +(NSString *)getDBError:(int)ecode;
 +(NSString *)getQueueSigForDbPath:(NSString *)dbPath;
++(void)closeAll;
 -(dispatch_queue_t)getQueueForDBPath:(NSString *)dbPath;
 -(TCTDB *)getDB:(NSString *)dbFilePath;
 -(void)recyleDBAtPath:(NSString *)dbFilePath;

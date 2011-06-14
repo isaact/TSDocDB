@@ -308,7 +308,7 @@
     NSArray *colKeys = [_delegate TSColumnsForFullTextSearch:rowType];
     NSString *joinedString = [[self joinStringsFromDictionary:rowData andTargetCols:colKeys glue:@" "] lowercaseString];
     [tmpData setObject:joinedString forKey:[self makeRowTextColKey]];
-    //ALog(@"Saving Doc: %@", realRowID);
+    //ALog(@"Saving Doc: %@ %@", [self makeRowTextColKey], joinedString);
     [self dbPut:realRowID colVals:tmpData];
     [pool drain];
   });
@@ -458,6 +458,7 @@
 -(NSUInteger)getNumRowsOfType:(NSString *)rowTypeOrNil{
   __block NSUInteger numRows;
   dispatch_sync(dbQueue, ^{
+    [filterChain removeAllFilters];
     TCTDB *tdb = [self getDB];
     if (rowTypeOrNil != nil) {
       [self addConditionStringEquals:rowTypeOrNil toColumn:[self makeRowTypeKey]];
@@ -483,7 +484,7 @@
     numRows = tclistnum(res);
     tclistdel(res);
     tctdbqrydel(qry);
-    [filterChain removeAllFilters];
+    //[filterChain removeAllFilters];
   });
   return numRows;
 }
@@ -582,7 +583,7 @@
   __block NSUInteger ret;
   dispatch_async(queue, ^{
     ret = [self getNumRowsOfType:rowType];
-    [self postNotificationWithNotificationName:notificationNameOrNil andData:[NSNumber numberWithInt:ret]];
+    [self postNotificationWithNotificationName:notificationNameOrNil andData:[NSNumber numberWithUnsignedInteger:ret]];
   });
   
 }
@@ -768,11 +769,11 @@
 }
 -(void)adjustQuery:(TDBQRY *)qry withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger) resultOffset{
   if(orderBy != nil){
-    tctdbqrysetorder(qry, [orderBy UTF8String], direction);
+    tctdbqrysetorder(qry, [orderBy UTF8String], (int)direction);
     [orderBy release];
     orderBy = nil;
   }
-  tctdbqrysetlimit(qry, resultLimit, resultOffset);
+  tctdbqrysetlimit(qry, (int)resultLimit, (int)resultOffset);
 }
 -(NSArray *)fetchRows:(TDBQRY *)qry{
   NSMutableArray *rows = [NSMutableArray arrayWithCapacity:1];
@@ -818,7 +819,7 @@
 
 -(BOOL)indexCol:(NSString *)colName indexType:(NSInteger)colType{
   TCTDB *tdb = [self getDB];
-  return tctdbsetindex(tdb, [colName UTF8String], colType);
+  return tctdbsetindex(tdb, [colName UTF8String], (int)colType);
 }
 -(BOOL)dbPut:(NSString *)rowKey colVals:(NSDictionary *)rowData{
   TCTDB *tdb = [self getDB];
@@ -845,10 +846,12 @@
     
   }
   //[self dbDel:rowKey];
-  if(!tctdbput(tdb, [rowKey UTF8String], rowKeySize, reuseableTCMap)){
+  //tctdbtranbegin(tdb);
+  if(!tctdbput(tdb, [rowKey UTF8String], (int)rowKeySize, reuseableTCMap)){
     int ecode = tctdbecode(tdb);
     ALog(@"DB put error:%@", [TSDB getDBError:ecode]);
   }
+  //tctdbtrancommit(tdb);
   tcmapclear(reuseableTCMap);
   //tcmapdel(cols);
   
@@ -859,7 +862,7 @@
   NSMutableDictionary *rowData = nil;
   __block TCMAP *cols;
   dispatch_sync(dbQueue, ^{
-   cols = tctdbget(tdb, [rowID UTF8String], strlen([rowID UTF8String]));
+   cols = tctdbget(tdb, [rowID UTF8String], (int)strlen([rowID UTF8String]));
   });
   const char *name;
   if(cols){
@@ -881,7 +884,7 @@
 }
 -(BOOL)dbDel:(NSString *)rowID{
   TCTDB *tdb = [self getDB];
-  return tctdbout(tdb, [rowID UTF8String], strlen([rowID UTF8String]));
+  return tctdbout(tdb, [rowID UTF8String], (int)strlen([rowID UTF8String]));
 }
 -(BOOL)dbSearchAndDelete:(TDBQRY *)qry{
   [filterChain removeAllFilters];

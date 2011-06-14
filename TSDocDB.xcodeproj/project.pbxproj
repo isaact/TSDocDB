@@ -1,0 +1,1028 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3669458E13A6A60B00B6DF53 /* DBLoadingPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3669458D13A6A60B00B6DF53 /* DBLoadingPane.xib */; };
+		3669458F13A6A61700B6DF53 /* DBLoadingPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 3669458913A6A5E800B6DF53 /* DBLoadingPane.m */; };
+		368ADD1613A7971D00000A7E /* cities15000.txt in Resources */ = {isa = PBXBuildFile; fileRef = 368ADD1513A7971D00000A7E /* cities15000.txt */; };
+		368F1E4313A3B7DB00835CBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368F1E4213A3B7DB00835CBD /* Cocoa.framework */; };
+		368F1E5413A3B80000835CBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368F1E5313A3B80000835CBD /* Foundation.framework */; };
+		368F1E9D13A3B8EE00835CBD /* TSDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E5C13A3B8EE00835CBD /* TSDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		368F1E9E13A3B8EE00835CBD /* TSDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E5C13A3B8EE00835CBD /* TSDB.h */; };
+		368F1E9F13A3B8EE00835CBD /* TSDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E5D13A3B8EE00835CBD /* TSDB.m */; };
+		368F1EA013A3B8EE00835CBD /* TSDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E5D13A3B8EE00835CBD /* TSDB.m */; };
+		368F1EA113A3B8EE00835CBD /* TSDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E5E13A3B8EE00835CBD /* TSDBManager.h */; };
+		368F1EA213A3B8EE00835CBD /* TSDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E5E13A3B8EE00835CBD /* TSDBManager.h */; };
+		368F1EA313A3B8EE00835CBD /* TSDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E5F13A3B8EE00835CBD /* TSDBManager.m */; };
+		368F1EA413A3B8EE00835CBD /* TSDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E5F13A3B8EE00835CBD /* TSDBManager.m */; };
+		368F1EA513A3B8EE00835CBD /* TSDBQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E6013A3B8EE00835CBD /* TSDBQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		368F1EA613A3B8EE00835CBD /* TSDBQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E6013A3B8EE00835CBD /* TSDBQuery.h */; };
+		368F1EA713A3B8EE00835CBD /* TSDBQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E6113A3B8EE00835CBD /* TSDBQuery.m */; };
+		368F1EA813A3B8EE00835CBD /* TSDBQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E6113A3B8EE00835CBD /* TSDBQuery.m */; };
+		368F1EA913A3B8EE00835CBD /* TSRowFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E6213A3B8EE00835CBD /* TSRowFilter.h */; };
+		368F1EAA13A3B8EE00835CBD /* TSRowFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E6213A3B8EE00835CBD /* TSRowFilter.h */; };
+		368F1EAB13A3B8EE00835CBD /* TSRowFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E6313A3B8EE00835CBD /* TSRowFilter.m */; };
+		368F1EAC13A3B8EE00835CBD /* TSRowFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E6313A3B8EE00835CBD /* TSRowFilter.m */; };
+		368F1EAD13A3B8EE00835CBD /* TSRowFilterChain.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E6413A3B8EE00835CBD /* TSRowFilterChain.h */; };
+		368F1EAE13A3B8EE00835CBD /* TSRowFilterChain.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E6413A3B8EE00835CBD /* TSRowFilterChain.h */; };
+		368F1EAF13A3B8EE00835CBD /* TSRowFilterChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E6513A3B8EE00835CBD /* TSRowFilterChain.m */; };
+		368F1EB013A3B8EE00835CBD /* TSRowFilterChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E6513A3B8EE00835CBD /* TSRowFilterChain.m */; };
+		368F1EB913A3B8EE00835CBD /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E6D13A3B8EE00835CBD /* md5.c */; };
+		368F1EBA13A3B8EE00835CBD /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E6D13A3B8EE00835CBD /* md5.c */; };
+		368F1EBB13A3B8EE00835CBD /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E6E13A3B8EE00835CBD /* md5.h */; };
+		368F1EBC13A3B8EE00835CBD /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E6E13A3B8EE00835CBD /* md5.h */; };
+		368F1EBD13A3B8EE00835CBD /* myconf.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E6F13A3B8EE00835CBD /* myconf.c */; };
+		368F1EBE13A3B8EE00835CBD /* myconf.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E6F13A3B8EE00835CBD /* myconf.c */; };
+		368F1EBF13A3B8EE00835CBD /* myconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E7013A3B8EE00835CBD /* myconf.h */; };
+		368F1EC013A3B8EE00835CBD /* myconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E7013A3B8EE00835CBD /* myconf.h */; };
+		368F1EC113A3B8EE00835CBD /* tcadb.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7113A3B8EE00835CBD /* tcadb.c */; };
+		368F1EC213A3B8EE00835CBD /* tcadb.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7113A3B8EE00835CBD /* tcadb.c */; };
+		368F1EC313A3B8EE00835CBD /* tcadb.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E7213A3B8EE00835CBD /* tcadb.h */; };
+		368F1EC413A3B8EE00835CBD /* tcadb.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E7213A3B8EE00835CBD /* tcadb.h */; };
+		368F1EC513A3B8EE00835CBD /* tcamgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7313A3B8EE00835CBD /* tcamgr.c */; };
+		368F1EC613A3B8EE00835CBD /* tcamgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7313A3B8EE00835CBD /* tcamgr.c */; };
+		368F1EC713A3B8EE00835CBD /* tcamttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7413A3B8EE00835CBD /* tcamttest.c */; };
+		368F1EC813A3B8EE00835CBD /* tcamttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7413A3B8EE00835CBD /* tcamttest.c */; };
+		368F1EC913A3B8EE00835CBD /* tcatest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7513A3B8EE00835CBD /* tcatest.c */; };
+		368F1ECA13A3B8EE00835CBD /* tcatest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7513A3B8EE00835CBD /* tcatest.c */; };
+		368F1ECB13A3B8EE00835CBD /* tcawmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7613A3B8EE00835CBD /* tcawmgr.c */; };
+		368F1ECC13A3B8EE00835CBD /* tcawmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7613A3B8EE00835CBD /* tcawmgr.c */; };
+		368F1ECD13A3B8EE00835CBD /* tcbdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7713A3B8EE00835CBD /* tcbdb.c */; };
+		368F1ECE13A3B8EE00835CBD /* tcbdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7713A3B8EE00835CBD /* tcbdb.c */; };
+		368F1ECF13A3B8EE00835CBD /* tcbdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E7813A3B8EE00835CBD /* tcbdb.h */; };
+		368F1ED013A3B8EE00835CBD /* tcbdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E7813A3B8EE00835CBD /* tcbdb.h */; };
+		368F1ED113A3B8EE00835CBD /* tcbmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7913A3B8EE00835CBD /* tcbmgr.c */; };
+		368F1ED213A3B8EE00835CBD /* tcbmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7913A3B8EE00835CBD /* tcbmgr.c */; };
+		368F1ED313A3B8EE00835CBD /* tcbmttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7A13A3B8EE00835CBD /* tcbmttest.c */; };
+		368F1ED413A3B8EE00835CBD /* tcbmttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7A13A3B8EE00835CBD /* tcbmttest.c */; };
+		368F1ED513A3B8EE00835CBD /* tcbtest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7B13A3B8EE00835CBD /* tcbtest.c */; };
+		368F1ED613A3B8EE00835CBD /* tcbtest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7B13A3B8EE00835CBD /* tcbtest.c */; };
+		368F1ED713A3B8EE00835CBD /* tcfdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7C13A3B8EE00835CBD /* tcfdb.c */; };
+		368F1ED813A3B8EE00835CBD /* tcfdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7C13A3B8EE00835CBD /* tcfdb.c */; };
+		368F1ED913A3B8EE00835CBD /* tcfdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E7D13A3B8EE00835CBD /* tcfdb.h */; };
+		368F1EDA13A3B8EE00835CBD /* tcfdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E7D13A3B8EE00835CBD /* tcfdb.h */; };
+		368F1EDB13A3B8EE00835CBD /* tcfmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7E13A3B8EE00835CBD /* tcfmgr.c */; };
+		368F1EDC13A3B8EE00835CBD /* tcfmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7E13A3B8EE00835CBD /* tcfmgr.c */; };
+		368F1EDD13A3B8EE00835CBD /* tcfmttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7F13A3B8EE00835CBD /* tcfmttest.c */; };
+		368F1EDE13A3B8EE00835CBD /* tcfmttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E7F13A3B8EE00835CBD /* tcfmttest.c */; };
+		368F1EDF13A3B8EE00835CBD /* tcftest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8013A3B8EE00835CBD /* tcftest.c */; };
+		368F1EE013A3B8EE00835CBD /* tcftest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8013A3B8EE00835CBD /* tcftest.c */; };
+		368F1EE113A3B8EE00835CBD /* tchdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8113A3B8EE00835CBD /* tchdb.c */; };
+		368F1EE213A3B8EE00835CBD /* tchdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8113A3B8EE00835CBD /* tchdb.c */; };
+		368F1EE313A3B8EE00835CBD /* tchdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E8213A3B8EE00835CBD /* tchdb.h */; };
+		368F1EE413A3B8EE00835CBD /* tchdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E8213A3B8EE00835CBD /* tchdb.h */; };
+		368F1EE513A3B8EE00835CBD /* tchmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8313A3B8EE00835CBD /* tchmgr.c */; };
+		368F1EE613A3B8EE00835CBD /* tchmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8313A3B8EE00835CBD /* tchmgr.c */; };
+		368F1EE713A3B8EE00835CBD /* tchmttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8413A3B8EE00835CBD /* tchmttest.c */; };
+		368F1EE813A3B8EE00835CBD /* tchmttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8413A3B8EE00835CBD /* tchmttest.c */; };
+		368F1EE913A3B8EE00835CBD /* tchtest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8513A3B8EE00835CBD /* tchtest.c */; };
+		368F1EEA13A3B8EE00835CBD /* tchtest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8513A3B8EE00835CBD /* tchtest.c */; };
+		368F1EEB13A3B8EE00835CBD /* tctdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8613A3B8EE00835CBD /* tctdb.c */; };
+		368F1EEC13A3B8EE00835CBD /* tctdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8613A3B8EE00835CBD /* tctdb.c */; };
+		368F1EED13A3B8EE00835CBD /* tctdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E8713A3B8EE00835CBD /* tctdb.h */; };
+		368F1EEE13A3B8EE00835CBD /* tctdb.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E8713A3B8EE00835CBD /* tctdb.h */; };
+		368F1EEF13A3B8EE00835CBD /* tctmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8813A3B8EE00835CBD /* tctmgr.c */; };
+		368F1EF013A3B8EE00835CBD /* tctmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8813A3B8EE00835CBD /* tctmgr.c */; };
+		368F1EF113A3B8EE00835CBD /* tctmttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8913A3B8EE00835CBD /* tctmttest.c */; };
+		368F1EF213A3B8EE00835CBD /* tctmttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8913A3B8EE00835CBD /* tctmttest.c */; };
+		368F1EF313A3B8EE00835CBD /* tcttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8A13A3B8EE00835CBD /* tcttest.c */; };
+		368F1EF413A3B8EE00835CBD /* tcttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8A13A3B8EE00835CBD /* tcttest.c */; };
+		368F1EF713A3B8EE00835CBD /* tcumttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8C13A3B8EE00835CBD /* tcumttest.c */; };
+		368F1EF813A3B8EE00835CBD /* tcumttest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8C13A3B8EE00835CBD /* tcumttest.c */; };
+		368F1EF913A3B8EE00835CBD /* tcutest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8D13A3B8EE00835CBD /* tcutest.c */; };
+		368F1EFA13A3B8EE00835CBD /* tcutest.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8D13A3B8EE00835CBD /* tcutest.c */; };
+		368F1EFB13A3B8EE00835CBD /* tcutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8E13A3B8EE00835CBD /* tcutil.c */; };
+		368F1EFC13A3B8EE00835CBD /* tcutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E8E13A3B8EE00835CBD /* tcutil.c */; };
+		368F1EFD13A3B8EE00835CBD /* tcutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E8F13A3B8EE00835CBD /* tcutil.h */; };
+		368F1EFE13A3B8EE00835CBD /* tcutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E8F13A3B8EE00835CBD /* tcutil.h */; };
+		368F1EFF13A3B8EE00835CBD /* ZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E9113A3B8EE00835CBD /* ZipArchive.h */; };
+		368F1F0013A3B8EE00835CBD /* ZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E9113A3B8EE00835CBD /* ZipArchive.h */; };
+		368F1F0113A3B8EE00835CBD /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E9213A3B8EE00835CBD /* ZipArchive.mm */; };
+		368F1F0213A3B8EE00835CBD /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E9213A3B8EE00835CBD /* ZipArchive.mm */; };
+		368F1F0313A3B8EE00835CBD /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E9413A3B8EE00835CBD /* crypt.h */; };
+		368F1F0413A3B8EE00835CBD /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E9413A3B8EE00835CBD /* crypt.h */; };
+		368F1F0513A3B8EE00835CBD /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E9513A3B8EE00835CBD /* ioapi.c */; };
+		368F1F0613A3B8EE00835CBD /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E9513A3B8EE00835CBD /* ioapi.c */; };
+		368F1F0713A3B8EE00835CBD /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E9613A3B8EE00835CBD /* ioapi.h */; };
+		368F1F0813A3B8EE00835CBD /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E9613A3B8EE00835CBD /* ioapi.h */; };
+		368F1F0913A3B8EE00835CBD /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E9713A3B8EE00835CBD /* mztools.c */; };
+		368F1F0A13A3B8EE00835CBD /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E9713A3B8EE00835CBD /* mztools.c */; };
+		368F1F0B13A3B8EE00835CBD /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E9813A3B8EE00835CBD /* mztools.h */; };
+		368F1F0C13A3B8EE00835CBD /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E9813A3B8EE00835CBD /* mztools.h */; };
+		368F1F0D13A3B8EE00835CBD /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E9913A3B8EE00835CBD /* unzip.c */; };
+		368F1F0E13A3B8EE00835CBD /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E9913A3B8EE00835CBD /* unzip.c */; };
+		368F1F0F13A3B8EE00835CBD /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E9A13A3B8EE00835CBD /* unzip.h */; };
+		368F1F1013A3B8EE00835CBD /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E9A13A3B8EE00835CBD /* unzip.h */; };
+		368F1F1113A3B8EE00835CBD /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E9B13A3B8EE00835CBD /* zip.c */; };
+		368F1F1213A3B8EE00835CBD /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E9B13A3B8EE00835CBD /* zip.c */; };
+		368F1F1313A3B8EE00835CBD /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E9C13A3B8EE00835CBD /* zip.h */; };
+		368F1F1413A3B8EE00835CBD /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E9C13A3B8EE00835CBD /* zip.h */; };
+		368F1FD013A4427E00835CBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368F1E4213A3B7DB00835CBD /* Cocoa.framework */; };
+		368F1FD613A4427F00835CBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 368F1FD413A4427F00835CBD /* InfoPlist.strings */; };
+		368F1FD913A4427F00835CBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1FD813A4427F00835CBD /* main.m */; };
+		368F1FDC13A4427F00835CBD /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 368F1FDA13A4427F00835CBD /* Credits.rtf */; };
+		368F1FDF13A4427F00835CBD /* SampleApp_OSXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1FDE13A4427F00835CBD /* SampleApp_OSXAppDelegate.m */; };
+		368F1FE213A4427F00835CBD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368F1FE013A4427F00835CBD /* MainMenu.xib */; };
+		368F201B13A5087000835CBD /* NSDate+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F201213A5087000835CBD /* NSDate+TSTools.h */; };
+		368F201C13A5087000835CBD /* NSDate+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F201213A5087000835CBD /* NSDate+TSTools.h */; };
+		368F201D13A5087000835CBD /* NSDate+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201313A5087000835CBD /* NSDate+TSTools.m */; };
+		368F201E13A5087000835CBD /* NSDate+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201313A5087000835CBD /* NSDate+TSTools.m */; };
+		368F202013A5087000835CBD /* NSDate+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201313A5087000835CBD /* NSDate+TSTools.m */; };
+		368F202113A5087000835CBD /* NSNull+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F201413A5087000835CBD /* NSNull+TSTools.h */; };
+		368F202213A5087000835CBD /* NSNull+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F201413A5087000835CBD /* NSNull+TSTools.h */; };
+		368F202313A5087000835CBD /* NSNull+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201513A5087000835CBD /* NSNull+TSTools.m */; };
+		368F202413A5087000835CBD /* NSNull+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201513A5087000835CBD /* NSNull+TSTools.m */; };
+		368F202613A5087000835CBD /* NSNull+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201513A5087000835CBD /* NSNull+TSTools.m */; };
+		368F202713A5087000835CBD /* NSString+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F201613A5087000835CBD /* NSString+TSTools.h */; };
+		368F202813A5087000835CBD /* NSString+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F201613A5087000835CBD /* NSString+TSTools.h */; };
+		368F202913A5087000835CBD /* NSString+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201713A5087000835CBD /* NSString+TSTools.m */; };
+		368F202A13A5087000835CBD /* NSString+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201713A5087000835CBD /* NSString+TSTools.m */; };
+		368F202C13A5087000835CBD /* NSString+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201713A5087000835CBD /* NSString+TSTools.m */; };
+		368F202D13A5087000835CBD /* TSFileReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F201813A5087000835CBD /* TSFileReader.h */; };
+		368F202E13A5087000835CBD /* TSFileReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F201813A5087000835CBD /* TSFileReader.h */; };
+		368F202F13A5087000835CBD /* TSFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201913A5087000835CBD /* TSFileReader.m */; };
+		368F203013A5087000835CBD /* TSFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201913A5087000835CBD /* TSFileReader.m */; };
+		368F203213A5087000835CBD /* TSFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201913A5087000835CBD /* TSFileReader.m */; };
+		368F203313A5087000835CBD /* TSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F201A13A5087000835CBD /* TSMacros.h */; };
+		368F203413A5087000835CBD /* TSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F201A13A5087000835CBD /* TSMacros.h */; };
+		36A6FD2F13A5B36A00DD667D /* CityDBDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F205813A52B5900835CBD /* CityDBDelegate.m */; };
+		36A6FD4A13A5C18F00DD667D /* libbz2.1.0.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A6FD4913A5C18F00DD667D /* libbz2.1.0.5.dylib */; };
+		36A6FD4C13A5C19B00DD667D /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A6FD4B13A5C19B00DD667D /* libz.1.2.3.dylib */; };
+		36A6FD4D13A5C1F100DD667D /* libTSDocDB.OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 368F1E3F13A3B7DA00835CBD /* libTSDocDB.OSX.a */; };
+		36DE805213A59FC400B2CAAC /* countryInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 36DE805013A59F9F00B2CAAC /* countryInfo.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		36A6FD4113A5BEBA00DD667D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 368F1E3413A3B78D00835CBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 368F1E3E13A3B7DA00835CBD;
+			remoteInfo = TSDocDB.OSX;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		365DE06413A71A0F002300D7 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		3669458813A6A5E800B6DF53 /* DBLoadingPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBLoadingPane.h; sourceTree = "<group>"; };
+		3669458913A6A5E800B6DF53 /* DBLoadingPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBLoadingPane.m; sourceTree = "<group>"; };
+		3669458D13A6A60B00B6DF53 /* DBLoadingPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBLoadingPane.xib; sourceTree = "<group>"; };
+		368ADD1513A7971D00000A7E /* cities15000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cities15000.txt; sourceTree = "<group>"; };
+		368F1E3F13A3B7DA00835CBD /* libTSDocDB.OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTSDocDB.OSX.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		368F1E4213A3B7DB00835CBD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		368F1E4513A3B7DB00835CBD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		368F1E4613A3B7DB00835CBD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		368F1E4713A3B7DB00835CBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		368F1E4A13A3B7DB00835CBD /* TSDocDB.OSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TSDocDB.OSX-Prefix.pch"; sourceTree = "<group>"; };
+		368F1E5213A3B80000835CBD /* libTSDocDB.iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTSDocDB.iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		368F1E5313A3B80000835CBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		368F1E5713A3B80000835CBD /* TSDocDB.iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TSDocDB.iOS-Prefix.pch"; sourceTree = "<group>"; };
+		368F1E5C13A3B8EE00835CBD /* TSDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDB.h; sourceTree = "<group>"; };
+		368F1E5D13A3B8EE00835CBD /* TSDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDB.m; sourceTree = "<group>"; };
+		368F1E5E13A3B8EE00835CBD /* TSDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDBManager.h; sourceTree = "<group>"; };
+		368F1E5F13A3B8EE00835CBD /* TSDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDBManager.m; sourceTree = "<group>"; };
+		368F1E6013A3B8EE00835CBD /* TSDBQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDBQuery.h; sourceTree = "<group>"; };
+		368F1E6113A3B8EE00835CBD /* TSDBQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDBQuery.m; sourceTree = "<group>"; };
+		368F1E6213A3B8EE00835CBD /* TSRowFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRowFilter.h; sourceTree = "<group>"; };
+		368F1E6313A3B8EE00835CBD /* TSRowFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRowFilter.m; sourceTree = "<group>"; };
+		368F1E6413A3B8EE00835CBD /* TSRowFilterChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRowFilterChain.h; sourceTree = "<group>"; };
+		368F1E6513A3B8EE00835CBD /* TSRowFilterChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRowFilterChain.m; sourceTree = "<group>"; };
+		368F1E6C13A3B8EE00835CBD /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
+		368F1E6D13A3B8EE00835CBD /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		368F1E6E13A3B8EE00835CBD /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		368F1E6F13A3B8EE00835CBD /* myconf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = myconf.c; sourceTree = "<group>"; };
+		368F1E7013A3B8EE00835CBD /* myconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myconf.h; sourceTree = "<group>"; };
+		368F1E7113A3B8EE00835CBD /* tcadb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcadb.c; sourceTree = "<group>"; };
+		368F1E7213A3B8EE00835CBD /* tcadb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcadb.h; sourceTree = "<group>"; };
+		368F1E7313A3B8EE00835CBD /* tcamgr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcamgr.c; sourceTree = "<group>"; };
+		368F1E7413A3B8EE00835CBD /* tcamttest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcamttest.c; sourceTree = "<group>"; };
+		368F1E7513A3B8EE00835CBD /* tcatest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcatest.c; sourceTree = "<group>"; };
+		368F1E7613A3B8EE00835CBD /* tcawmgr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcawmgr.c; sourceTree = "<group>"; };
+		368F1E7713A3B8EE00835CBD /* tcbdb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcbdb.c; sourceTree = "<group>"; };
+		368F1E7813A3B8EE00835CBD /* tcbdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcbdb.h; sourceTree = "<group>"; };
+		368F1E7913A3B8EE00835CBD /* tcbmgr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcbmgr.c; sourceTree = "<group>"; };
+		368F1E7A13A3B8EE00835CBD /* tcbmttest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcbmttest.c; sourceTree = "<group>"; };
+		368F1E7B13A3B8EE00835CBD /* tcbtest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcbtest.c; sourceTree = "<group>"; };
+		368F1E7C13A3B8EE00835CBD /* tcfdb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcfdb.c; sourceTree = "<group>"; };
+		368F1E7D13A3B8EE00835CBD /* tcfdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcfdb.h; sourceTree = "<group>"; };
+		368F1E7E13A3B8EE00835CBD /* tcfmgr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcfmgr.c; sourceTree = "<group>"; };
+		368F1E7F13A3B8EE00835CBD /* tcfmttest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcfmttest.c; sourceTree = "<group>"; };
+		368F1E8013A3B8EE00835CBD /* tcftest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcftest.c; sourceTree = "<group>"; };
+		368F1E8113A3B8EE00835CBD /* tchdb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tchdb.c; sourceTree = "<group>"; };
+		368F1E8213A3B8EE00835CBD /* tchdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tchdb.h; sourceTree = "<group>"; };
+		368F1E8313A3B8EE00835CBD /* tchmgr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tchmgr.c; sourceTree = "<group>"; };
+		368F1E8413A3B8EE00835CBD /* tchmttest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tchmttest.c; sourceTree = "<group>"; };
+		368F1E8513A3B8EE00835CBD /* tchtest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tchtest.c; sourceTree = "<group>"; };
+		368F1E8613A3B8EE00835CBD /* tctdb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tctdb.c; sourceTree = "<group>"; };
+		368F1E8713A3B8EE00835CBD /* tctdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tctdb.h; sourceTree = "<group>"; };
+		368F1E8813A3B8EE00835CBD /* tctmgr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tctmgr.c; sourceTree = "<group>"; };
+		368F1E8913A3B8EE00835CBD /* tctmttest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tctmttest.c; sourceTree = "<group>"; };
+		368F1E8A13A3B8EE00835CBD /* tcttest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcttest.c; sourceTree = "<group>"; };
+		368F1E8C13A3B8EE00835CBD /* tcumttest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcumttest.c; sourceTree = "<group>"; };
+		368F1E8D13A3B8EE00835CBD /* tcutest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcutest.c; sourceTree = "<group>"; };
+		368F1E8E13A3B8EE00835CBD /* tcutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcutil.c; sourceTree = "<group>"; };
+		368F1E8F13A3B8EE00835CBD /* tcutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcutil.h; sourceTree = "<group>"; };
+		368F1E9113A3B8EE00835CBD /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		368F1E9213A3B8EE00835CBD /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		368F1E9413A3B8EE00835CBD /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		368F1E9513A3B8EE00835CBD /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		368F1E9613A3B8EE00835CBD /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		368F1E9713A3B8EE00835CBD /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		368F1E9813A3B8EE00835CBD /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		368F1E9913A3B8EE00835CBD /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		368F1E9A13A3B8EE00835CBD /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		368F1E9B13A3B8EE00835CBD /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		368F1E9C13A3B8EE00835CBD /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		368F1FCE13A4427E00835CBD /* SampleApp.OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.OSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		368F1FD313A4427F00835CBD /* SampleApp.OSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleApp.OSX-Info.plist"; sourceTree = "<group>"; };
+		368F1FD513A4427F00835CBD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		368F1FD713A4427F00835CBD /* SampleApp.OSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SampleApp.OSX-Prefix.pch"; sourceTree = "<group>"; };
+		368F1FD813A4427F00835CBD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		368F1FDB13A4427F00835CBD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		368F1FDD13A4427F00835CBD /* SampleApp_OSXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleApp_OSXAppDelegate.h; sourceTree = "<group>"; };
+		368F1FDE13A4427F00835CBD /* SampleApp_OSXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleApp_OSXAppDelegate.m; sourceTree = "<group>"; };
+		368F1FE113A4427F00835CBD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		368F201213A5087000835CBD /* NSDate+TSTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TSTools.h"; sourceTree = "<group>"; };
+		368F201313A5087000835CBD /* NSDate+TSTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TSTools.m"; sourceTree = "<group>"; };
+		368F201413A5087000835CBD /* NSNull+TSTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+TSTools.h"; sourceTree = "<group>"; };
+		368F201513A5087000835CBD /* NSNull+TSTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+TSTools.m"; sourceTree = "<group>"; };
+		368F201613A5087000835CBD /* NSString+TSTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TSTools.h"; sourceTree = "<group>"; };
+		368F201713A5087000835CBD /* NSString+TSTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TSTools.m"; sourceTree = "<group>"; };
+		368F201813A5087000835CBD /* TSFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSFileReader.h; sourceTree = "<group>"; };
+		368F201913A5087000835CBD /* TSFileReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFileReader.m; sourceTree = "<group>"; };
+		368F201A13A5087000835CBD /* TSMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMacros.h; sourceTree = "<group>"; };
+		368F205713A52B5900835CBD /* CityDBDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityDBDelegate.h; sourceTree = "<group>"; };
+		368F205813A52B5900835CBD /* CityDBDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityDBDelegate.m; sourceTree = "<group>"; };
+		36A6FD4913A5C18F00DD667D /* libbz2.1.0.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.5.dylib; path = SDKs/MacOSX10.6.sdk/usr/lib/libbz2.1.0.5.dylib; sourceTree = DEVELOPER_DIR; };
+		36A6FD4B13A5C19B00DD667D /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = SDKs/MacOSX10.6.sdk/usr/lib/libz.1.2.3.dylib; sourceTree = DEVELOPER_DIR; };
+		36DE805013A59F9F00B2CAAC /* countryInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countryInfo.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		368F1E3C13A3B7DA00835CBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				368F1E4313A3B7DB00835CBD /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		368F1E4F13A3B80000835CBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				368F1E5413A3B80000835CBD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		368F1FCB13A4427E00835CBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36A6FD4D13A5C1F100DD667D /* libTSDocDB.OSX.a in Frameworks */,
+				36A6FD4C13A5C19B00DD667D /* libz.1.2.3.dylib in Frameworks */,
+				36A6FD4A13A5C18F00DD667D /* libbz2.1.0.5.dylib in Frameworks */,
+				368F1FD013A4427E00835CBD /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		368ADD1813A799C700000A7E /* DBLoadingPane */ = {
+			isa = PBXGroup;
+			children = (
+				3669458813A6A5E800B6DF53 /* DBLoadingPane.h */,
+				3669458913A6A5E800B6DF53 /* DBLoadingPane.m */,
+				3669458D13A6A60B00B6DF53 /* DBLoadingPane.xib */,
+			);
+			name = DBLoadingPane;
+			sourceTree = "<group>";
+		};
+		368F1E3213A3B78D00835CBD = {
+			isa = PBXGroup;
+			children = (
+				368F1E5B13A3B8EE00835CBD /* src */,
+				368F1E4813A3B7DB00835CBD /* TSDocDB.OSX */,
+				368F1E5513A3B80000835CBD /* TSDocDB.iOS */,
+				368F1FD113A4427E00835CBD /* SampleApp.OSX */,
+				368F1E4113A3B7DB00835CBD /* Frameworks */,
+				368F1E4013A3B7DA00835CBD /* Products */,
+				368F1E5213A3B80000835CBD /* libTSDocDB.iOS.a */,
+				368F1E3F13A3B7DA00835CBD /* libTSDocDB.OSX.a */,
+			);
+			sourceTree = "<group>";
+		};
+		368F1E4013A3B7DA00835CBD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				368F1FCE13A4427E00835CBD /* SampleApp.OSX.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		368F1E4113A3B7DB00835CBD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36A6FD4B13A5C19B00DD667D /* libz.1.2.3.dylib */,
+				36A6FD4913A5C18F00DD667D /* libbz2.1.0.5.dylib */,
+				368F1E4213A3B7DB00835CBD /* Cocoa.framework */,
+				368F1E5313A3B80000835CBD /* Foundation.framework */,
+				368F1E4413A3B7DB00835CBD /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		368F1E4413A3B7DB00835CBD /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				368F1E4513A3B7DB00835CBD /* AppKit.framework */,
+				368F1E4613A3B7DB00835CBD /* CoreData.framework */,
+				368F1E4713A3B7DB00835CBD /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		368F1E4813A3B7DB00835CBD /* TSDocDB.OSX */ = {
+			isa = PBXGroup;
+			children = (
+				368F1E4913A3B7DB00835CBD /* Supporting Files */,
+			);
+			path = TSDocDB.OSX;
+			sourceTree = "<group>";
+		};
+		368F1E4913A3B7DB00835CBD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				368F1E4A13A3B7DB00835CBD /* TSDocDB.OSX-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		368F1E5513A3B80000835CBD /* TSDocDB.iOS */ = {
+			isa = PBXGroup;
+			children = (
+				368F1E5613A3B80000835CBD /* Supporting Files */,
+			);
+			path = TSDocDB.iOS;
+			sourceTree = "<group>";
+		};
+		368F1E5613A3B80000835CBD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				368F1E5713A3B80000835CBD /* TSDocDB.iOS-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		368F1E5B13A3B8EE00835CBD /* src */ = {
+			isa = PBXGroup;
+			children = (
+				368F1E5C13A3B8EE00835CBD /* TSDB.h */,
+				368F1E5D13A3B8EE00835CBD /* TSDB.m */,
+				368F1E5E13A3B8EE00835CBD /* TSDBManager.h */,
+				368F1E5F13A3B8EE00835CBD /* TSDBManager.m */,
+				368F1E6013A3B8EE00835CBD /* TSDBQuery.h */,
+				368F1E6113A3B8EE00835CBD /* TSDBQuery.m */,
+				368F1E6213A3B8EE00835CBD /* TSRowFilter.h */,
+				368F1E6313A3B8EE00835CBD /* TSRowFilter.m */,
+				368F1E6413A3B8EE00835CBD /* TSRowFilterChain.h */,
+				368F1E6513A3B8EE00835CBD /* TSRowFilterChain.m */,
+				368F1E6613A3B8EE00835CBD /* TSTools */,
+				368F1E6B13A3B8EE00835CBD /* TokyoCabinet */,
+				368F1E9013A3B8EE00835CBD /* ZipArchive */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		368F1E6613A3B8EE00835CBD /* TSTools */ = {
+			isa = PBXGroup;
+			children = (
+				368F201213A5087000835CBD /* NSDate+TSTools.h */,
+				368F201313A5087000835CBD /* NSDate+TSTools.m */,
+				368F201413A5087000835CBD /* NSNull+TSTools.h */,
+				368F201513A5087000835CBD /* NSNull+TSTools.m */,
+				368F201613A5087000835CBD /* NSString+TSTools.h */,
+				368F201713A5087000835CBD /* NSString+TSTools.m */,
+				368F201813A5087000835CBD /* TSFileReader.h */,
+				368F201913A5087000835CBD /* TSFileReader.m */,
+				368F201A13A5087000835CBD /* TSMacros.h */,
+			);
+			path = TSTools;
+			sourceTree = "<group>";
+		};
+		368F1E6B13A3B8EE00835CBD /* TokyoCabinet */ = {
+			isa = PBXGroup;
+			children = (
+				365DE06413A71A0F002300D7 /* COPYING */,
+				368F1E6C13A3B8EE00835CBD /* ChangeLog */,
+				368F1E6D13A3B8EE00835CBD /* md5.c */,
+				368F1E6E13A3B8EE00835CBD /* md5.h */,
+				368F1E6F13A3B8EE00835CBD /* myconf.c */,
+				368F1E7013A3B8EE00835CBD /* myconf.h */,
+				368F1E7113A3B8EE00835CBD /* tcadb.c */,
+				368F1E7213A3B8EE00835CBD /* tcadb.h */,
+				368F1E7313A3B8EE00835CBD /* tcamgr.c */,
+				368F1E7413A3B8EE00835CBD /* tcamttest.c */,
+				368F1E7513A3B8EE00835CBD /* tcatest.c */,
+				368F1E7613A3B8EE00835CBD /* tcawmgr.c */,
+				368F1E7713A3B8EE00835CBD /* tcbdb.c */,
+				368F1E7813A3B8EE00835CBD /* tcbdb.h */,
+				368F1E7913A3B8EE00835CBD /* tcbmgr.c */,
+				368F1E7A13A3B8EE00835CBD /* tcbmttest.c */,
+				368F1E7B13A3B8EE00835CBD /* tcbtest.c */,
+				368F1E7C13A3B8EE00835CBD /* tcfdb.c */,
+				368F1E7D13A3B8EE00835CBD /* tcfdb.h */,
+				368F1E7E13A3B8EE00835CBD /* tcfmgr.c */,
+				368F1E7F13A3B8EE00835CBD /* tcfmttest.c */,
+				368F1E8013A3B8EE00835CBD /* tcftest.c */,
+				368F1E8113A3B8EE00835CBD /* tchdb.c */,
+				368F1E8213A3B8EE00835CBD /* tchdb.h */,
+				368F1E8313A3B8EE00835CBD /* tchmgr.c */,
+				368F1E8413A3B8EE00835CBD /* tchmttest.c */,
+				368F1E8513A3B8EE00835CBD /* tchtest.c */,
+				368F1E8613A3B8EE00835CBD /* tctdb.c */,
+				368F1E8713A3B8EE00835CBD /* tctdb.h */,
+				368F1E8813A3B8EE00835CBD /* tctmgr.c */,
+				368F1E8913A3B8EE00835CBD /* tctmttest.c */,
+				368F1E8A13A3B8EE00835CBD /* tcttest.c */,
+				368F1E8C13A3B8EE00835CBD /* tcumttest.c */,
+				368F1E8D13A3B8EE00835CBD /* tcutest.c */,
+				368F1E8E13A3B8EE00835CBD /* tcutil.c */,
+				368F1E8F13A3B8EE00835CBD /* tcutil.h */,
+			);
+			path = TokyoCabinet;
+			sourceTree = "<group>";
+		};
+		368F1E9013A3B8EE00835CBD /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				368F1E9113A3B8EE00835CBD /* ZipArchive.h */,
+				368F1E9213A3B8EE00835CBD /* ZipArchive.mm */,
+				368F1E9313A3B8EE00835CBD /* minizip */,
+			);
+			path = ZipArchive;
+			sourceTree = "<group>";
+		};
+		368F1E9313A3B8EE00835CBD /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				368F1E9413A3B8EE00835CBD /* crypt.h */,
+				368F1E9513A3B8EE00835CBD /* ioapi.c */,
+				368F1E9613A3B8EE00835CBD /* ioapi.h */,
+				368F1E9713A3B8EE00835CBD /* mztools.c */,
+				368F1E9813A3B8EE00835CBD /* mztools.h */,
+				368F1E9913A3B8EE00835CBD /* unzip.c */,
+				368F1E9A13A3B8EE00835CBD /* unzip.h */,
+				368F1E9B13A3B8EE00835CBD /* zip.c */,
+				368F1E9C13A3B8EE00835CBD /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
+		368F1FD113A4427E00835CBD /* SampleApp.OSX */ = {
+			isa = PBXGroup;
+			children = (
+				368ADD1813A799C700000A7E /* DBLoadingPane */,
+				368F205413A51DBF00835CBD /* CityDB */,
+				368F1FDD13A4427F00835CBD /* SampleApp_OSXAppDelegate.h */,
+				368F1FDE13A4427F00835CBD /* SampleApp_OSXAppDelegate.m */,
+				368F1FE013A4427F00835CBD /* MainMenu.xib */,
+				368F1FD213A4427F00835CBD /* Supporting Files */,
+			);
+			path = SampleApp.OSX;
+			sourceTree = "<group>";
+		};
+		368F1FD213A4427F00835CBD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				368F1FD313A4427F00835CBD /* SampleApp.OSX-Info.plist */,
+				368F1FD413A4427F00835CBD /* InfoPlist.strings */,
+				368F1FD713A4427F00835CBD /* SampleApp.OSX-Prefix.pch */,
+				368F1FD813A4427F00835CBD /* main.m */,
+				368F1FDA13A4427F00835CBD /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		368F205413A51DBF00835CBD /* CityDB */ = {
+			isa = PBXGroup;
+			children = (
+				368ADD1513A7971D00000A7E /* cities15000.txt */,
+				36DE805013A59F9F00B2CAAC /* countryInfo.txt */,
+				368F205713A52B5900835CBD /* CityDBDelegate.h */,
+				368F205813A52B5900835CBD /* CityDBDelegate.m */,
+			);
+			path = CityDB;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		368F1E3D13A3B7DA00835CBD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				368F1E9D13A3B8EE00835CBD /* TSDB.h in Headers */,
+				368F1EA513A3B8EE00835CBD /* TSDBQuery.h in Headers */,
+				368F1EA113A3B8EE00835CBD /* TSDBManager.h in Headers */,
+				368F1EA913A3B8EE00835CBD /* TSRowFilter.h in Headers */,
+				368F1EAD13A3B8EE00835CBD /* TSRowFilterChain.h in Headers */,
+				368F1EBB13A3B8EE00835CBD /* md5.h in Headers */,
+				368F1EBF13A3B8EE00835CBD /* myconf.h in Headers */,
+				368F1EC313A3B8EE00835CBD /* tcadb.h in Headers */,
+				368F1ECF13A3B8EE00835CBD /* tcbdb.h in Headers */,
+				368F1ED913A3B8EE00835CBD /* tcfdb.h in Headers */,
+				368F1EE313A3B8EE00835CBD /* tchdb.h in Headers */,
+				368F1EED13A3B8EE00835CBD /* tctdb.h in Headers */,
+				368F1EFD13A3B8EE00835CBD /* tcutil.h in Headers */,
+				368F1EFF13A3B8EE00835CBD /* ZipArchive.h in Headers */,
+				368F1F0313A3B8EE00835CBD /* crypt.h in Headers */,
+				368F1F0713A3B8EE00835CBD /* ioapi.h in Headers */,
+				368F1F0B13A3B8EE00835CBD /* mztools.h in Headers */,
+				368F1F0F13A3B8EE00835CBD /* unzip.h in Headers */,
+				368F1F1313A3B8EE00835CBD /* zip.h in Headers */,
+				368F201B13A5087000835CBD /* NSDate+TSTools.h in Headers */,
+				368F202113A5087000835CBD /* NSNull+TSTools.h in Headers */,
+				368F202713A5087000835CBD /* NSString+TSTools.h in Headers */,
+				368F202D13A5087000835CBD /* TSFileReader.h in Headers */,
+				368F203313A5087000835CBD /* TSMacros.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		368F1E5013A3B80000835CBD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				368F1E9E13A3B8EE00835CBD /* TSDB.h in Headers */,
+				368F1EA213A3B8EE00835CBD /* TSDBManager.h in Headers */,
+				368F1EA613A3B8EE00835CBD /* TSDBQuery.h in Headers */,
+				368F1EAA13A3B8EE00835CBD /* TSRowFilter.h in Headers */,
+				368F1EAE13A3B8EE00835CBD /* TSRowFilterChain.h in Headers */,
+				368F1EBC13A3B8EE00835CBD /* md5.h in Headers */,
+				368F1EC013A3B8EE00835CBD /* myconf.h in Headers */,
+				368F1EC413A3B8EE00835CBD /* tcadb.h in Headers */,
+				368F1ED013A3B8EE00835CBD /* tcbdb.h in Headers */,
+				368F1EDA13A3B8EE00835CBD /* tcfdb.h in Headers */,
+				368F1EE413A3B8EE00835CBD /* tchdb.h in Headers */,
+				368F1EEE13A3B8EE00835CBD /* tctdb.h in Headers */,
+				368F1EFE13A3B8EE00835CBD /* tcutil.h in Headers */,
+				368F1F0013A3B8EE00835CBD /* ZipArchive.h in Headers */,
+				368F1F0413A3B8EE00835CBD /* crypt.h in Headers */,
+				368F1F0813A3B8EE00835CBD /* ioapi.h in Headers */,
+				368F1F0C13A3B8EE00835CBD /* mztools.h in Headers */,
+				368F1F1013A3B8EE00835CBD /* unzip.h in Headers */,
+				368F1F1413A3B8EE00835CBD /* zip.h in Headers */,
+				368F201C13A5087000835CBD /* NSDate+TSTools.h in Headers */,
+				368F202213A5087000835CBD /* NSNull+TSTools.h in Headers */,
+				368F202813A5087000835CBD /* NSString+TSTools.h in Headers */,
+				368F202E13A5087000835CBD /* TSFileReader.h in Headers */,
+				368F203413A5087000835CBD /* TSMacros.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		368F1E3E13A3B7DA00835CBD /* TSDocDB.OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 368F1E4B13A3B7DB00835CBD /* Build configuration list for PBXNativeTarget "TSDocDB.OSX" */;
+			buildPhases = (
+				368F1E3B13A3B7DA00835CBD /* Sources */,
+				368F1E3C13A3B7DA00835CBD /* Frameworks */,
+				368F1E3D13A3B7DA00835CBD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TSDocDB.OSX;
+			productName = TSDocDB.OSX;
+			productReference = 368F1E3F13A3B7DA00835CBD /* libTSDocDB.OSX.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		368F1E5113A3B80000835CBD /* TSDocDB.iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 368F1E5813A3B80000835CBD /* Build configuration list for PBXNativeTarget "TSDocDB.iOS" */;
+			buildPhases = (
+				368F1E4E13A3B80000835CBD /* Sources */,
+				368F1E4F13A3B80000835CBD /* Frameworks */,
+				368F1E5013A3B80000835CBD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TSDocDB.iOS;
+			productName = TSDocDB.iOS;
+			productReference = 368F1E5213A3B80000835CBD /* libTSDocDB.iOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		368F1FCD13A4427E00835CBD /* SampleApp.OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 368F1FE313A4427F00835CBD /* Build configuration list for PBXNativeTarget "SampleApp.OSX" */;
+			buildPhases = (
+				368F1FCA13A4427E00835CBD /* Sources */,
+				368F1FCB13A4427E00835CBD /* Frameworks */,
+				368F1FCC13A4427E00835CBD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				36A6FD4213A5BEBA00DD667D /* PBXTargetDependency */,
+			);
+			name = SampleApp.OSX;
+			productName = SampleApp.OSX;
+			productReference = 368F1FCE13A4427E00835CBD /* SampleApp.OSX.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		368F1E3413A3B78D00835CBD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = Ticklespace.com;
+			};
+			buildConfigurationList = 368F1E3713A3B78D00835CBD /* Build configuration list for PBXProject "TSDocDB" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 368F1E3213A3B78D00835CBD;
+			productRefGroup = 368F1E4013A3B7DA00835CBD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				368F1E3E13A3B7DA00835CBD /* TSDocDB.OSX */,
+				368F1E5113A3B80000835CBD /* TSDocDB.iOS */,
+				368F1FCD13A4427E00835CBD /* SampleApp.OSX */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		368F1FCC13A4427E00835CBD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				368F1FD613A4427F00835CBD /* InfoPlist.strings in Resources */,
+				368F1FDC13A4427F00835CBD /* Credits.rtf in Resources */,
+				368F1FE213A4427F00835CBD /* MainMenu.xib in Resources */,
+				36DE805213A59FC400B2CAAC /* countryInfo.txt in Resources */,
+				3669458E13A6A60B00B6DF53 /* DBLoadingPane.xib in Resources */,
+				368ADD1613A7971D00000A7E /* cities15000.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		368F1E3B13A3B7DA00835CBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				368F1E9F13A3B8EE00835CBD /* TSDB.m in Sources */,
+				368F1EA313A3B8EE00835CBD /* TSDBManager.m in Sources */,
+				368F1EA713A3B8EE00835CBD /* TSDBQuery.m in Sources */,
+				368F1EAB13A3B8EE00835CBD /* TSRowFilter.m in Sources */,
+				368F1EAF13A3B8EE00835CBD /* TSRowFilterChain.m in Sources */,
+				368F1EB913A3B8EE00835CBD /* md5.c in Sources */,
+				368F1EBD13A3B8EE00835CBD /* myconf.c in Sources */,
+				368F1EC113A3B8EE00835CBD /* tcadb.c in Sources */,
+				368F1EC513A3B8EE00835CBD /* tcamgr.c in Sources */,
+				368F1EC713A3B8EE00835CBD /* tcamttest.c in Sources */,
+				368F1EC913A3B8EE00835CBD /* tcatest.c in Sources */,
+				368F1ECB13A3B8EE00835CBD /* tcawmgr.c in Sources */,
+				368F1ECD13A3B8EE00835CBD /* tcbdb.c in Sources */,
+				368F1ED113A3B8EE00835CBD /* tcbmgr.c in Sources */,
+				368F1ED313A3B8EE00835CBD /* tcbmttest.c in Sources */,
+				368F1ED513A3B8EE00835CBD /* tcbtest.c in Sources */,
+				368F1ED713A3B8EE00835CBD /* tcfdb.c in Sources */,
+				368F1EDB13A3B8EE00835CBD /* tcfmgr.c in Sources */,
+				368F1EDD13A3B8EE00835CBD /* tcfmttest.c in Sources */,
+				368F1EDF13A3B8EE00835CBD /* tcftest.c in Sources */,
+				368F1EE113A3B8EE00835CBD /* tchdb.c in Sources */,
+				368F1EE513A3B8EE00835CBD /* tchmgr.c in Sources */,
+				368F1EE713A3B8EE00835CBD /* tchmttest.c in Sources */,
+				368F1EE913A3B8EE00835CBD /* tchtest.c in Sources */,
+				368F1EEB13A3B8EE00835CBD /* tctdb.c in Sources */,
+				368F1EEF13A3B8EE00835CBD /* tctmgr.c in Sources */,
+				368F1EF113A3B8EE00835CBD /* tctmttest.c in Sources */,
+				368F1EF313A3B8EE00835CBD /* tcttest.c in Sources */,
+				368F1EF713A3B8EE00835CBD /* tcumttest.c in Sources */,
+				368F1EF913A3B8EE00835CBD /* tcutest.c in Sources */,
+				368F1EFB13A3B8EE00835CBD /* tcutil.c in Sources */,
+				368F1F0113A3B8EE00835CBD /* ZipArchive.mm in Sources */,
+				368F1F0513A3B8EE00835CBD /* ioapi.c in Sources */,
+				368F1F0913A3B8EE00835CBD /* mztools.c in Sources */,
+				368F1F0D13A3B8EE00835CBD /* unzip.c in Sources */,
+				368F1F1113A3B8EE00835CBD /* zip.c in Sources */,
+				368F201D13A5087000835CBD /* NSDate+TSTools.m in Sources */,
+				368F202313A5087000835CBD /* NSNull+TSTools.m in Sources */,
+				368F202913A5087000835CBD /* NSString+TSTools.m in Sources */,
+				368F202F13A5087000835CBD /* TSFileReader.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		368F1E4E13A3B80000835CBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				368F1EA013A3B8EE00835CBD /* TSDB.m in Sources */,
+				368F1EA413A3B8EE00835CBD /* TSDBManager.m in Sources */,
+				368F1EA813A3B8EE00835CBD /* TSDBQuery.m in Sources */,
+				368F1EAC13A3B8EE00835CBD /* TSRowFilter.m in Sources */,
+				368F1EB013A3B8EE00835CBD /* TSRowFilterChain.m in Sources */,
+				368F1EBA13A3B8EE00835CBD /* md5.c in Sources */,
+				368F1EBE13A3B8EE00835CBD /* myconf.c in Sources */,
+				368F1EC213A3B8EE00835CBD /* tcadb.c in Sources */,
+				368F1EC613A3B8EE00835CBD /* tcamgr.c in Sources */,
+				368F1EC813A3B8EE00835CBD /* tcamttest.c in Sources */,
+				368F1ECA13A3B8EE00835CBD /* tcatest.c in Sources */,
+				368F1ECC13A3B8EE00835CBD /* tcawmgr.c in Sources */,
+				368F1ECE13A3B8EE00835CBD /* tcbdb.c in Sources */,
+				368F1ED213A3B8EE00835CBD /* tcbmgr.c in Sources */,
+				368F1ED413A3B8EE00835CBD /* tcbmttest.c in Sources */,
+				368F1ED613A3B8EE00835CBD /* tcbtest.c in Sources */,
+				368F1ED813A3B8EE00835CBD /* tcfdb.c in Sources */,
+				368F1EDC13A3B8EE00835CBD /* tcfmgr.c in Sources */,
+				368F1EDE13A3B8EE00835CBD /* tcfmttest.c in Sources */,
+				368F1EE013A3B8EE00835CBD /* tcftest.c in Sources */,
+				368F1EE213A3B8EE00835CBD /* tchdb.c in Sources */,
+				368F1EE613A3B8EE00835CBD /* tchmgr.c in Sources */,
+				368F1EE813A3B8EE00835CBD /* tchmttest.c in Sources */,
+				368F1EEA13A3B8EE00835CBD /* tchtest.c in Sources */,
+				368F1EEC13A3B8EE00835CBD /* tctdb.c in Sources */,
+				368F1EF013A3B8EE00835CBD /* tctmgr.c in Sources */,
+				368F1EF213A3B8EE00835CBD /* tctmttest.c in Sources */,
+				368F1EF413A3B8EE00835CBD /* tcttest.c in Sources */,
+				368F1EF813A3B8EE00835CBD /* tcumttest.c in Sources */,
+				368F1EFA13A3B8EE00835CBD /* tcutest.c in Sources */,
+				368F1EFC13A3B8EE00835CBD /* tcutil.c in Sources */,
+				368F1F0213A3B8EE00835CBD /* ZipArchive.mm in Sources */,
+				368F1F0613A3B8EE00835CBD /* ioapi.c in Sources */,
+				368F1F0A13A3B8EE00835CBD /* mztools.c in Sources */,
+				368F1F0E13A3B8EE00835CBD /* unzip.c in Sources */,
+				368F1F1213A3B8EE00835CBD /* zip.c in Sources */,
+				368F201E13A5087000835CBD /* NSDate+TSTools.m in Sources */,
+				368F202413A5087000835CBD /* NSNull+TSTools.m in Sources */,
+				368F202A13A5087000835CBD /* NSString+TSTools.m in Sources */,
+				368F203013A5087000835CBD /* TSFileReader.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		368F1FCA13A4427E00835CBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				368F1FD913A4427F00835CBD /* main.m in Sources */,
+				368F1FDF13A4427F00835CBD /* SampleApp_OSXAppDelegate.m in Sources */,
+				368F202013A5087000835CBD /* NSDate+TSTools.m in Sources */,
+				368F202613A5087000835CBD /* NSNull+TSTools.m in Sources */,
+				368F202C13A5087000835CBD /* NSString+TSTools.m in Sources */,
+				368F203213A5087000835CBD /* TSFileReader.m in Sources */,
+				36A6FD2F13A5B36A00DD667D /* CityDBDelegate.m in Sources */,
+				3669458F13A6A61700B6DF53 /* DBLoadingPane.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		36A6FD4213A5BEBA00DD667D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 368F1E3E13A3B7DA00835CBD /* TSDocDB.OSX */;
+			targetProxy = 36A6FD4113A5BEBA00DD667D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		368F1FD413A4427F00835CBD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				368F1FD513A4427F00835CBD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		368F1FDA13A4427F00835CBD /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				368F1FDB13A4427F00835CBD /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		368F1FE013A4427F00835CBD /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				368F1FE113A4427F00835CBD /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		368F1E3913A3B78D00835CBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
+			};
+			name = Debug;
+		};
+		368F1E3A13A3B78D00835CBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
+			};
+			name = Release;
+		};
+		368F1E4C13A3B7DB00835CBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TSDocDB.OSX/TSDocDB.OSX-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		368F1E4D13A3B7DB00835CBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TSDocDB.OSX/TSDocDB.OSX-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		368F1E5913A3B80000835CBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/TSDocDB_iOS.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TSDocDB.iOS/TSDocDB.iOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		368F1E5A13A3B80000835CBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/TSDocDB_iOS.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TSDocDB.iOS/TSDocDB.iOS-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		368F1FE413A4427F00835CBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleApp.OSX/SampleApp.OSX-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "SampleApp.OSX/SampleApp.OSX-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		368F1FE513A4427F00835CBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleApp.OSX/SampleApp.OSX-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "SampleApp.OSX/SampleApp.OSX-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		368F1E3713A3B78D00835CBD /* Build configuration list for PBXProject "TSDocDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				368F1E3913A3B78D00835CBD /* Debug */,
+				368F1E3A13A3B78D00835CBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		368F1E4B13A3B7DB00835CBD /* Build configuration list for PBXNativeTarget "TSDocDB.OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				368F1E4C13A3B7DB00835CBD /* Debug */,
+				368F1E4D13A3B7DB00835CBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		368F1E5813A3B80000835CBD /* Build configuration list for PBXNativeTarget "TSDocDB.iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				368F1E5913A3B80000835CBD /* Debug */,
+				368F1E5A13A3B80000835CBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		368F1FE313A4427F00835CBD /* Build configuration list for PBXNativeTarget "SampleApp.OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				368F1FE413A4427F00835CBD /* Debug */,
+				368F1FE513A4427F00835CBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 368F1E3413A3B78D00835CBD /* Project object */;
+}
