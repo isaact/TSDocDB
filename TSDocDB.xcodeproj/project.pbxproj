@@ -13,7 +13,7 @@
 		368F1E4313A3B7DB00835CBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368F1E4213A3B7DB00835CBD /* Cocoa.framework */; };
 		368F1E5413A3B80000835CBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368F1E5313A3B80000835CBD /* Foundation.framework */; };
 		368F1E9D13A3B8EE00835CBD /* TSDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E5C13A3B8EE00835CBD /* TSDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		368F1E9E13A3B8EE00835CBD /* TSDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E5C13A3B8EE00835CBD /* TSDB.h */; };
+		368F1E9E13A3B8EE00835CBD /* TSDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E5C13A3B8EE00835CBD /* TSDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		368F1E9F13A3B8EE00835CBD /* TSDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E5D13A3B8EE00835CBD /* TSDB.m */; };
 		368F1EA013A3B8EE00835CBD /* TSDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E5D13A3B8EE00835CBD /* TSDB.m */; };
 		368F1EA113A3B8EE00835CBD /* TSDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E5E13A3B8EE00835CBD /* TSDBManager.h */; };
@@ -21,7 +21,7 @@
 		368F1EA313A3B8EE00835CBD /* TSDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E5F13A3B8EE00835CBD /* TSDBManager.m */; };
 		368F1EA413A3B8EE00835CBD /* TSDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E5F13A3B8EE00835CBD /* TSDBManager.m */; };
 		368F1EA513A3B8EE00835CBD /* TSDBQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E6013A3B8EE00835CBD /* TSDBQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		368F1EA613A3B8EE00835CBD /* TSDBQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E6013A3B8EE00835CBD /* TSDBQuery.h */; };
+		368F1EA613A3B8EE00835CBD /* TSDBQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E6013A3B8EE00835CBD /* TSDBQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		368F1EA713A3B8EE00835CBD /* TSDBQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E6113A3B8EE00835CBD /* TSDBQuery.m */; };
 		368F1EA813A3B8EE00835CBD /* TSDBQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F1E6113A3B8EE00835CBD /* TSDBQuery.m */; };
 		368F1EA913A3B8EE00835CBD /* TSRowFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F1E6213A3B8EE00835CBD /* TSRowFilter.h */; };
@@ -560,8 +560,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				368F1E9E13A3B8EE00835CBD /* TSDB.h in Headers */,
-				368F1EA213A3B8EE00835CBD /* TSDBManager.h in Headers */,
 				368F1EA613A3B8EE00835CBD /* TSDBQuery.h in Headers */,
+				368F1EA213A3B8EE00835CBD /* TSDBManager.h in Headers */,
 				368F1EAA13A3B8EE00835CBD /* TSRowFilter.h in Headers */,
 				368F1EAE13A3B8EE00835CBD /* TSRowFilterChain.h in Headers */,
 				368F1EBC13A3B8EE00835CBD /* md5.h in Headers */,
