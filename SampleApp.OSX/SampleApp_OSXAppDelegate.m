@@ -19,13 +19,11 @@
   lastCountry = -1;
   if ([cityDBDelegate.geonamesDB getNumRowsOfType:@"city"] == 0) {
     DBLoadingPane *loadingWindow = [[DBLoadingPane alloc] init];
-    //[loadingWindow importCountriesModalToWindow:self.window];
     [loadingWindow importDataModalToWindow:self.window];
     [loadingWindow release];
   }
   [cityDBDelegate.geonamesDB setOrderByStringForColumn:@"Country" isAscending:YES];
   [cityDBDelegate.geonamesDB doSearchWithProcessingBlock:^BOOL(id row) {
-    //NSLog(@"%@", row);
     [countryArrayController addObject:row];
     return NO;
   } withLimit:300 andOffset:0 forRowTypes:@"country", nil];
@@ -33,7 +31,6 @@
   
   [cityDBDelegate.geonamesDB setOrderByStringForColumn:@"Country" isAscending:YES];
   [cityDBDelegate.geonamesDB doSearchWithProcessingBlock:^BOOL(id row) {
-    //NSLog(@"%@", row);
     [cityArrayController addObject:row];
     return NO;
   } withLimit:50 andOffset:0 forRowTypes:@"city", nil];
@@ -68,33 +65,6 @@
     }
   }
 }
-
--(IBAction)filterCityList2:(id)sender{
-  if (selectedCountry != nil) {
-    [cityDBDelegate.geonamesDB addConditionStringEquals:[selectedCountry objectForKey:@"ISO"] toColumn:@"country code"];
-  }
-  NSLog(@"Looking for %@", [selectedCountry objectForKey:@"ISO"]);
-  NSInteger numCities = [cityDBDelegate.geonamesDB getNumResultsOfRowType:@"city"];
-  NSInteger currentListSize = [[cityArrayController content] count];
-  __block NSInteger count = 0;
-  [cityDBDelegate.geonamesDB doSearchWithProcessingBlock:^BOOL(id row) {
-    //NSLog(@"Found %@", row);
-    if (count < numCities && count < currentListSize) {
-      [[cityArrayController content] replaceObjectAtIndex:count withObject:row];
-    }else{
-      [cityArrayController addObject:row];
-    }
-    count++;
-    return NO;
-  } withLimit:300 andOffset:0 forRowTypes:@"city", nil];
-  if (numCities < currentListSize) {
-    NSRange range;
-    range.location = numCities;
-    range.length = currentListSize - numCities;
-    [[cityArrayController content] removeObjectsInRange:range];
-  }
-  [cityArrayController rearrangeObjects];
-}
 -(IBAction)filterCityList:(id)sender{
   opCount++;
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -105,17 +75,14 @@
     }else if (selectedCountry != nil) {
       [cityDBDelegate.geonamesDB addConditionStringEquals:[selectedCountry objectForKey:@"ISO"] toColumn:@"country code"];
     }
-    //NSInteger numCities = [cityDBDelegate.geonamesDB getNumResultsOfRowType:@"city"];
     NSInteger currentListSize = [[cityArrayController content] count];
     __block NSInteger count = 0;
     __block BOOL stop;
     [cityDBDelegate.geonamesDB setOrderByStringForColumn:@"Country" isAscending:YES];
     [cityDBDelegate.geonamesDB doSearchWithProcessingBlock:^BOOL(id row) {
-      //NSLog(@"Found %@", row);
       dispatch_sync(dispatch_get_main_queue(), ^{
         if(op == opCount){
           stop=NO;
-          //NSLog(@"Found %@", row);
           if (count < currentListSize) {
             [[cityArrayController content] replaceObjectAtIndex:count withObject:row];
           }else{
@@ -147,17 +114,14 @@
     if ([[countrySearchField stringValue] length] > 0) {
       [cityDBDelegate.geonamesDB addConditionRowContainsString:[countrySearchField stringValue]];
     }
-    //NSInteger numCountries = [cityDBDelegate.geonamesDB getNumResultsOfRowType:@"country"];
     NSInteger currentListSize = [[countryArrayController content] count];
     __block NSInteger count = 0;
     __block BOOL stop;
     [cityDBDelegate.geonamesDB setOrderByStringForColumn:@"Country" isAscending:YES];
     [cityDBDelegate.geonamesDB doSearchWithProcessingBlock:^BOOL(id row) {
-      //NSLog(@"Found %@", row);
       dispatch_sync(dispatch_get_main_queue(), ^{
         if(op == opCount2){
           stop=NO;
-          //NSLog(@"Found %@", row);
           if (count < currentListSize) {
             [[countryArrayController content] replaceObjectAtIndex:count withObject:row];
           }else{

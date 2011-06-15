@@ -20,7 +20,6 @@
   self = [super init];
   if (self) {
     geonamesDB = [[TSDB TSDBWithDBNamed:@"geonamesDB" inDirectoryAtPathOrNil:nil delegate:self] retain];
-    //geonamesDB = [[TSDB alloc] initWithDBNamed:@"geonamesDB" inDirectoryAtPathOrNil:nil delegate:self];
   }
   return self;
 }
