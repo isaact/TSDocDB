@@ -8,9 +8,9 @@ TSDocDB is a more flexible approach to dealing data problems than the usual RDBM
 The Objects
 ===========
 
-##TSDB
+##[TSDB](TSDocDB/blob/master/TSDB.markdown)
 
-TSDB is the main object you'll be using in you application. Each TSDB object represents a connection to a tokyo cabinet database. Multiple connections to the same db are allowed. More info [here](TSDocDB/blob/master/TSDB.markdown)
+TSDB is the main object you'll be using in you application. Each TSDB object represents a connection to a tokyo cabinet database. Multiple connections to the same db are allowed. [More info here](TSDocDB/blob/master/TSDB.markdown)
 
 ##TSDBDefinitionsDelegate(Protocol)
 

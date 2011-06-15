@@ -1,5 +1,6 @@
 TSDB
 ====
+TSDB is the main object you'll be using in you application. Each TSDB object represents a connection to a tokyo cabinet database. Multiple connections to the same db are allowed. Below are the public methods available.
 
 DBManagement Methods
 --------------------
