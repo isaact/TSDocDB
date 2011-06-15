@@ -127,6 +127,7 @@
 		368F203213A5087000835CBD /* TSFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F201913A5087000835CBD /* TSFileReader.m */; };
 		368F203313A5087000835CBD /* TSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F201A13A5087000835CBD /* TSMacros.h */; };
 		368F203413A5087000835CBD /* TSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 368F201A13A5087000835CBD /* TSMacros.h */; };
+		369E4F9F13A9584D005F33F3 /* TSDB.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 369E4F9E13A9584D005F33F3 /* TSDB.markdown */; };
 		36A6FD2F13A5B36A00DD667D /* CityDBDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F205813A52B5900835CBD /* CityDBDelegate.m */; };
 		36A6FD4A13A5C18F00DD667D /* libbz2.1.0.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A6FD4913A5C18F00DD667D /* libbz2.1.0.5.dylib */; };
 		36A6FD4C13A5C19B00DD667D /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A6FD4B13A5C19B00DD667D /* libz.1.2.3.dylib */; };
@@ -225,6 +226,7 @@
 		368F201A13A5087000835CBD /* TSMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMacros.h; sourceTree = "<group>"; };
 		368F205713A52B5900835CBD /* CityDBDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityDBDelegate.h; sourceTree = "<group>"; };
 		368F205813A52B5900835CBD /* CityDBDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityDBDelegate.m; sourceTree = "<group>"; };
+		369E4F9E13A9584D005F33F3 /* TSDB.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TSDB.markdown; sourceTree = "<group>"; };
 		36A6FD4913A5C18F00DD667D /* libbz2.1.0.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.5.dylib; path = SDKs/MacOSX10.6.sdk/usr/lib/libbz2.1.0.5.dylib; sourceTree = DEVELOPER_DIR; };
 		36A6FD4B13A5C19B00DD667D /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = SDKs/MacOSX10.6.sdk/usr/lib/libz.1.2.3.dylib; sourceTree = DEVELOPER_DIR; };
 		36AA2B6213A903F200A48277 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 		368F1E3213A3B78D00835CBD = {
 			isa = PBXGroup;
 			children = (
+				369E4F9E13A9584D005F33F3 /* TSDB.markdown */,
 				36AA2B6213A903F200A48277 /* COPYING */,
 				3606F18813A8E5F900E45C4F /* README.markdown */,
 				368F1E5B13A3B8EE00835CBD /* src */,
@@ -638,6 +641,7 @@
 				36DE805213A59FC400B2CAAC /* countryInfo.txt in Resources */,
 				3669458E13A6A60B00B6DF53 /* DBLoadingPane.xib in Resources */,
 				368ADD1613A7971D00000A7E /* cities15000.txt in Resources */,
+				369E4F9F13A9584D005F33F3 /* TSDB.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
