@@ -35,7 +35,7 @@ Using the static lib (iOS)
 2. Add TSDocDB.xcodeproj to your workspace or project
 3. Add $(BUILT_PRODUCTS_DIR) to the "User Header Search Paths" and set it to recursive
 4. Make sure "Always Search  Paths" is set to true.
-5. Link you app binary to libTSDocDB.iOS.a 
+5. Link you app binary to libTSDocDB.iOS.a, libz.1.2.3.dylib and libbz2.1.0.5.dylib
 6. In your class file include TSDB.h
 7. Create a new class object that implements the TSDBDefinitionsDelegate protocol. See the sample app(`CityDBDelegate`) for an example of how to do this.
 
@@ -45,7 +45,7 @@ Using the static lib (OSX)
 2. Add TSDocDB.xcodeproj to your workspace or project
 3. Add $(BUILT_PRODUCTS_DIR) to the "User Header Search Paths" and set it to recursive
 4. Make sure "Always Search  Paths" is set to true.
-5. Link you app binary to libTSDocDB.OSX.a 
+5. Link you app binary to libTSDocDB.OSX.a, libz.1.2.3.dylib and libbz2.1.0.5.dylib 
 6. In your class file include TSDB.h
 7. Create a new class object that implements the TSDBDefinitionsDelegate protocol. See the sample app(`CityDBDelegate`) for an example of how to do this.
 
