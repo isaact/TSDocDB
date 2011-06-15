@@ -5,7 +5,7 @@ A simple, flexible db system built on top of the powerful [Tokyo Cabinet](http:/
 The Objects
 ===========
 
-##[TSDB](blob/master/TSDB.markdown)
+##TSDB[Documnetaion](TSDocDB/blob/master/TSDB.markdown)
 
 TSDB is the main object you will be using in you application. Each TSDB object represents a connection to a tokyo cabinet database. Multiple connections to the same db are allowed.
 
