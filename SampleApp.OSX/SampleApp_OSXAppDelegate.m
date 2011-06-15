@@ -9,12 +9,14 @@
 #import "SampleApp_OSXAppDelegate.h"
 #import "DBLoadingPane.h"
 #import "TSDBManager.h"
+#import "TSSearchField.h"
 
 @implementation SampleApp_OSXAppDelegate
 
 @synthesize window;
 
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification{
+  useTSSearchField();
   cityDBDelegate = [[CityDBDelegate alloc] init];
   lastCountry = -1;
   if ([cityDBDelegate.geonamesDB getNumRowsOfType:@"city"] == 0) {

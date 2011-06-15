@@ -3,8 +3,25 @@
 //  TSDB
 //
 //  Created by Isaac Tewolde on 10-06-12.
-//  Copyright 2010 Ticklespace.com. All rights reserved.
+//  Copyright 2010-2011 Ticklespace.com. All rights reserved.
 //
+
+/************************************************************************ 
+ * This file is part of TSDocDB.
+ * 
+ * TSDocDB is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * TSDocDB is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ ***********************************************************************/
 
 #import "TSDB.h"
 
@@ -314,16 +331,14 @@
   });
 }
 
--(NSDictionary *)getRowByStringID:(NSString *)rowID forType:(NSString *)rowType{
+-(id)getRowByStringID:(NSString *)rowID forType:(NSString *)rowType{
   __block NSDictionary *row;
-  //dispatch_sync(dbQueue, ^{
-    NSString *realRowID = [self makePrimaryRowKey:rowType andRowID:rowID];
-    NSLog(@"%@", realRowID);
-    row = [self dbGet:realRowID];
-  //});
+  NSString *realRowID = [self makePrimaryRowKey:rowType andRowID:rowID];
+  NSLog(@"%@", realRowID);
+  row = [self dbGet:realRowID];
   return row;
 }
--(NSDictionary *)getRowByIntegerID:(NSInteger)rowID forType:(NSString *)rowType{
+-(id)getRowByIntegerID:(NSInteger)rowID forType:(NSString *)rowType{
   NSString *stringRowID = [NSString stringWithFormat:@"%d", rowID];
   return [self getRowByStringID:stringRowID forType:rowType];
 }
@@ -412,7 +427,7 @@
   }
 }
 
-#pragma mark Row Filter
+#pragma mark Full text Filter
 -(void)addConditionRowContainsString:(NSString *)text{
   [self addConditionContainsAllWordsInString:text toColumn:@"_TSDB.TXT"];
 }
@@ -454,7 +469,8 @@
   }
 }
 
-#pragma mark Convenient Search Methods
+#pragma mark -
+#pragma mark Search Execution Methods
 -(NSUInteger)getNumRowsOfType:(NSString *)rowTypeOrNil{
   __block NSUInteger numRows;
   dispatch_sync(dbQueue, ^{
@@ -494,17 +510,67 @@
   GVargs(rowTypes, rowType, NSString);
   __block NSArray *rows;
   //dispatch_sync(dbQueue, ^{
+  TCTDB *tdb = [self getDB];
+  if ([rowTypes count]) {
+    [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
+  }
+  TDBQRY *qry = [filterChain getQuery:tdb];
+  [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
+  rows = [self fetchRows:qry];
+  tctdbqrydel(qry);
+  //});
+  return rows;
+}
+
+#pragma mark Asynchronous Search Execution Methods
+-(void)getNumRowsWithAsyncNotification:(NSString *)notificationNameOrNil ofRowTypeOrNil:(NSString *)rowType{
+  dispatch_queue_t queue;
+  queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+  __block NSUInteger ret;
+  dispatch_async(queue, ^{
+    ret = [self getNumRowsOfType:rowType];
+    [self postNotificationWithNotificationName:notificationNameOrNil andData:[NSNumber numberWithUnsignedInteger:ret]];
+  });
+  
+}
+-(void)doSearchWithAsyncNotification:(NSString *)notificationNameOrNil resultLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
+  NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
+  GVargs(rowTypes, rowType, NSString);
+  dispatch_queue_t queue;
+  queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+  __block NSArray *ret;
+  dispatch_async(queue, ^{
+    //dispatch_sync(dbQueue, ^{
     TCTDB *tdb = [self getDB];
     if ([rowTypes count]) {
       [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
     }
     TDBQRY *qry = [filterChain getQuery:tdb];
     [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
-    rows = [self fetchRows:qry];
+    ret = [self fetchRows:qry];
+    [self postNotificationWithNotificationName:notificationNameOrNil andData:ret];
     tctdbqrydel(qry);
-  //});
-  return rows;
+    //});
+  });
 }
+
+#pragma mark DB Streaming Search Execution Methods
+-(void)doSearchWithProcessingBlock:(BOOL(^)(id))processingBlock withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
+  NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
+  GVargs(rowTypes, rowType, NSString);
+  TCTDB *tdb = [self getDB];
+  if ([rowTypes count]) {
+    [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
+  }
+  TDBQRY *qry = [filterChain getQuery:tdb];
+  [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
+  [self fetchRows:qry andProcessWithBlock:processingBlock];
+  //  tctdbqrydel(qry);
+}
+
+#pragma mark -
+#pragma mark Convenient Search Methods
+
 -(BOOL)deleteMatchingRowsForRowTypes:(NSString *)rowType,...{
   NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
   GVargs(rowTypes, rowType, NSString);
@@ -562,51 +628,7 @@
   return rows;
 }
 
-#pragma mark DB streaming methods
--(void)doSearchWithProcessingBlock:(BOOL(^)(id))processingBlock withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
-  NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
-  GVargs(rowTypes, rowType, NSString);
-  TCTDB *tdb = [self getDB];
-  if ([rowTypes count]) {
-    [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
-  }
-  TDBQRY *qry = [filterChain getQuery:tdb];
-  [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
-  [self fetchRows:qry andProcessWithBlock:processingBlock];
-//  tctdbqrydel(qry);
-}
-
 #pragma mark Asynchronous Convenient Search Methods
--(void)getNumRowsWithAsyncNotification:(NSString *)notificationNameOrNil ofRowTypeOrNil:(NSString *)rowType{
-  dispatch_queue_t queue;
-  queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-  __block NSUInteger ret;
-  dispatch_async(queue, ^{
-    ret = [self getNumRowsOfType:rowType];
-    [self postNotificationWithNotificationName:notificationNameOrNil andData:[NSNumber numberWithUnsignedInteger:ret]];
-  });
-  
-}
--(void)doSearchWithAsyncNotification:(NSString *)notificationNameOrNil resultLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
-  NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
-  GVargs(rowTypes, rowType, NSString);
-  dispatch_queue_t queue;
-  queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-  __block NSArray *ret;
-  dispatch_async(queue, ^{
-    //dispatch_sync(dbQueue, ^{
-      TCTDB *tdb = [self getDB];
-      if ([rowTypes count]) {
-        [self addConditionStringInSet:rowTypes toColumn:[self makeRowTypeKey]];
-      }
-      TDBQRY *qry = [filterChain getQuery:tdb];
-      [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
-      ret = [self fetchRows:qry];
-      [self postNotificationWithNotificationName:notificationNameOrNil andData:ret];
-      tctdbqrydel(qry);
-    //});
-  });
-}
 -(void)searchForPhraseWithAsyncNotification:(NSString *)notificationNameOrNil forPhrase:(NSString *)thePhrase withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...{
   NSMutableArray *rowTypes = [NSMutableArray arrayWithCapacity:1];
   GVargs(rowTypes, rowType, NSString);

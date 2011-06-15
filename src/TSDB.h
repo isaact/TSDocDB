@@ -3,8 +3,25 @@
 //  TSDB
 //
 //  Created by Isaac Tewolde on 10-06-12.
-//  Copyright 2010 Ticklespace.com. All rights reserved.
+//  Copyright 2010-2011 Ticklespace.com. All rights reserved.
 //
+
+/************************************************************************ 
+ * This file is part of TSDocDB.
+ * 
+ * TSDocDB is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * TSDocDB is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ ***********************************************************************/
 
 #import <Foundation/Foundation.h>
 
@@ -62,18 +79,18 @@ typedef enum {
 -(void)reopenDB;
 
 
-//Table Management Methods
+//Modification Methods
 -(void)reindexDB:(NSString *)rowTypeOrNil;
 -(void)reindexRows:(NSString *)rowType;
 -(void)optimizeDBWithBnum:(NSInteger)bnum;
 -(void)optimizeDB;
 -(void)optimizeIndexes:(NSString *)rowTypeOrNil;
 -(void)resetDB;
-
 -(void)replaceRow:(NSString *)rowID withRowType:(NSString *)rowType andRowData:(NSDictionary *)rowData;
--(NSDictionary *)getRowByStringID:(NSString *)rowID forType:(NSString *)rowType;
--(NSDictionary *)getRowByIntegerID:(NSInteger)rowID forType:(NSString *)rowType;
+-(id)getRowByStringID:(NSString *)rowID forType:(NSString *)rowType;
+-(id)getRowByIntegerID:(NSInteger)rowID forType:(NSString *)rowType;
 -(BOOL)deleteRow:(NSString *)rowID forType:(NSString *)rowType;
+-(BOOL)deleteMatchingRowsForRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;
 
 //Ordering Methods
 -(void)setOrderByStringForColumn:(NSString *)colName isAscending:(BOOL)ascending;
@@ -100,7 +117,7 @@ typedef enum {
 -(NSUInteger)getNumRowsOfType:(NSString *)rowTypeOrNil;
 -(NSUInteger)getNumResultsOfRowType:(NSString *)rowTypeOrNil;
 -(NSArray *)doSearchWithLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;
--(BOOL)deleteMatchingRowsForRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;
+
 
 //Convenient Search Methods
 -(NSArray *)searchForPhrase:(NSString *)phrase withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,... NS_REQUIRES_NIL_TERMINATION;

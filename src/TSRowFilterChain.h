@@ -3,7 +3,7 @@
 //  TSDB
 //
 //  Created by Isaac Tewolde on 10-07-27.
-//  Copyright 2010 Ticklespace.com. All rights reserved.
+//  Copyright 2010-2011 Ticklespace.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
