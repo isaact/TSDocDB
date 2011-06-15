@@ -56,7 +56,7 @@ Ordering Methods
 
 Filtering Methods
 -----------------
-TSDB uses filter chains to constraint search results. A filter chain a list if expressions(filter) that are resolve to true or false. The filter chain is like the "where" part of an SQL statment, where for a row to match each filter in the chain must resolve to true.
+TSDB uses filter chains to constraint search results. A filter chain is a list of expressions(filters) that resolve to true or false. The filter chain is like the "where" part of an SQL statment. For a row to match a search query, each filter in the chain must resolve to true.
 
 Filter chains are built one at a time and when the search is excecuted the filter chain is cleared. It is also possible to have have the filters remain after the search has executed, see "Predefined query search methods"
 
