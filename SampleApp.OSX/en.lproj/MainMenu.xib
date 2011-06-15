@@ -1355,7 +1355,7 @@
 									<double key="NSSize">13</double>
 									<int key="NSfFlags">1044</int>
 								</object>
-								<string key="NSPlaceholderString">Enter a city name</string>
+								<string key="NSPlaceholderString">Enter a city or country</string>
 								<reference key="NSControlView" ref="1047124957"/>
 								<bool key="NSDrawsBackground">YES</bool>
 								<int key="NSTextBezelStyle">1</int>
