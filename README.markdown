@@ -2,6 +2,8 @@ TSDocDB
 ========
 A simple, flexible db system built on top of the powerful [Tokyo Cabinet](http://fallabs.com/tokyocabinet/) embedded database system. TSDocDB adds an objective-c wrapper to tokyo cabinet and provides many conveniences to allow rapid deployment in your iOS os OSX application. See the included sample app for a detailed use case.
 
+TSDocDB is a more flexible approach to dealing data problems than the usual RDBMS way and supports powerful full-text searching abilities. This code is currently being used in some production OSX and iOS applications with tight memory constraints.
+
 The Objects
 ===========
 
