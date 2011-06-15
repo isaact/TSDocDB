@@ -31,6 +31,7 @@ These methods are used to create/open new DB instances. By default new databases
     -(id)initWithDBNamed:(NSString *)dbName inDirectoryAtPathOrNil:(NSString*)path delegate:(id<TSDBDefinitionsDelegate>)theDelegate;
 
 These methods are for DB maintainance and optimization
+
     -(void)syncDB;
     -(void)reindexDB:(NSString *)rowTypeOrNil;
     -(void)reindexRows:(NSString *)rowType;
@@ -77,11 +78,13 @@ Filter chains are built one at a time and when the search is excecuted the filte
 Search Excecution Methods
 --------------
 These methods are for excecuting a search or counting the number results found.
+
     -(NSUInteger)getNumRowsOfType:(NSString *)rowTypeOrNil;
     -(NSUInteger)getNumResultsOfRowType:(NSString *)rowTypeOrNil;
     -(NSArray *)doSearchWithLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;
 
 This method deletes the matching rows. Careful when using this method as running it without adding any conditions or row types will remove all the rows in the database.
+
     -(BOOL)deleteMatchingRowsForRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;
 
 Asynchronous Search Excecution Methods
@@ -93,6 +96,7 @@ Same as above but perform the search asyncronously and receive the results via a
 Streaming Search Excecution Methods
 --------------------
 If you want to process results as they are being fetched from the db use this method. This is very useful for db operations that take a long time and you want to update UI elements as the db operation proceeds.
+
     -(void)doSearchWithProcessingBlock:(BOOL(^)(id))processingBlock withLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset forRowTypes:(NSString *)rowType,...  NS_REQUIRES_NIL_TERMINATION;
 
 Convenient Search Methods
