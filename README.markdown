@@ -5,8 +5,8 @@ A simple, flexible db system built on top of the powerful [Tokyo Cabinet](http:/
 TSDocDB is a more flexible approach to dealing data problems than the usual RDBMS way and supports powerful full-text searching abilities. This code is currently being used in some production OSX and iOS applications with tight memory constraints.
 
 
-The Objects
-===========
+TSDocDB Classes
+===============
 
 ##[TSDB](TSDocDB/blob/master/TSDB.markdown)
 
