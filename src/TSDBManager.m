@@ -191,13 +191,13 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   TCTDB *db;
   tcmapiterinit(tsDBs);
   while((key = tcmapiternext2(tsDBs)) != NULL){
-    NSLog(@"Closing : %s", key);
+    //NSLog(@"Closing : %s", key);
     db = (TCTDB *)tcmapget(tsDBs, key, (int)strlen(key), &sp);
     tctdbsync(db);
     tctdbclose(db);
     tcmapout(tsDBs, key, (int)strlen(key));
   }
-  NSLog(@"Done");
+  //NSLog(@"Done");
   tcmapdel(tsDBs);
 }
 -(TCTDB *)getDBFromFile:(NSString *)dbFilePath{
