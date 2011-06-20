@@ -82,6 +82,7 @@
     }
   }];
   [geonamesDB syncDB];
+  [reader release];
 }
 -(void)importCitiesWithProgressBlock:(void(^)(NSDictionary *city, BOOL *stop, float progress))block{
   TSFileReader *reader = [[TSFileReader alloc] initWithFilePath:[[NSBundle mainBundle] pathForResource:@"cities15000" ofType:@"txt"]];
@@ -115,6 +116,7 @@
     }
   }];
   [geonamesDB syncDB];
+  [reader release];
 }
 
 @end
