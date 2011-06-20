@@ -29,6 +29,7 @@
   [cityDBDelegate release];
   [cities release];
   [filteredCities release];
+  [numFormatter release];
   [super dealloc];
 }
 
@@ -49,6 +50,10 @@
   filteredCities = [[NSMutableArray alloc] init];
   opCount = 0;
   isSearching = NO;
+  [self.navigationItem setTitle:@"Cities"];
+  [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+  numFormatter = [[NSNumberFormatter alloc] init];
+  [numFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
 }
 -(void)awakeFromNib{
 }
@@ -109,28 +114,21 @@
   NSDictionary *cityData;
   if (tableView == self.searchDisplayController.searchResultsTableView) {
     [cell.textLabel setText:[[filteredCities objectAtIndex:[indexPath row]] objectForKey:@"name"]];
-    cityData = [cities objectAtIndex:[indexPath row]];
+    cityData = [filteredCities objectAtIndex:[indexPath row]];
   }else{
     [cell.textLabel setText:[[cities objectAtIndex:[indexPath row]] objectForKey:@"name"]];
     cityData = [cities objectAtIndex:[indexPath row]];
   }
-  
-  NSString *detailText = [NSString stringWithFormat:@"pop. %@, (%@)", [cityData objectForKey:@"population"], [cityData objectForKey:@"Country"]];
+  NSString *pop = [numFormatter stringFromNumber:[NSNumber numberWithInt:[[cityData objectForKey:@"population"] intValue]]];
+  NSString *detailText = [NSString stringWithFormat:@"pop. %@ (%@)", pop, [cityData objectForKey:@"Country"]];
   [cell.detailTextLabel setText:detailText];
   cell.detailTextLabel.hidden = NO;
+  cell.selectionStyle = UITableViewCellSelectionStyleNone;
   return cell;
 }
 #pragma mark - Table view delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  // Navigation logic may go here. Create and push another view controller.
-  /*
-   <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-   // ...
-   // Pass the selected object to the new view controller.
-   [self.navigationController pushViewController:detailViewController animated:YES];
-   [detailViewController release];
-   */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
 }
 #pragma mark -
 #pragma mark UISearchDisplayController Delegate Methods

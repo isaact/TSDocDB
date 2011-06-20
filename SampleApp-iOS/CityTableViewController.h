@@ -15,6 +15,7 @@
   NSUInteger opCount;
   NSString *countryCode;
   BOOL isSearching;
+  NSNumberFormatter *numFormatter;
 }
 @property(nonatomic,retain) NSString *countryCode;
 @end

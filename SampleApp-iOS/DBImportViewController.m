@@ -66,6 +66,8 @@
 -(void)importData{
   [self importCountries];
   [self importCities];
+  [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) 
+            withObject:[NSNotification notificationWithName:@"DBImportComplete" object:nil userInfo:nil] waitUntilDone:YES];
   [self dismissModalViewControllerAnimated:YES];
 }
 

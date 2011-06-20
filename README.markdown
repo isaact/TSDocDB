@@ -1,9 +1,10 @@
 TSDocDB
 ========
-A simple, flexible db system built on top of the powerful [Tokyo Cabinet](http://fallabs.com/tokyocabinet/) embedded database system. TSDocDB adds an objective-c wrapper to tokyo cabinet and provides many conveniences to allow rapid deployment in your iOS os OSX application. See the included sample app for a detailed use case.
+A simple, flexible db system built on top of the powerful [Tokyo Cabinet](http://fallabs.com/tokyocabinet/) embedded database system. TSDocDB adds an objective-c wrapper to tokyo cabinet and provides many conveniences to allow rapid deployment in your iOS os OSX application. TSDocDB is a more flexible approach to dealing data problems than the usual RDBMS way and supports powerful full-text searching abilities. This code is currently being used in some production OSX and iOS applications with tight memory constraints.
 
-TSDocDB is a more flexible approach to dealing data problems than the usual RDBMS way and supports powerful full-text searching abilities. This code is currently being used in some production OSX and iOS applications with tight memory constraints.
-
+Sample Apps
+===========
+Included in the project are sample OSX and iOS apps that demonstrate the power of the database system and present a detailed how-to guide. Both applications use a [GeoNames](http://www.geonames.org/) datasource and allow the user to see every city on the planet with a population > 15k (about 23,000 cities in all). Both also allow the user full text searching on the city and country name.
 
 TSDocDB Classes
 ===============	

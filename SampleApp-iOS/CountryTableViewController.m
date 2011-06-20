@@ -9,9 +9,11 @@
 #import "CountryTableViewController.h"
 #import "CityDBDelegate.h"
 #import "CityTableViewController.h"
+#import "DBImportViewController.h"
 
 @interface CountryTableViewController()
 -(void)updateRowsWithSearchString:(NSString *)searchString;
+-(void)addRows:(NSNotification *)notificationInfo;
 @end
 @implementation CountryTableViewController
 
@@ -46,27 +48,37 @@
   cityDBDelegate = [[CityDBDelegate alloc] init];
   countries = [[NSMutableArray alloc] init];
   filteredCountries = [[NSMutableArray alloc] init];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addRows:) name:@"DBImportComplete" object:nil];
   opCount = 0;
   isSearching = NO;
-}
--(void)awakeFromNib{
-}
-- (void)viewDidUnload
-{
-  [super viewDidUnload];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-  [super viewWillAppear:animated];
+  [self.navigationItem setTitle:@"Countries"];
+  [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul), ^{
     [self updateRowsWithSearchString:nil];
   });
   
 }
+-(void)awakeFromNib{
+}
+- (void)viewDidUnload{
+  [super viewDidUnload];
+}
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
+  [super viewWillAppear:animated];  
+}
+
+- (void)viewDidAppear:(BOOL)animated{
   [super viewDidAppear:animated];
+  if ([cityDBDelegate.geonamesDB getNumRowsOfType:@"country"] == 0) {
+    NSString *nibSuffix = @"";
+    if (isIpad()) {
+      nibSuffix = @"-iPad";
+    }
+    DBImportViewController *dbvc = [[DBImportViewController alloc] initWithNibName:[NSString stringWithFormat:@"DBImportViewController%@", nibSuffix] bundle:nil];
+    [self.navigationController presentModalViewController:dbvc animated:YES];
+    [dbvc release];
+  }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -175,12 +187,16 @@
   dispatch_sync(dispatch_get_main_queue(), ^{
     opCount++;
     currentOp = opCount;
-    insertionPoint = 0;
+    insertionPoint = 1;
     if (isSearching) {
       currentList = filteredCountries;
       [cityDBDelegate.geonamesDB addConditionRowContainsString:searchString];
       currentTableView = self.searchDisplayController.searchResultsTableView;
     }else{
+      if (![countries count]) {
+        [countries addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"~~~ All Countries ~~~", @"Country", nil]];
+        [self.tableView reloadData];
+      }
       currentList = countries;
     }
     listSize = [currentList count];
@@ -222,6 +238,12 @@
       }
       [currentTableView endUpdates];
     }
+  });
+}
+-(void)addRows:(NSNotification *)notificationInfo{
+  [self.tableView reloadData];
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul), ^{
+    [self updateRowsWithSearchString:nil];
   });
 }
 @end
