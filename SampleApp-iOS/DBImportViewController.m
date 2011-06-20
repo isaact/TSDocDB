@@ -79,9 +79,11 @@
   __block int count = 0;
   [cityDBDelegate importCitiesWithProgressBlock:^(NSDictionary *city, BOOL *stop, float progress) {
     dispatch_sync(dispatch_get_main_queue(), ^{
-      [lblTaskTitle setText:@"Importing Cities"];
-      [taskProgress setProgress:progress];
-      [lblTaskDetails setText:[NSString stringWithFormat:@"Imported %d cities so far", count]];
+      if (!(count % 27)) {
+        [lblTaskTitle setText:@"Importing Cities"];
+        [taskProgress setProgress:progress];
+        [lblTaskDetails setText:[NSString stringWithFormat:@"Imported %d cities so far", count]];
+      }
       count++;
       if (progress == 1.0) {
         [lblTaskDetails setText:@"Finishing up..."];

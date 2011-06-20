@@ -6,6 +6,7 @@ Sample Apps
 ===========
 Included in the project are sample OSX and iOS apps that demonstrate the power of the database system and present a detailed how-to guide. Both applications use a [GeoNames](http://www.geonames.org/) datasource and allow the user to see every city on the planet with a population > 15k (about 23,000 cities in all). Both also allow the user full text searching on the city and country name.
 
+
 TSDocDB Classes
 ===============	
 
