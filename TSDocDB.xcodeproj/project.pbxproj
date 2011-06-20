@@ -158,6 +158,9 @@
 		36A6FD4A13A5C18F00DD667D /* libbz2.1.0.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A6FD4913A5C18F00DD667D /* libbz2.1.0.5.dylib */; };
 		36A6FD4C13A5C19B00DD667D /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A6FD4B13A5C19B00DD667D /* libz.1.2.3.dylib */; };
 		36A6FD4D13A5C1F100DD667D /* libTSDocDB.OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 368F1E3F13A3B7DA00835CBD /* libTSDocDB.OSX.a */; };
+		36AAE13213AED404007C0430 /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AAE13013AED404007C0430 /* CityTableViewController.m */; };
+		36AAE13313AED404007C0430 /* CityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36AAE13113AED404007C0430 /* CityTableViewController.xib */; };
+		36AAE13513AED42F007C0430 /* CityTableViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36AAE13413AED42F007C0430 /* CityTableViewController-iPad.xib */; };
 		36DE805213A59FC400B2CAAC /* countryInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 36DE805013A59F9F00B2CAAC /* countryInfo.txt */; };
 /* End PBXBuildFile section */
 
@@ -288,6 +291,10 @@
 		36A6FD4913A5C18F00DD667D /* libbz2.1.0.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.5.dylib; path = SDKs/MacOSX10.6.sdk/usr/lib/libbz2.1.0.5.dylib; sourceTree = DEVELOPER_DIR; };
 		36A6FD4B13A5C19B00DD667D /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = SDKs/MacOSX10.6.sdk/usr/lib/libz.1.2.3.dylib; sourceTree = DEVELOPER_DIR; };
 		36AA2B6213A903F200A48277 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		36AAE12F13AED404007C0430 /* CityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableViewController.h; sourceTree = "<group>"; };
+		36AAE13013AED404007C0430 /* CityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableViewController.m; sourceTree = "<group>"; };
+		36AAE13113AED404007C0430 /* CityTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityTableViewController.xib; sourceTree = "<group>"; };
+		36AAE13413AED42F007C0430 /* CityTableViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CityTableViewController-iPad.xib"; sourceTree = "<group>"; };
 		36DE805013A59F9F00B2CAAC /* countryInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countryInfo.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -338,8 +345,7 @@
 		3609E19F13ABE0DB00063663 /* SampleApp-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				362243D813AD3FC80021AF1C /* CountryTableViewController */,
-				362243D613AD32200021AF1C /* DBImportViewController */,
+				36AAE12C13AED365007C0430 /* Views */,
 				3609E1A813ABE0DB00063663 /* SampleApp_iOSAppDelegate.h */,
 				3609E1A913ABE0DB00063663 /* SampleApp_iOSAppDelegate.m */,
 				3609E1AB13ABE0DB00063663 /* iPhone */,
@@ -635,6 +641,27 @@
 			path = assets;
 			sourceTree = "<group>";
 		};
+		36AAE12C13AED365007C0430 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				36AAE12E13AED3A1007C0430 /* CityTableViewController */,
+				362243D813AD3FC80021AF1C /* CountryTableViewController */,
+				362243D613AD32200021AF1C /* DBImportViewController */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		36AAE12E13AED3A1007C0430 /* CityTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				36AAE12F13AED404007C0430 /* CityTableViewController.h */,
+				36AAE13013AED404007C0430 /* CityTableViewController.m */,
+				36AAE13113AED404007C0430 /* CityTableViewController.xib */,
+				36AAE13413AED42F007C0430 /* CityTableViewController-iPad.xib */,
+			);
+			name = CityTableViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -815,6 +842,8 @@
 				3609E1D513ABEC2700063663 /* DBImportViewController-iPad.xib in Resources */,
 				365D45C613AC545000ED04E9 /* CountryTableViewController.xib in Resources */,
 				362243DF13AD57590021AF1C /* CountryTableViewController-iPad.xib in Resources */,
+				36AAE13313AED404007C0430 /* CityTableViewController.xib in Resources */,
+				36AAE13513AED42F007C0430 /* CityTableViewController-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,6 +879,7 @@
 				3609E1C513ABE28F00063663 /* TSFileReader.m in Sources */,
 				3609E1D213ABE5CF00063663 /* DBImportViewController.m in Sources */,
 				365D45C513AC545000ED04E9 /* CountryTableViewController.m in Sources */,
+				36AAE13213AED404007C0430 /* CityTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

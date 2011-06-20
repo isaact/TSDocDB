@@ -1,20 +1,20 @@
 //
-//  CountryTableViewController.m
+//  CityTableViewController.m
 //  TSDocDB
 //
-//  Created by Isaac Tewolde on 11-06-17.
+//  Created by Isaac Tewolde on 11-06-19.
 //  Copyright 2011 Ticklespace.com. All rights reserved.
 //
 
-#import "CountryTableViewController.h"
-#import "CityDBDelegate.h"
 #import "CityTableViewController.h"
+#import "CityDBDelegate.h"
 
-@interface CountryTableViewController()
--(void)updateRowsWithSearchString:(NSString *)searchString;
+@interface CityTableViewController()
+  -(void)updateRowsWithSearchString:(NSString *)searchString;
 @end
-@implementation CountryTableViewController
 
+@implementation CityTableViewController
+@synthesize countryCode;
 - (id)initWithStyle:(UITableViewStyle)style
 {
   self = [super initWithStyle:style];
@@ -25,16 +25,17 @@
 }
 
 - (void)dealloc{
+  [countryCode release];
   [cityDBDelegate release];
-  [countries release];
-  [filteredCountries release];
+  [cities release];
+  [filteredCities release];
   [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   if (!isSearching) {
-    [filteredCountries removeAllObjects];
+    [filteredCities removeAllObjects];
   }
   // Release any cached data, images, etc that aren't in use.
 }
@@ -44,8 +45,8 @@
 - (void)viewDidLoad{
   [super viewDidLoad];
   cityDBDelegate = [[CityDBDelegate alloc] init];
-  countries = [[NSMutableArray alloc] init];
-  filteredCountries = [[NSMutableArray alloc] init];
+  cities = [[NSMutableArray alloc] init];
+  filteredCities = [[NSMutableArray alloc] init];
   opCount = 0;
   isSearching = NO;
 }
@@ -92,9 +93,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
   if (isSearching) {
-    return [filteredCountries count];
+    return [filteredCities count];
   }
-  return [countries count];
+  return [cities count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,23 +107,26 @@
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
   }
   if (tableView == self.searchDisplayController.searchResultsTableView) {
-    [cell.textLabel setText:[[filteredCountries objectAtIndex:[indexPath row]] objectForKey:@"Country"]];
+    [cell.textLabel setText:[[filteredCities objectAtIndex:[indexPath row]] objectForKey:@"asciiname"]];
   }else{
-    [cell.textLabel setText:[[countries objectAtIndex:[indexPath row]] objectForKey:@"Country"]];
+    [cell.textLabel setText:[[cities objectAtIndex:[indexPath row]] objectForKey:@"asciiname"]];
   }
+  NSDictionary *cityData = [cities objectAtIndex:[indexPath row]] ;
+  NSString *detailText = [NSString stringWithFormat:@"Country: %@ Poupulation: %@", 
+  [cell.detailTextLabel setText:<#(NSString *)#>
   return cell;
 }
 #pragma mark - Table view delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-  CityTableViewController *cityTableVC = [[CityTableViewController alloc] initWithNibName:@"CityTableViewController" bundle:nil];
-  if (isSearching) {
-    cityTableVC.countryCode = [[filteredCountries objectAtIndex:indexPath.row] objectForKey:@"ISO"];
-  }else{
-    cityTableVC.countryCode = [[countries objectAtIndex:indexPath.row] objectForKey:@"ISO"];
-  }
-  
-  [self.navigationController pushViewController:cityTableVC animated:YES];
-  [cityTableVC release];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  // Navigation logic may go here. Create and push another view controller.
+  /*
+   <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+   // ...
+   // Pass the selected object to the new view controller.
+   [self.navigationController pushViewController:detailViewController animated:YES];
+   [detailViewController release];
+   */
 }
 #pragma mark -
 #pragma mark UISearchDisplayController Delegate Methods
@@ -152,16 +156,16 @@
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
   if ([searchBar.text length] == 0) {
     isSearching = YES;
-    [filteredCountries removeAllObjects];
+    [filteredCities removeAllObjects];
     NSRange range;
     range.location = 0;
     range.length = 50;
-    if ([countries count] > range.length) {
-      range.length = [countries count];
+    if ([cities count] < range.length) {
+      range.length = [cities count];
     }
     NSIndexSet *topRows = [NSIndexSet indexSetWithIndexesInRange:range];
     [self.tableView indexPathsForVisibleRows];
-    [filteredCountries addObjectsFromArray:[countries objectsAtIndexes:topRows]];
+    [filteredCities addObjectsFromArray:[cities objectsAtIndexes:topRows]];
     [self.searchDisplayController.searchResultsTableView reloadData];
   }
   return YES;
@@ -177,14 +181,17 @@
     currentOp = opCount;
     insertionPoint = 0;
     if (isSearching) {
-      currentList = filteredCountries;
+      currentList = filteredCities;
       [cityDBDelegate.geonamesDB addConditionRowContainsString:searchString];
       currentTableView = self.searchDisplayController.searchResultsTableView;
     }else{
-      currentList = countries;
+      currentList = cities;
+    }
+    if (countryCode != nil) {
+      [cityDBDelegate.geonamesDB addConditionStringEquals:countryCode toColumn:@"country code"];
     }
     listSize = [currentList count];
-    [cityDBDelegate.geonamesDB setOrderByStringForColumn:@"Country" isAscending:YES];
+    [cityDBDelegate.geonamesDB setOrderByStringForColumn:@"asciiname" isAscending:YES];
   });
   [cityDBDelegate.geonamesDB doSearchWithProcessingBlock:^(id row){
     __block BOOL stop = NO;
@@ -208,7 +215,7 @@
       }
     });
     return stop;
-  } withLimit:300 andOffset:0 forRowTypes:@"country", nil];
+  } withLimit:100 andOffset:0 forRowTypes:@"city", nil];
   dispatch_sync(dispatch_get_main_queue(), ^{
     if (currentOp == opCount && insertionPoint < listSize) {
       NSRange range;

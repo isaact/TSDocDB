@@ -40,9 +40,9 @@
 	[window addSubview:navController.view];
 	[window makeKeyAndVisible];
 
-  DBImportViewController *dbvc = [[DBImportViewController alloc] initWithNibName:[NSString stringWithFormat:@"DBImportViewController%@", nibSuffix] bundle:nil];
-  [navController presentModalViewController:dbvc animated:YES];
-  [dbvc release];
+  //DBImportViewController *dbvc = [[DBImportViewController alloc] initWithNibName:[NSString stringWithFormat:@"DBImportViewController%@", nibSuffix] bundle:nil];
+  //[navController presentModalViewController:dbvc animated:YES];
+  //[dbvc release];
   return YES;
 }
 

@@ -96,6 +96,7 @@
     dispatch_sync(dispatch_get_main_queue(), ^{
       [lblTaskTitle setText:@"Importing Countries"];
       [taskProgress setProgress:progress];
+      [taskProgress setHidden:NO];
       [lblTaskDetails setText:[NSString stringWithFormat:@"Imported %d countries so far", count]];
       count++;
     });
