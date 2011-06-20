@@ -104,16 +104,20 @@
   
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
   }
+  NSDictionary *cityData;
   if (tableView == self.searchDisplayController.searchResultsTableView) {
-    [cell.textLabel setText:[[filteredCities objectAtIndex:[indexPath row]] objectForKey:@"asciiname"]];
+    [cell.textLabel setText:[[filteredCities objectAtIndex:[indexPath row]] objectForKey:@"name"]];
+    cityData = [cities objectAtIndex:[indexPath row]];
   }else{
-    [cell.textLabel setText:[[cities objectAtIndex:[indexPath row]] objectForKey:@"asciiname"]];
+    [cell.textLabel setText:[[cities objectAtIndex:[indexPath row]] objectForKey:@"name"]];
+    cityData = [cities objectAtIndex:[indexPath row]];
   }
-  NSDictionary *cityData = [cities objectAtIndex:[indexPath row]] ;
-  NSString *detailText = [NSString stringWithFormat:@"Country: %@ Poupulation: %@", 
-  [cell.detailTextLabel setText:<#(NSString *)#>
+  
+  NSString *detailText = [NSString stringWithFormat:@"pop. %@, (%@)", [cityData objectForKey:@"population"], [cityData objectForKey:@"Country"]];
+  [cell.detailTextLabel setText:detailText];
+  cell.detailTextLabel.hidden = NO;
   return cell;
 }
 #pragma mark - Table view delegate
@@ -191,7 +195,7 @@
       [cityDBDelegate.geonamesDB addConditionStringEquals:countryCode toColumn:@"country code"];
     }
     listSize = [currentList count];
-    [cityDBDelegate.geonamesDB setOrderByStringForColumn:@"asciiname" isAscending:YES];
+    [cityDBDelegate.geonamesDB setOrderByStringForColumn:@"name" isAscending:YES];
   });
   [cityDBDelegate.geonamesDB doSearchWithProcessingBlock:^(id row){
     __block BOOL stop = NO;
