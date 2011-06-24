@@ -38,7 +38,8 @@
 -(id)initWithDB:(TSDB *)theDB andFilters:(TSRowFilterChain *)theFilters;
 -(NSArray *)doSearchWithLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset;
 -(void)doSearchWithLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset andProcessingBlock:(BOOL(^)(id))processingBlock;
--(void)searchForAllWords:(NSString *)words withLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset andProcessingBlock:(BOOL(^)(id))processingBlock;
+-(void)searchForAllWordsWithProcessingBlock:(NSString *)words withLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset andProcessingBlock:(BOOL(^)(id))processingBlock;
+-(NSArray *)searchForAllWords:(NSString *)words withLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset;
 -(NSInteger)numRows;
 -(void)setOrderByStringForColumn:(NSString *)colName isAscending:(BOOL)ascending;
 -(void)setOrderByNumericForColumn:(NSString *)colName isAscending:(BOOL)ascending;

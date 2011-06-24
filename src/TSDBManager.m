@@ -84,7 +84,7 @@ static dispatch_queue_t tsDBMainQueue = NULL;
       //const char *queueKey = [[TSDBManager getQueueSigForDbPath:dbFilePath] UTF8String];
       //dispatch_queue_t dbQueue = dispatch_queue_create(queueKey,NULL);
       tdb = [self getDBFromFile:dbFilePath];
-      //tctdboptimize(tdb, 0, -1, -1, TDBTLARGE);
+      //tctdboptimize(tdb, 1310710, -1, -1, TDBTLARGE);
       tctdbsetindex(tdb, "_TSDB.TXT", TDBITQGRAM);
       tctdbsetindex(tdb, "_TSDB.DT", TDBITLEXICAL);
       tcmapput(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]), tdb, sizeof(TCTDB));
@@ -94,8 +94,8 @@ static dispatch_queue_t tsDBMainQueue = NULL;
     }
     
   });
-  tctdbsetcache(tdb, -1, 10, 10);
-  tctdbsetxmsiz(tdb, 6710886);
+  //tctdbsetcache(tdb, -1, 10, 10);
+  //tctdbsetxmsiz(tdb, 6710886);
   return tdb;
 }
 -(void)recyleDBAtPath:(NSString *)dbFilePath{
@@ -225,6 +225,7 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   }else {
     tdb = [self createDB:dbFilePath];
   }
+  //tctdbtune(tdb, 13107100, -1, -1, TDBTLARGE);
   return tdb;
 }
 
