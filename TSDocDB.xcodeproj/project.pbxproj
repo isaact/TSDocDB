@@ -207,6 +207,8 @@
 		3609E1D113ABE5CF00063663 /* DBImportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBImportViewController.xib; sourceTree = "<group>"; };
 		3609E1D413ABEC2700063663 /* DBImportViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DBImportViewController-iPad.xib"; sourceTree = "<group>"; };
 		362243DE13AD57590021AF1C /* CountryTableViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CountryTableViewController-iPad.xib"; sourceTree = "<group>"; };
+		3628738A13B81F490043DCBB /* capProject.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = capProject.png; sourceTree = "<group>"; };
+		3628738B13B81F490043DCBB /* capTarget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = capTarget.png; sourceTree = "<group>"; };
 		362C9AC613A95E9200FCD8A4 /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
 		362C9AC713A95E9200FCD8A4 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		362C9AC813A95E9200FCD8A4 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
@@ -493,6 +495,8 @@
 		368F1E3213A3B78D00835CBD = {
 			isa = PBXGroup;
 			children = (
+				3628738A13B81F490043DCBB /* capProject.png */,
+				3628738B13B81F490043DCBB /* capTarget.png */,
 				369E4F9E13A9584D005F33F3 /* TSDB.markdown */,
 				36AA2B6213A903F200A48277 /* COPYING */,
 				3606F18813A8E5F900E45C4F /* README.markdown */,
