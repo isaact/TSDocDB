@@ -35,7 +35,7 @@ Using the static lib (iOS)
 ---------------------------
 1. Download the source
 2. Add TSDocDB.xcodeproj to your workspace or project
-3. Add $(BUILT_PRODUCTS_DIR) to the "User Header Search Paths" and set it to recursive for both your [project](TSDocDB/blob/master/capProject.png) and [target](TSDocDB/blob/master/capTarget.png).
+3. Add $(BUILT_PRODUCTS_DIR) to the "User Header Search Paths" and set it to recursive for both your [project](TSDocDB/raw/master/capProject.png) and [target](TSDocDB/raw/master/capTarget.png).
 4. Make sure "Always Search User Paths" is set to true.
 5. Link you app binary to libTSDocDB.iOS.a, libz.1.2.3.dylib and libbz2.1.0.5.dylib
 6. In your class file include TSDB.h
@@ -45,7 +45,7 @@ Using the static lib (OSX)
 ----------------------------
 1. Download the source
 2. Add TSDocDB.xcodeproj to your workspace or project
-3. Add $(BUILT_PRODUCTS_DIR) to the "User Header Search Paths" and set it to recursive for both your [project](TSDocDB/blob/master/capProject.png) and [target](TSDocDB/blob/master/capTarget.png).
+3. Add $(BUILT_PRODUCTS_DIR) to the "User Header Search Paths" and set it to recursive for both your [project](TSDocDB/raw/master/capProject.png) and [target](TSDocDB/raw/master/capTarget.png).
 4. Make sure "Always Search User Paths" is set to true.
 5. Link you app binary to libTSDocDB.OSX.a, libz.1.2.3.dylib and libbz2.1.0.5.dylib 
 6. In your class file include TSDB.h
