@@ -13,22 +13,28 @@ void useTSDateTools(){
 }
 @implementation NSDate(TSTools)
 +(NSString *)friendlyDateFromString:(NSString *)theDate{
-  NSDate *date = [NSDate dateWithString:theDate];
-  NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss z"];
+  NSDate *date = [[dateFormatter dateFromString:theDate] retain];
+  NSString *friendlyDate = nil;
   [dateFormatter setDateStyle:NSDateFormatterNoStyle];
   [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-  //NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>%@", theDate);
   if ([date isToday]) {
-    return [NSString stringWithFormat:@"Today\n%@", [dateFormatter stringFromDate:date]];
+    friendlyDate = [NSString stringWithFormat:@"Today\n%@", [dateFormatter stringFromDate:date]];
   }else if ([date isYesterday]) {
-    return [NSString stringWithFormat:@"Yesterday\n%@", [dateFormatter stringFromDate:date]];
+    friendlyDate = [NSString stringWithFormat:@"Yesterday\n%@", [dateFormatter stringFromDate:date]];
   }else if ([date timeIntervalSince1970] > 0) {
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     //return [NSString stringWithFormat:@"Shipped: %@\n(%d business days)", [dateFormatter stringFromDate:shippedDate], [date weekdaysToDateOrNil:nil]]];
-    return [dateFormatter stringFromDate:date];
+    friendlyDate = [dateFormatter stringFromDate:date];
+  }else{
+    friendlyDate = @"Invalid date";
   }
-  return @"Invalid date";
+  [dateFormatter release];
+  [date release];
+  date = nil;
+  return friendlyDate;
 }
 
 +(NSInteger)numberOfWeekdaysBetweenFromThisDate:(NSDate *)date toThisDate:(NSDate *)otherDate{
@@ -74,36 +80,44 @@ void useTSDateTools(){
 
 -(BOOL)isToday{
   NSDate *today = [NSDate date];
-  NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-  [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-  return ([[dateFormatter stringFromDate:today] isEqualToString:[dateFormatter stringFromDate:self]]);
   
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+  BOOL isToday = ([[dateFormatter stringFromDate:today] isEqualToString:[dateFormatter stringFromDate:self]]);
+  [dateFormatter release];
+  return isToday;
 }
 
 -(BOOL)isYesterday{
   NSDate *today = [NSDate date];
   NSDate *yesterday = [today dateByAddingTimeInterval:-86400.0];
-  NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-  return ([[dateFormatter stringFromDate:yesterday] isEqualToString:[dateFormatter stringFromDate:self]]);
+  BOOL isYesterday = ([[dateFormatter stringFromDate:yesterday] isEqualToString:[dateFormatter stringFromDate:self]]);
+  [dateFormatter release];
+  return isYesterday;
 }
 
 -(NSString *)friendlyDate{
   //NSDate *date = [NSDate dateWithString:[NSString stringWithFormat:@"%@ -0600", theDate]];
-  NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateStyle:NSDateFormatterNoStyle];
   [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+  NSString *friendlyDate = nil;
   if ([self isToday]) {
-    return [NSString stringWithFormat:@"Today %@", [dateFormatter stringFromDate:self]];
+    friendlyDate = [NSString stringWithFormat:@"Today %@", [dateFormatter stringFromDate:self]];
   }else if ([self isYesterday]) {
-    return [NSString stringWithFormat:@"Yesterday %@", [dateFormatter stringFromDate:self]];
+    friendlyDate = [NSString stringWithFormat:@"Yesterday %@", [dateFormatter stringFromDate:self]];
   }else if ([self timeIntervalSince1970] > 0) {
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     //return [NSString stringWithFormat:@"Shipped: %@\n(%d business days)", [dateFormatter stringFromDate:shippedDate], [date weekdaysToDateOrNil:nil]]];
     return [dateFormatter stringFromDate:self];
+  }else{
+    friendlyDate = @"Invalid date";
   }
-  return @"Invalid date";
+  [dateFormatter release];
+  return friendlyDate;
 }
 
 -(NSInteger)weekdaysToDateOrNil:(NSDate *)theDate{

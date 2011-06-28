@@ -164,8 +164,8 @@
     //ALog(@"%@", theDBPath);
     TSDBManager *dbm = [TSDBManager sharedDBManager];
     TCTDB *tdb = [dbm getDB:theDBPath];
-    reuseableTCMap = tcmapnew();
     if(tdb){
+      //reuseableTCMap = tcmapnew();
       filterChain = [[TSRowFilterChain alloc] init];
       dbFilePath = [theDBPath retain];
       dbNamePrefix = [dbName retain];
@@ -191,7 +191,7 @@
 - (void) dealloc
 {
   dispatch_sync(dbQueue, ^{
-    tcmapdel(reuseableTCMap);
+    //tcmapdel(reuseableTCMap);
     [orderBy release];
     //dispatch_release(dbQueue);
     [dbDir release];
@@ -806,12 +806,14 @@
   const char *rbuf;
   int rsiz, i;
   //NSLog(@"########################num res: %d", tclistnum(res));
+  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   for(i = 0; i < tclistnum(res); i++){
     rbuf = tclistval(res, i, &rsiz);
     NSString *key = [NSString stringWithUTF8String:rbuf];
     //NSLog(@"k: %@", key);
     [rows addObject:[self dbGet:key]];
   }  
+  [pool drain];
   tclistdel(res);
   [filterChain removeAllFilters];
   return rows;
@@ -825,6 +827,7 @@
   int rsiz, i;
   BOOL stop;
   //NSLog(@"########################num res: %d", tclistnum(res));
+  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   for(i = 0; i < tclistnum(res); i++){
     rbuf = tclistval(res, i, &rsiz);
     NSString *key = [NSString stringWithUTF8String:rbuf];
@@ -834,6 +837,7 @@
       break;
     }
   }  
+  [pool drain];
   tclistdel(res);
   tctdbqrydel(qry);
   [filterChain removeAllFilters];
@@ -846,8 +850,8 @@
 -(BOOL)dbPut:(NSString *)rowKey colVals:(NSDictionary *)rowData{
   TCTDB *tdb = [self getDB];
   NSInteger rowKeySize = strlen([rowKey UTF8String]);
-  //TCMAP *reuseableTCMap = tcmapnew();
-  tcmapclear(reuseableTCMap);
+  TCMAP *tcMap = tcmapnew();
+  //tcmapclear(reuseableTCMap);
   for (NSString *colKey in [rowData allKeys]) {
     if([[rowData objectForKey:colKey] isKindOfClass:[NSString class]]){
       const char *val = [[rowData objectForKey:colKey] UTF8String];
@@ -857,25 +861,25 @@
 //      }else {
 //        tcmapput(cols, [colKey UTF8String], strlen([colKey UTF8String]), " ", strlen(" "));
       //}
-      tcmapput2(reuseableTCMap, [colKey UTF8String], val);
+      tcmapput2(tcMap, [colKey UTF8String], val);
     }else if([[rowData objectForKey:colKey] isKindOfClass:[NSNumber class]]){
-      tcmapput2(reuseableTCMap, [colKey UTF8String], [[[rowData objectForKey:colKey] stringValue] UTF8String]);
+      tcmapput2(tcMap, [colKey UTF8String], [[[rowData objectForKey:colKey] stringValue] UTF8String]);
       //tcmapput(cols, [colKey UTF8String], strlen([colKey UTF8String]), [[[rowData objectForKey:colKey] stringValue] UTF8String], strlen([[[rowData objectForKey:colKey] stringValue] UTF8String]));
     } else if ([[rowData objectForKey:colKey] isKindOfClass:[NSArray class]] || [[rowData objectForKey:colKey] isKindOfClass:[NSDictionary class]]) {
-      tcmapput2(reuseableTCMap, [colKey UTF8String], [[[rowData objectForKey:colKey] description] UTF8String]);
+      tcmapput2(tcMap, [colKey UTF8String], [[[rowData objectForKey:colKey] description] UTF8String]);
       //tcmapput(cols, [colKey UTF8String], strlen([colKey UTF8String]), [[[rowData objectForKey:colKey] description] UTF8String], strlen([[[rowData objectForKey:colKey] description] UTF8String]));
     }
     
   }
   //[self dbDel:rowKey];
   //tctdbtranbegin(tdb);
-  if(!tctdbput(tdb, [rowKey UTF8String], (int)rowKeySize, reuseableTCMap)){
+  if(!tctdbput(tdb, [rowKey UTF8String], (int)rowKeySize, tcMap)){
     int ecode = tctdbecode(tdb);
     ALog(@"DB put error:%@", [TSDB getDBError:ecode]);
   }
   //tctdbtrancommit(tdb);
-  tcmapclear(reuseableTCMap);
-  //tcmapdel(cols);
+  //tcmapclear(reuseableTCMap);
+  tcmapdel(tcMap);
   
   return NO;
 }
@@ -900,8 +904,12 @@
     }
     tcmapdel(cols);
   }
-  if([_delegate respondsToSelector:@selector(TSModelObjectForData:andRowType:)])
-    return [_delegate TSModelObjectForData:rowData andRowType:[rowData objectForKey:[self makeRowTypeKey]]];
+  if([_delegate respondsToSelector:@selector(TSModelObjectForData:andRowType:)]){
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    id rowModel = [_delegate TSModelObjectForData:rowData andRowType:[rowData objectForKey:[self makeRowTypeKey]]];
+    [pool drain];
+    return [rowModel autorelease];
+  }
   return rowData;
 }
 -(BOOL)dbDel:(NSString *)rowID{
