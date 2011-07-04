@@ -171,7 +171,7 @@
       dbNamePrefix = [dbName retain];
       rootDBDir = [theDBDir retain];
       dbQueue = [self getQueue];
-      dispatch_retain(dbQueue);
+      //dispatch_retain(dbQueue);
     }else {
       return nil;
     }
@@ -204,9 +204,11 @@
   [super dealloc];
 }
 -(void)syncDB{
-  TCTDB * tdb = [self getDB];
-  tctdbsync(tdb);
-  //tctdboptimize(tdb, 600000, -1, -1, -1);
+  dispatch_sync(dbQueue, ^{
+    TCTDB * tdb = [self getDB];
+    tctdbsync(tdb);
+    //tctdboptimize(tdb, 600000, -1, -1, -1);
+  });
 }
 #pragma mark DB Management Methods
 -(void)reindexDB:(NSString *)rowTypeOrNil{
@@ -894,19 +896,19 @@
   if(cols){
     tcmapiterinit(cols);
     rowData = [[[NSMutableDictionary alloc] initWithCapacity:1] autorelease];
-    NSAutoreleasePool *pool;
+    //NSAutoreleasePool *pool;
     while((name = tcmapiternext2(cols)) != NULL){
-      pool = [[NSAutoreleasePool alloc] init];
+      //pool = [[NSAutoreleasePool alloc] init];
       //NSLog(@"Getting %s", name);
       [rowData setObject:[NSString stringWithUTF8String:tcmapget2(cols, name)] 
                   forKey:[NSString stringWithUTF8String:name]];
-      [pool drain];
+      //[pool drain];
     }
     tcmapdel(cols);
   }
   if([_delegate respondsToSelector:@selector(TSModelObjectForData:andRowType:)]){
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    id rowModel = [_delegate TSModelObjectForData:rowData andRowType:[rowData objectForKey:[self makeRowTypeKey]]];
+    id rowModel = [[_delegate TSModelObjectForData:rowData andRowType:[rowData objectForKey:[self makeRowTypeKey]]] retain];
     [pool drain];
     return [rowModel autorelease];
   }

@@ -98,7 +98,7 @@
     [currentData appendData:chunk];
     currentOffset += [chunk length];
   }
-  [readPool release];
+  [readPool drain];
   
   NSString * line = [[[NSString alloc] initWithData:currentData encoding:NSUTF8StringEncoding] autorelease];
   [currentData release];

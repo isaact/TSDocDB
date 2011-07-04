@@ -112,7 +112,7 @@ void useTSDateTools(){
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     //return [NSString stringWithFormat:@"Shipped: %@\n(%d business days)", [dateFormatter stringFromDate:shippedDate], [date weekdaysToDateOrNil:nil]]];
-    return [dateFormatter stringFromDate:self];
+    friendlyDate = [dateFormatter stringFromDate:self];
   }else{
     friendlyDate = @"Invalid date";
   }
