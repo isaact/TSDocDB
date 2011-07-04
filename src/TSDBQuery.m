@@ -38,7 +38,7 @@
 -(id)initWithDB:(TSDB *)theDB andFilters:(TSRowFilterChain *)theFilters{
   self = [super init];
   if (self) {
-    filterChain = [[theFilters copy] retain];
+    filterChain = [theFilters copy];
     db = [theDB retain];
   }
   return self;

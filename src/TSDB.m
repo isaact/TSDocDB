@@ -176,7 +176,7 @@
       return nil;
     }
     //NSLog(@"%@", theDBPath);
-    _delegate = [theDelegate retain];
+    _delegate = theDelegate;
     if (isNew) {
       [self reindexDB:nil];
     }
@@ -188,9 +188,13 @@
 	_delegate = aDelegate;
   
 }
+-(id)delegate{
+  return _delegate;
+}
 - (void) dealloc
 {
   dispatch_sync(dbQueue, ^{
+    _delegate = nil;
     //tcmapdel(reuseableTCMap);
     [orderBy release];
     //dispatch_release(dbQueue);
@@ -198,9 +202,10 @@
     [dbNamePrefix release];
     [rootDBDir release];
     [dbFilePath release];
+    
     [filterChain release];
-    [_delegate release];
   });
+
   [super dealloc];
 }
 -(void)syncDB{
@@ -800,7 +805,7 @@
   tctdbqrysetlimit(qry, (int)resultLimit, (int)resultOffset);
 }
 -(NSArray *)fetchRows:(TDBQRY *)qry{
-  NSMutableArray *rows = [NSMutableArray arrayWithCapacity:1];
+  NSMutableArray *rows = [[NSMutableArray alloc] initWithCapacity:1];
   __block TCLIST *res;
   dispatch_sync(dbQueue, ^{
     res = tctdbqrysearch(qry);  
@@ -808,17 +813,17 @@
   const char *rbuf;
   int rsiz, i;
   //NSLog(@"########################num res: %d", tclistnum(res));
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+  //NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   for(i = 0; i < tclistnum(res); i++){
     rbuf = tclistval(res, i, &rsiz);
     NSString *key = [NSString stringWithUTF8String:rbuf];
     //NSLog(@"k: %@", key);
     [rows addObject:[self dbGet:key]];
   }  
-  [pool drain];
+  //[pool drain];
   tclistdel(res);
   [filterChain removeAllFilters];
-  return rows;
+  return [rows autorelease];
 }
 -(void)fetchRows:(TDBQRY *)qry andProcessWithBlock:(BOOL(^)(id))processingBlock{
   __block TCLIST *res;
@@ -907,9 +912,9 @@
     tcmapdel(cols);
   }
   if([_delegate respondsToSelector:@selector(TSModelObjectForData:andRowType:)]){
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    //NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     id rowModel = [[_delegate TSModelObjectForData:rowData andRowType:[rowData objectForKey:[self makeRowTypeKey]]] retain];
-    [pool drain];
+    //[pool drain];
     return [rowModel autorelease];
   }
   return rowData;
