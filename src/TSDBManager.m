@@ -38,6 +38,9 @@
 -(TCTDB *)getDBFromFile:(NSString *)dbFilePath;
 -(void)closeAllDBs;
 +(NSString *)getQueueSig;
+
+-(NSString *)directoryForDB:(NSString *)dbName withPathOrNil:(NSString *)path;
+-(NSString *)findOrCreateDirectory:(NSSearchPathDirectory)searchPathDirectory inDomain:(NSSearchPathDomainMask)domainMask appendPathComponent:(NSString *)appendComponent error:(NSError **)errorOut;
 @end
 
 @implementation TSDBManager
@@ -97,8 +100,6 @@ static dispatch_queue_t tsDBMainQueue = NULL;
     }
     
   });
-  //tctdbsetcache(tdb, -1, 10, 10);
-  //tctdbsetxmsiz(tdb, 6710886);
   return tdb;
 }
 -(void)recyleDBAtPath:(NSString *)dbFilePath{
@@ -133,17 +134,21 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   });
 }
 
--(void)removeDBFileAtPath:(NSString *)dbFilePath{
+-(void)removeDB:(NSString *)dbName atPathOrNil:(NSString *)dbContainerPathOrNil{
   __block TCTDB *tdb = NULL;
   dispatch_sync(tsDBManagerQueue, ^{
     int sp;
+    NSString *dbFilePath, *dbPath;
+    dbPath = [self directoryForDB:dbName withPathOrNil:dbContainerPathOrNil];
+    dbFilePath = [NSString stringWithFormat:@"%@/%@.tct", dbPath, dbName];
     tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]), &sp);
     if (tdb) {
       tctdbclose(tdb);
       tcmapout(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]));
     }
     NSFileManager *fm = [NSFileManager defaultManager];
-    [fm removeItemAtPath:dbFilePath error:NULL];
+    [fm removeItemAtPath:dbPath error:NULL];
+
   });
 }
 #pragma mark -
@@ -156,6 +161,94 @@ static dispatch_queue_t tsDBMainQueue = NULL;
 }
 +(NSString *)getQueueSigForDbPath:(NSString *)dbPath{
   return [NSString stringWithFormat:@"tsqueue-%d", [dbPath hash]];
+}
+
+-(NSString *)directoryForDB:(NSString *)dbName withPathOrNil:(NSString *)path{
+  NSString *result = nil;
+  if (path == nil) {
+    NSString *executableName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];
+    NSError *error;
+    result =
+    [self
+     findOrCreateDirectory:DB_STORAGE_AREA
+     inDomain:NSUserDomainMask
+     appendPathComponent:[NSString stringWithFormat:@"%@/%@", executableName, dbName]
+     error:&error];
+    if (error)
+    {
+      NSLog(@"Unable to find or create application support directory:\n%@", error);
+    } 
+  }else{
+    BOOL success = [[NSFileManager defaultManager]
+                    createDirectoryAtPath:[NSString stringWithFormat:@"%@/%@", path, dbName]
+                    withIntermediateDirectories:YES
+                    attributes:nil
+                    error:NULL];
+    if (success) {
+      return [NSString stringWithFormat:@"%@/%@", path, dbName];
+    }
+  }
+  
+  return result;
+}
+
+- (NSString *)findOrCreateDirectory:(NSSearchPathDirectory)searchPathDirectory inDomain:(NSSearchPathDomainMask)domainMask appendPathComponent:(NSString *)appendComponent error:(NSError **)errorOut{
+  // Search for the path
+  NSArray* paths = NSSearchPathForDirectoriesInDomains(
+                                                       searchPathDirectory,
+                                                       domainMask,
+                                                       YES);
+  if ([paths count] == 0)
+  {
+    // *** creation and return of error object omitted for space
+    return nil;
+  }
+  
+  // Normally only need the first path
+  NSString *resolvedPath = [paths objectAtIndex:0];
+  
+  if (appendComponent)
+  {
+    resolvedPath = [resolvedPath
+                    stringByAppendingPathComponent:appendComponent];
+  }
+  
+  // Check if the path exists
+  BOOL exists;
+  BOOL isDirectory;
+  exists = [[NSFileManager defaultManager]
+            fileExistsAtPath:resolvedPath
+            isDirectory:&isDirectory];
+  if (!exists || !isDirectory)
+  {
+    if (exists)
+    {
+      // *** creation and return of error object omitted for space
+      return nil;
+    }
+    
+    // Create the path if it doesn't exist
+    NSError *error;
+    BOOL success = [[NSFileManager defaultManager]
+                    createDirectoryAtPath:resolvedPath
+                    withIntermediateDirectories:YES
+                    attributes:nil
+                    error:&error];
+    if (!success) 
+    {
+      if (errorOut)
+      {
+        *errorOut = error;
+      }
+      return nil;
+    }
+  }
+  
+  if (errorOut)
+  {
+    *errorOut = nil;
+  }
+  return resolvedPath;
 }
 -(dispatch_queue_t)getQueueForDBPath:(NSString *)dbPath{
   //const char *queueKey = [[TSDBManager getQueueSigForDbPath:dbPath] UTF8String];
@@ -170,7 +263,10 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   
   /* create the object */
   tdb = tctdbnew();
-  
+  //tctdbsetcache(tdb, -1, 10, 10);
+  tctdbsetxmsiz(tdb, 251662576);
+  tctdbtune(tdb, 31010000, -1, -1, TDBTLARGE);
+  //tctdbsetdfunit(tdb, 1);
   /* open the database */
   if(!tctdbopen(tdb, [dbPath UTF8String], TDBOWRITER | TDBOCREAT|TDBOTSYNC)){
     ecode = tctdbecode(tdb);
@@ -187,6 +283,9 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   
   /* create the object */
   tdb = tctdbnew();
+  //tctdbsetcache(tdb, -1, 10, 10);
+  //tctdbsetxmsiz(tdb, 6710886);
+  //tctdbsetdfunit(tdb, 1);
   if (writeMode) {
     flags = TDBOWRITER|TDBOTSYNC;
   }else {
@@ -228,7 +327,6 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   }else {
     tdb = [self createDB:dbFilePath];
   }
-  //tctdbtune(tdb, 13107100, -1, -1, TDBTLARGE);
   return tdb;
 }
 

@@ -303,9 +303,7 @@
 -(void)resetDB{
   dispatch_sync(dbQueue, ^{
     TSDBManager *dbm = [TSDBManager sharedDBManager];
-    [dbm removeDBFileAtPath:dbFilePath];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    [fm removeItemAtPath:rootDBDir error:NULL];
+    [dbm removeDB:dbNamePrefix atPathOrNil:rootDBDir];
     [self directoryForDB:dbNamePrefix withPathOrNil:dbDir];
     [dbm getDB:dbFilePath];
   });
@@ -807,6 +805,7 @@
 -(NSArray *)fetchRows:(TDBQRY *)qry{
   NSMutableArray *rows = [[NSMutableArray alloc] initWithCapacity:1];
   __block TCLIST *res;
+  
   dispatch_sync(dbQueue, ^{
     res = tctdbqrysearch(qry);  
   });

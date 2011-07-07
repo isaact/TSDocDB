@@ -41,5 +41,6 @@
 -(dispatch_queue_t)getQueueForDBPath:(NSString *)dbPath;
 -(TCTDB *)getDB:(NSString *)dbFilePath;
 -(void)recyleDBAtPath:(NSString *)dbFilePath;
--(void)removeDBFileAtPath:(NSString *)dbFilePath;
+-(void)removeDB:(NSString *)dbName atPathOrNil:(NSString *)dbContainerPathOrNil;
+
 @end
