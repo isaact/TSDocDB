@@ -87,14 +87,14 @@ static dispatch_queue_t tsDBMainQueue = NULL;
       //const char *queueKey = [[TSDBManager getQueueSigForDbPath:dbFilePath] UTF8String];
       //dispatch_queue_t dbQueue = dispatch_queue_create(queueKey,NULL);
       tdb = [self getDBFromFile:dbFilePath];
-      //tctdboptimize(tdb, 1310710, -1, -1, TDBTLARGE);
+      //tctdboptimize(tdb, 31010000, -1, -1, TDBTLARGE);
       tcmapput(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]), tdb, sizeof(TCTDB));
       //tcmapput(dbQueues, queueKey, strlen(queueKey), dbQueue, sizeof(dispatch_queue_t));
       //tctdbdel(tdb);
       tcfree(tdb);
       tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], strlen([dbFilePath UTF8String]), &sp);
-      tctdbsetindex(tdb, "_TSDB.TXT", TDBITQGRAM);
-      tctdbsetindex(tdb, "_TSDB.DT", TDBITLEXICAL);
+      //tctdbsetindex(tdb, "_TSDB.TXT", TDBITQGRAM);
+      //tctdbsetindex(tdb, "_TSDB.DT", TDBITLEXICAL);
     }else{
       //ALog(@"Reopening DB: %@", dbFilePath);
     }
