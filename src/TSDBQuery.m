@@ -54,10 +54,12 @@
 #pragma mark -
 #pragma mark Fetching methods
 -(NSArray *)doSearchWithLimit:(NSUInteger)resultLimit andOffset:(NSUInteger)resultOffset{
+  NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
   TDBQRY *qry = [db getQueryObjectForFilterChain:filterChain];
   [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
   NSArray *rows= [db doPredifinedSearchWithQuery:qry];
   tctdbqrydel(qry);
+  NSLog(@"Search (%ld, %ld) took: %f secs", resultLimit, resultOffset, [[NSDate date] timeIntervalSince1970] -start);
   return rows;
 }
 -(void)doSearchWithLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset andProcessingBlock:(BOOL(^)(id))processingBlock{

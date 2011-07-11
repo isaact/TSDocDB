@@ -806,9 +806,13 @@
   NSMutableArray *rows = [[NSMutableArray alloc] initWithCapacity:1];
   __block TCLIST *res;
   
+  NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
+  
   dispatch_sync(dbQueue, ^{
     res = tctdbqrysearch(qry);  
   });
+  NSTimeInterval execTime = [[NSDate date] timeIntervalSince1970];
+  NSLog(@"Search Exec took: %f secs", execTime -start);
   const char *rbuf;
   int rsiz, i;
   //NSLog(@"########################num res: %d", tclistnum(res));
@@ -818,7 +822,8 @@
     NSString *key = [NSString stringWithUTF8String:rbuf];
     //NSLog(@"k: %@", key);
     [rows addObject:[self dbGet:key]];
-  }  
+  }
+  NSLog(@"Search Fetch took: %f secs", [[NSDate date] timeIntervalSince1970] -execTime);
   //[pool drain];
   tclistdel(res);
   [filterChain removeAllFilters];
