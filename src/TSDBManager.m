@@ -264,11 +264,11 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   /* create the object */
   tdb = tctdbnew();
   //tctdbsetcache(tdb, -1, 10, 10);
-  tctdbsetxmsiz(tdb, 251662576);
-  tctdbtune(tdb, 31010000, -1, -1, TDBTLARGE);
+  tctdbsetxmsiz(tdb, 5247280);
+  tctdbtune(tdb, 610100, -1, -1, TDBTLARGE);
   //tctdbsetdfunit(tdb, 1);
   /* open the database */
-  if(!tctdbopen(tdb, [dbPath UTF8String], TDBOWRITER | TDBOCREAT|TDBOTSYNC)){
+  if(!tctdbopen(tdb, [dbPath UTF8String], TDBOWRITER|TDBOCREAT|TDBOTSYNC|TDBOLCKNB)){
     ecode = tctdbecode(tdb);
     ALog(@"DB create error:%@", [TSDBManager getDBError:ecode]);
     return NULL;
@@ -287,7 +287,7 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   //tctdbsetxmsiz(tdb, 6710886);
   //tctdbsetdfunit(tdb, 1);
   if (writeMode) {
-    flags = TDBOWRITER|TDBOTSYNC;
+    flags = TDBOWRITER|TDBOTSYNC|TDBOLCKNB;
   }else {
     flags = TDBOREADER|TDBOTSYNC;
   }
