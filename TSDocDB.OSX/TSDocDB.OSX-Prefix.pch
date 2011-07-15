@@ -6,3 +6,11 @@
 #endif
 
 #define DB_STORAGE_AREA NSApplicationSupportDirectory
+
+#ifndef TSDB_BNUM
+  #define TSDB_BNUM 610100
+#endif
+
+#ifndef TSDB_XMSIZ
+  #define TSDB_XMSIZ 6710886
+#endif

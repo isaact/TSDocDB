@@ -78,7 +78,6 @@ typedef enum {
 -(void)syncDB;
 -(void)reopenDB;
 
-
 //Modification Methods
 -(void)reindexDB:(NSString *)rowTypeOrNil;
 -(void)reindexRows:(NSString *)rowType;

@@ -43,4 +43,11 @@
 -(void)recyleDBAtPath:(NSString *)dbFilePath;
 -(void)removeDB:(NSString *)dbName atPathOrNil:(NSString *)dbContainerPathOrNil;
 
+//Backup methods
+-(BOOL)restoreDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath fromBackup:(NSString *)backupID;
+-(BOOL)restoreDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath fromBackup:(NSString *)backupID andCompletionBlock:(void(^)(BOOL success))completionBlock;
+-(BOOL)backupDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath ;
+-(void)backupDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath withCompletionBlock:(void(^)(BOOL success))completionBlock;
+-(NSArray *)listOfBackupsForDB:(NSString *)dnName atPathOrNil:(NSString *)dbPath ;
+
 @end

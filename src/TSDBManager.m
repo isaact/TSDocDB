@@ -264,8 +264,8 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   /* create the object */
   tdb = tctdbnew();
   //tctdbsetcache(tdb, -1, 10, 10);
-  tctdbsetxmsiz(tdb, 5247280);
-  tctdbtune(tdb, 610100, -1, -1, TDBTLARGE);
+  tctdbsetxmsiz(tdb, TSDB_XMSIZ);
+  tctdbtune(tdb, TSDB_BNUM, -1, -1, TDBTLARGE);
   //tctdbsetdfunit(tdb, 1);
   /* open the database */
   if(!tctdbopen(tdb, [dbPath UTF8String], TDBOWRITER|TDBOCREAT|TDBOTSYNC|TDBOLCKNB)){
@@ -284,7 +284,7 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   /* create the object */
   tdb = tctdbnew();
   //tctdbsetcache(tdb, -1, 10, 10);
-  //tctdbsetxmsiz(tdb, 6710886);
+  tctdbsetxmsiz(tdb, TSDB_XMSIZ);
   //tctdbsetdfunit(tdb, 1);
   if (writeMode) {
     flags = TDBOWRITER|TDBOTSYNC|TDBOLCKNB;
@@ -335,4 +335,26 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   [sharedDBManager release];
   [super dealloc];
 }
+
+#pragma mark -
+#pragma mark Backup methods
+-(BOOL)restoreDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath fromBackup:(NSString *)backupID{
+  return YES;
+}
+-(BOOL)restoreDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath fromBackup:(NSString *)backupID andCompletionBlock:(void(^)(BOOL success))completionBlock{
+  return YES;
+}
+-(BOOL)backupDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath{
+  NSString *dbPath = [self directoryForDB:dbName withPathOrNil:dbPath];
+  TCTDB *db = [self getDB:dbPath];
+  return YES;
+}
+-(void)backupDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath withCompletionBlock:(void(^)(BOOL success))completionBlock{
+  
+}
+-(NSArray *)listOfBackupsForDB:(NSString *)dnName atPathOrNil:(NSString *)dbPath{
+  return nil;
+}
+
+
 @end
