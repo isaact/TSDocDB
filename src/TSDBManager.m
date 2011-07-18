@@ -26,6 +26,7 @@
 #import "TSDBManager.h"
 #import <Foundation/Foundation.h>
 #import "TSMacros.h"
+#import "NSString+TSTools.h"
 
 @interface TSDBManager()
 
@@ -41,6 +42,7 @@
 
 -(NSString *)directoryForDB:(NSString *)dbName withPathOrNil:(NSString *)path;
 -(NSString *)findOrCreateDirectory:(NSSearchPathDirectory)searchPathDirectory inDomain:(NSSearchPathDomainMask)domainMask appendPathComponent:(NSString *)appendComponent error:(NSError **)errorOut;
+-(NSString *)backupDirForDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath;
 @end
 
 @implementation TSDBManager
@@ -148,7 +150,7 @@ static dispatch_queue_t tsDBMainQueue = NULL;
     }
     NSFileManager *fm = [NSFileManager defaultManager];
     [fm removeItemAtPath:dbPath error:NULL];
-
+    
   });
 }
 #pragma mark -
@@ -338,23 +340,88 @@ static dispatch_queue_t tsDBMainQueue = NULL;
 
 #pragma mark -
 #pragma mark Backup methods
--(BOOL)restoreDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath fromBackup:(NSString *)backupID{
+-(BOOL)restoreDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath fromBackup:(NSString *)backupID{ 
+  dispatch_sync(tsDBManagerQueue, ^{
+    NSString *backupPath = [NSString stringWithFormat:@"%@/%@", [self backupDirForDB:dbName atPathOrNil:dbPath], backupID];
+    NSString *backupFilePath = [NSString stringWithFormat:@"%@/%@.tct", backupPath, dbName];
+    
+    NSString *destPath = [self directoryForDB:dbName withPathOrNil:dbPath];
+    NSString *destDBFilePath = [NSString stringWithFormat:@"%@/%@.tct", destPath, dbName];
+    NSString *tcDestPath = [NSString stringWithFormat:@"%@/%@.tct", destPath, dbName];
+    
+    int sp;
+    TCTDB *tdb = NULL;
+    tdb = (TCTDB *)tcmapget(tsDBs, [destDBFilePath UTF8String], (int)strlen([destDBFilePath UTF8String]), &sp);
+    if (tdb) {
+      tctdbclose(tdb);
+      tcmapout(tsDBs, [destDBFilePath UTF8String], (int)strlen([destDBFilePath UTF8String]));
+    }
+    NSFileManager *fm = [NSFileManager defaultManager];
+    [fm removeItemAtPath:destPath error:NULL];
+    
+    BOOL success = [fm createDirectoryAtPath:destPath withIntermediateDirectories:YES attributes:nil error:NULL];
+    if (success) {
+      //dbPath = [self directoryForDB:dbName withPathOrNil:dbPath];
+      //dbPath = [NSString stringWithFormat:@"%@/%@.tct", dbPath, dbName];
+      TCTDB *db = [self openDB:backupFilePath writeMode:YES];
+      tctdbcopy(db, [tcDestPath UTF8String]);
+      tctdbclose(db);
+      tcfree(db);
+    }  
+  });
   return YES;
 }
 -(BOOL)restoreDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath fromBackup:(NSString *)backupID andCompletionBlock:(void(^)(BOOL success))completionBlock{
   return YES;
 }
 -(BOOL)backupDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath{
-  NSString *dbPath = [self directoryForDB:dbName withPathOrNil:dbPath];
-  TCTDB *db = [self getDB:dbPath];
-  return YES;
+  NSString *dbSig = [[self directoryForDB:dbName withPathOrNil:dbPath] MD5];
+  NSString *backupPath = [NSString stringWithFormat:@"%@/%@-%@/%f", TSDB_BACKUP_DIR, dbName, dbSig, [[NSDate date] timeIntervalSince1970]];
+  NSString *tcBackupPath = [NSString stringWithFormat:@"%@/%@.tct", backupPath, dbName];
+  BOOL success = [[NSFileManager defaultManager]
+                  createDirectoryAtPath:backupPath
+                  withIntermediateDirectories:YES
+                  attributes:nil
+                  error:NULL];
+  if (success) {
+    dbPath = [self directoryForDB:dbName withPathOrNil:dbPath];
+    dbPath = [NSString stringWithFormat:@"%@/%@.tct", dbPath, dbName];
+    TCTDB *db = [self getDB:dbPath];
+    tctdbcopy(db, [tcBackupPath UTF8String]);
+    return YES;
+  }
+  return NO;
 }
 -(void)backupDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath withCompletionBlock:(void(^)(BOOL success))completionBlock{
-  
+  BOOL success = [self backupDB:dbName atPathOrNil:dbPath];
+  if (completionBlock != NULL) {
+    completionBlock(success);
+  }
 }
--(NSArray *)listOfBackupsForDB:(NSString *)dnName atPathOrNil:(NSString *)dbPath{
+-(NSArray *)listOfBackupsForDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath{
+  NSFileManager *fm = [NSFileManager defaultManager];
+  NSString *dbSig = [[self directoryForDB:dbName withPathOrNil:dbPath] MD5];
+  NSString *backupPath = [NSString stringWithFormat:@"%@/%@-%@", TSDB_BACKUP_DIR, dbName, dbSig];
+  NSArray *dirs = [fm contentsOfDirectoryAtPath:backupPath error:NULL];
+  NSMutableArray *paths = [NSMutableArray array];
+  BOOL exists;
+  BOOL isDirectory;
+  [fm changeCurrentDirectoryPath:backupPath];
+  
+  for (NSString *dir in dirs) {
+    exists = [fm fileExistsAtPath:dir isDirectory:&isDirectory];
+    if (exists && isDirectory) {
+      [paths addObject:dir];
+    }
+  }
+  if ([paths count]) {
+    return paths;
+  }
   return nil;
 }
-
+-(NSString *)backupDirForDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath{
+  NSString *dbSig = [[self directoryForDB:dbName withPathOrNil:dbPath] MD5];
+  return [NSString stringWithFormat:@"%@/%@-%@", TSDB_BACKUP_DIR, dbName, dbSig];
+}
 
 @end

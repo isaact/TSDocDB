@@ -15,3 +15,7 @@
 #ifndef TSDB_XMSIZ
   #define TSDB_XMSIZ 6710886
 #endif
+
+#ifndef TSDB_BACKUP_DIR
+  #define TSDB_BACKUP_DIR [NSString stringWithFormat:@"%@/TSDB_Backups", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]]
+#endif
