@@ -98,28 +98,28 @@
 		362C9B5013A95E9200FCD8A4 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 362C9AF513A95E9200FCD8A4 /* zip.c */; };
 		362C9B5113A95E9200FCD8A4 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9AF613A95E9200FCD8A4 /* zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		362C9B5213A95E9200FCD8A4 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9AF613A95E9200FCD8A4 /* zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		362C9B5D13A95EA200FCD8A4 /* NSDate+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5413A95EA200FCD8A4 /* NSDate+TSTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		362C9B5E13A95EA200FCD8A4 /* NSDate+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5413A95EA200FCD8A4 /* NSDate+TSTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		362C9B5D13A95EA200FCD8A4 /* NSDate+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5413A95EA200FCD8A4 /* NSDate+TSTools.h */; settings = {ATTRIBUTES = (); }; };
+		362C9B5E13A95EA200FCD8A4 /* NSDate+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5413A95EA200FCD8A4 /* NSDate+TSTools.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		362C9B5F13A95EA200FCD8A4 /* NSDate+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5513A95EA200FCD8A4 /* NSDate+TSTools.m */; };
 		362C9B6013A95EA200FCD8A4 /* NSDate+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5513A95EA200FCD8A4 /* NSDate+TSTools.m */; };
 		362C9B6113A95EA200FCD8A4 /* NSDate+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5513A95EA200FCD8A4 /* NSDate+TSTools.m */; };
-		362C9B6213A95EA200FCD8A4 /* NSNull+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5613A95EA200FCD8A4 /* NSNull+TSTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		362C9B6313A95EA200FCD8A4 /* NSNull+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5613A95EA200FCD8A4 /* NSNull+TSTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		362C9B6213A95EA200FCD8A4 /* NSNull+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5613A95EA200FCD8A4 /* NSNull+TSTools.h */; settings = {ATTRIBUTES = (); }; };
+		362C9B6313A95EA200FCD8A4 /* NSNull+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5613A95EA200FCD8A4 /* NSNull+TSTools.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		362C9B6413A95EA200FCD8A4 /* NSNull+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5713A95EA200FCD8A4 /* NSNull+TSTools.m */; };
 		362C9B6513A95EA200FCD8A4 /* NSNull+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5713A95EA200FCD8A4 /* NSNull+TSTools.m */; };
 		362C9B6613A95EA200FCD8A4 /* NSNull+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5713A95EA200FCD8A4 /* NSNull+TSTools.m */; };
-		362C9B6713A95EA200FCD8A4 /* NSString+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5813A95EA200FCD8A4 /* NSString+TSTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		362C9B6813A95EA200FCD8A4 /* NSString+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5813A95EA200FCD8A4 /* NSString+TSTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		362C9B6713A95EA200FCD8A4 /* NSString+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5813A95EA200FCD8A4 /* NSString+TSTools.h */; settings = {ATTRIBUTES = (); }; };
+		362C9B6813A95EA200FCD8A4 /* NSString+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5813A95EA200FCD8A4 /* NSString+TSTools.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		362C9B6913A95EA200FCD8A4 /* NSString+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5913A95EA200FCD8A4 /* NSString+TSTools.m */; };
 		362C9B6A13A95EA200FCD8A4 /* NSString+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5913A95EA200FCD8A4 /* NSString+TSTools.m */; };
 		362C9B6B13A95EA200FCD8A4 /* NSString+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5913A95EA200FCD8A4 /* NSString+TSTools.m */; };
-		362C9B6C13A95EA200FCD8A4 /* TSFileReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5A13A95EA200FCD8A4 /* TSFileReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		362C9B6D13A95EA200FCD8A4 /* TSFileReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5A13A95EA200FCD8A4 /* TSFileReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		362C9B6C13A95EA200FCD8A4 /* TSFileReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5A13A95EA200FCD8A4 /* TSFileReader.h */; settings = {ATTRIBUTES = (); }; };
+		362C9B6D13A95EA200FCD8A4 /* TSFileReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5A13A95EA200FCD8A4 /* TSFileReader.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		362C9B6E13A95EA200FCD8A4 /* TSFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5B13A95EA200FCD8A4 /* TSFileReader.m */; };
 		362C9B6F13A95EA200FCD8A4 /* TSFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5B13A95EA200FCD8A4 /* TSFileReader.m */; };
 		362C9B7013A95EA200FCD8A4 /* TSFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5B13A95EA200FCD8A4 /* TSFileReader.m */; };
-		362C9B7113A95EA200FCD8A4 /* TSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5C13A95EA200FCD8A4 /* TSMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		362C9B7213A95EA200FCD8A4 /* TSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5C13A95EA200FCD8A4 /* TSMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		362C9B7113A95EA200FCD8A4 /* TSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5C13A95EA200FCD8A4 /* TSMacros.h */; settings = {ATTRIBUTES = (); }; };
+		362C9B7213A95EA200FCD8A4 /* TSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 362C9B5C13A95EA200FCD8A4 /* TSMacros.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		365D45C513AC545000ED04E9 /* CountryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 365D45C313AC545000ED04E9 /* CountryTableViewController.m */; };
 		365D45C613AC545000ED04E9 /* CountryTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 365D45C413AC545000ED04E9 /* CountryTableViewController.xib */; };
 		3669458E13A6A60B00B6DF53 /* DBLoadingPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3669458D13A6A60B00B6DF53 /* DBLoadingPane.xib */; };
@@ -692,10 +692,10 @@
 				362C9B4913A95E9200FCD8A4 /* mztools.h in Headers */,
 				362C9B4D13A95E9200FCD8A4 /* unzip.h in Headers */,
 				362C9B5113A95E9200FCD8A4 /* zip.h in Headers */,
+				362C9B6C13A95EA200FCD8A4 /* TSFileReader.h in Headers */,
 				362C9B5D13A95EA200FCD8A4 /* NSDate+TSTools.h in Headers */,
 				362C9B6213A95EA200FCD8A4 /* NSNull+TSTools.h in Headers */,
 				362C9B6713A95EA200FCD8A4 /* NSString+TSTools.h in Headers */,
-				362C9B6C13A95EA200FCD8A4 /* TSFileReader.h in Headers */,
 				362C9B7113A95EA200FCD8A4 /* TSMacros.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -723,10 +723,10 @@
 				362C9B4A13A95E9200FCD8A4 /* mztools.h in Headers */,
 				362C9B4E13A95E9200FCD8A4 /* unzip.h in Headers */,
 				362C9B5213A95E9200FCD8A4 /* zip.h in Headers */,
+				362C9B6D13A95EA200FCD8A4 /* TSFileReader.h in Headers */,
 				362C9B5E13A95EA200FCD8A4 /* NSDate+TSTools.h in Headers */,
 				362C9B6313A95EA200FCD8A4 /* NSNull+TSTools.h in Headers */,
 				362C9B6813A95EA200FCD8A4 /* NSString+TSTools.h in Headers */,
-				362C9B6D13A95EA200FCD8A4 /* TSFileReader.h in Headers */,
 				362C9B7213A95EA200FCD8A4 /* TSMacros.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1093,6 +1093,9 @@
 		368F1E3913A3B78D00835CBD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
 			name = Debug;
@@ -1100,6 +1103,9 @@
 		368F1E3A13A3B78D00835CBD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
 			name = Release;

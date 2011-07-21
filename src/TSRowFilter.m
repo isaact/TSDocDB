@@ -128,6 +128,10 @@
     [valSet addObjectsFromArray:val];
   }else if ([val isKindOfClass:[NSNumber class]]) {
     [valSet addObject:[val stringValue]];
+  }else if([val isKindOfClass:[NSIndexSet class]]) {
+    [(NSIndexSet *)val enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+      [valSet addObject:[NSNumber numberWithInteger:idx]];
+    }];
   }else {
     [valSet addObject:val];
   }
