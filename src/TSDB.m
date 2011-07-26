@@ -453,7 +453,7 @@
   }
 }
 -(void)addConditionNumEquals:(id)colVal toColumn:(NSString *)colName{
-  if ([colVal isKindOfClass:[NSString class]] || [colVal isKindOfClass:[NSNumber class]]) {
+  if ([colVal isKindOfClass:[NSString class]] || [colVal isKindOfClass:[NSNumber class]] || [colVal isKindOfClass:[NSIndexSet class]] || [colVal isKindOfClass:[NSArray class]]) {
     TSRowFilter *filter = [[TSRowFilter alloc] initNumericFilter:colName withOp:eq andVal:colVal];
     [filterChain addFilter:filter withLabel:[filter getFilterSig]];
     [filter release];

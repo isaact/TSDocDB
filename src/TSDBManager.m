@@ -371,12 +371,20 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   });
   return YES;
 }
--(BOOL)restoreDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath fromBackup:(NSString *)backupID andCompletionBlock:(void(^)(BOOL success))completionBlock{
-  return YES;
+-(void)restoreDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath fromBackup:(NSString *)backupID andCompletionBlock:(void(^)(BOOL success))completionBlock{
+  if (completionBlock != NULL) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      BOOL success = [self restoreDB:dbName atPathOrNil:dbPath fromBackup:backupID];
+      if (completionBlock != NULL) {
+        completionBlock(success);
+      }
+    });
+    
+  }
 }
 -(BOOL)backupDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath{
   NSString *dbSig = [[self directoryForDB:dbName withPathOrNil:dbPath] MD5];
-  NSString *backupPath = [NSString stringWithFormat:@"%@/%@-%@/%f", TSDB_BACKUP_DIR, dbName, dbSig, [[NSDate date] timeIntervalSince1970]];
+  NSString *backupPath = [NSString stringWithFormat:@"%@/%@-%@/%@", TSDB_BACKUP_DIR, dbName, dbSig, [[NSDate date] descriptionWithCalendarFormat:nil timeZone:nil locale:nil]];
   NSString *tcBackupPath = [NSString stringWithFormat:@"%@/%@.tct", backupPath, dbName];
   BOOL success = [[NSFileManager defaultManager]
                   createDirectoryAtPath:backupPath
