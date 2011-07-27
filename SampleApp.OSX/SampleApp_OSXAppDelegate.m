@@ -35,7 +35,7 @@
   [cityDBDelegate.geonamesDB doSearchWithProcessingBlock:^BOOL(id row) {
     [cityArrayController addObject:row];
     return NO;
-  } withLimit:50 andOffset:0 forRowTypes:@"city", nil];
+  } withLimit:1000 andOffset:0 forRowTypes:@"city", nil];
   [cityArrayController rearrangeObjects];
   
   [countryArrayController addObserver: self

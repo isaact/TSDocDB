@@ -32,7 +32,6 @@
 
 
 @interface TSDBManager : NSObject {
-  NSHashTable *dbs;
 }
 +(TSDBManager *)sharedDBManager;
 +(NSString *)getDBError:(int)ecode;

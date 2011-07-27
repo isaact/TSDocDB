@@ -81,7 +81,7 @@
       }
     }
   }];
-  [geonamesDB syncDB];
+  [geonamesDB optimizeIndexes:nil];
   [reader release];
 }
 -(void)importCitiesWithProgressBlock:(void(^)(NSDictionary *city, BOOL *stop, float progress))block{
