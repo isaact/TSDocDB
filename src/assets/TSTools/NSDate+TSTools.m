@@ -58,23 +58,27 @@ void useTSDateTools(){
   
   NSInteger startWeekDay = [startWeekdayComponents weekday];
   NSInteger endWeekDay = [endWeekdayComponents weekday];
+  
   NSInteger adjust = 0;
-  if (startWeekDay == endWeekDay) {
-    adjust = 0;
-  } else if (startWeekDay == 1 && endWeekDay == 7) {
-    adjust = 5;
-  } else if (startWeekDay == 7 && endWeekDay == 1) {
-    adjust = 0;
-  } else if (endWeekDay == 7 || endWeekDay == 1) {
-    adjust = 5-startWeekDay;
-  } else if (startWeekDay == 1 || startWeekDay == 7) {
-    adjust = endWeekDay;
-  } else if (endWeekDay > startWeekDay ) {
+  if (startWeekDay == 1) {
+    startWeekDay = 2;
+  }else if(startWeekDay > 5){
+    startWeekDay = 6;
+  }
+  
+  if (endWeekDay == 1) {
+    endWeekDay = 2;
+  }else if(endWeekDay > 5){
+    endWeekDay = 6;
+  }
+  
+  if (endWeekDay > startWeekDay ) {
     adjust = endWeekDay-startWeekDay;
   } else {
     adjust = 5+endWeekDay-startWeekDay;
   }
   [gregorian release];
+  NSLog(@"numWeeks %d %d %d %d", weeksBetween, adjust, startWeekDay, endWeekDay);
   return (weeksBetween * 5) + adjust;
 }
 
