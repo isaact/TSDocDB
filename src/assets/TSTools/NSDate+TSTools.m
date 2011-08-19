@@ -78,7 +78,7 @@ void useTSDateTools(){
     adjust = 5+endWeekDay-startWeekDay;
   }
   [gregorian release];
-  NSLog(@"numWeeks %d %d %d %d", weeksBetween, adjust, startWeekDay, endWeekDay);
+  //NSLog(@"numWeeks %d %d %d %d", weeksBetween, adjust, startWeekDay, endWeekDay);
   return (weeksBetween * 5) + adjust;
 }
 
