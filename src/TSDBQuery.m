@@ -57,9 +57,12 @@
   NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
   TDBQRY *qry = [db getQueryObjectForFilterChain:filterChain];
   [self adjustQuery:qry withLimit:resultLimit andOffset:resultOffset];
+  NSTimeInterval querySetup = [[NSDate date] timeIntervalSince1970];
   NSArray *rows= [db doPredifinedSearchWithQuery:qry];
+  NSTimeInterval execTime = [[NSDate date] timeIntervalSince1970];
   tctdbqrydel(qry);
-  NSLog(@"Search (%ld, %ld) took: %f secs", resultLimit, resultOffset, [[NSDate date] timeIntervalSince1970] -start);
+  NSTimeInterval endTime = [[NSDate date] timeIntervalSince1970];
+  NSLog(@"Search (%d, %d) took: Q:%f S: %f T:%f secs", resultLimit, resultOffset, querySetup -start,execTime -start,endTime -start);
   return rows;
 }
 -(void)doSearchWithLimit:(NSUInteger)resultLimit offset:(NSUInteger)resultOffset andProcessingBlock:(BOOL(^)(id))processingBlock{
