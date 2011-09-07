@@ -45,6 +45,15 @@
 
 #import "ZipArchive.h"
 
+//JSONKit
+#import "JSONKit.h"
+
+void useTSDB(){
+  //Do nothing
+}
+@implementation NSObject (TSDB)
+@end
+
 @interface TSDB()
 
 -(TCTDB *)getDB;
@@ -55,7 +64,7 @@
 -(NSString *)makeRowTypeKey;
 -(NSString *)makeRowVersionKey;
 -(NSString *)makeRowTextColKey;
-
+-(NSString *)makeOriginalDataKey;
 
 
 //MetaData Methods
@@ -322,9 +331,16 @@
     NSString *realRowID = [self makePrimaryRowKey:rowType andRowID:rowID];
     //NSLog(@"%@", rowData);
     NSMutableDictionary *tmpData = [NSMutableDictionary dictionaryWithCapacity:[rowData count]];
+    [tmpData setObject:[rowData JSONString] forKey:[self makeOriginalDataKey]];
     for (NSString *key in [rowData allKeys]) {
-      if([rowData objectForKey:key] != [NSNull null])
-        [tmpData setObject:[rowData objectForKey:key] forKey:key];
+      if([rowData objectForKey:key] != [NSNull null]){
+        if ([[rowData objectForKey:key] isKindOfClass:[NSString class]]) {
+          [tmpData setObject:[[rowData objectForKey:key] lowercaseString] forKey:key];
+        }else{
+          [tmpData setObject:[[[rowData objectForKey:key] stringValue] lowercaseString] forKey:key];
+        }
+      }
+        
     }
     [tmpData setObject:rowType forKey:[self makeRowTypeKey]];
     NSArray *colKeys = [_delegate TSColumnsForFullTextSearch:rowType];
@@ -745,6 +761,9 @@
 -(NSString *)makeRowTypeKey{
   return [TSRowFilter makeRowTypeKey];
 }
+-(NSString *)makeOriginalDataKey{
+  return [TSRowFilter makeOriginalDataKey];
+}
 -(NSString *)makeRowVersionKey{
   return [TSRowFilter makeRowVersionKey];
 }
@@ -868,8 +887,9 @@
   for (NSString *colKey in [rowData allKeys]) {
     if([[rowData objectForKey:colKey] isKindOfClass:[NSString class]]){
       const char *val = [[rowData objectForKey:colKey] UTF8String];
-      //if (strlen(val) <= 0) {
-      //  val = " ";
+      if (strlen(val) <= 0) {
+        val = " ";
+      }
 //        tcmapput(cols, [colKey UTF8String], strlen([colKey UTF8String]), [[rowData objectForKey:colKey] UTF8String], strlen([[rowData objectForKey:colKey] UTF8String]));
 //      }else {
 //        tcmapput(cols, [colKey UTF8String], strlen([colKey UTF8String]), " ", strlen(" "));
@@ -897,29 +917,38 @@
   return NO;
 }
 -(id)dbGet:(NSString *)rowID{
+  useTSDB();
   TCTDB *tdb = [self getDB];
+  //NSMutableDictionary *rowData = nil;
   NSMutableDictionary *rowData = nil;
+  NSString *rowType = nil;
   __block TCMAP *cols;
   dispatch_sync(dbQueue, ^{
    cols = tctdbget(tdb, [rowID UTF8String], (int)strlen([rowID UTF8String]));
   });
-  const char *name;
+  //const char *name;
   if(cols){
     tcmapiterinit(cols);
-    rowData = [[[NSMutableDictionary alloc] initWithCapacity:1] autorelease];
+    //rowData = [[[NSMutableDictionary alloc] initWithCapacity:1] autorelease];
     //NSAutoreleasePool *pool;
-    while((name = tcmapiternext2(cols)) != NULL){
+    const char *jsonData = tcmapget2(cols, [[self makeOriginalDataKey] UTF8String]);
+    rowType = [NSString stringWithUTF8String:tcmapget2(cols, [[self makeRowTypeKey] UTF8String])];
+    if (jsonData) {
+      rowData = [NSMutableDictionary dictionaryWithDictionary:[[NSString stringWithUTF8String:jsonData] objectFromJSONString]];
+    }
+    //while((name = tcmapiternext2(cols)) != NULL){
       //pool = [[NSAutoreleasePool alloc] init];
       //NSLog(@"Getting %s", name);
-      [rowData setObject:[NSString stringWithUTF8String:tcmapget2(cols, name)] 
-                  forKey:[NSString stringWithUTF8String:name]];
+      //[rowData setObject:[NSString stringWithUTF8String:tcmapget2(cols, name)] 
+      //            forKey:[NSString stringWithUTF8String:name]];
       //[pool drain];
-    }
+    //}
     tcmapdel(cols);
+    //NSLog(@"%@", rowData);
   }
   if([_delegate respondsToSelector:@selector(TSModelObjectForData:andRowType:)]){
     //NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    id rowModel = [[_delegate TSModelObjectForData:rowData andRowType:[rowData objectForKey:[self makeRowTypeKey]]] retain];
+    id rowModel = [[_delegate TSModelObjectForData:rowData andRowType:rowType] retain];
     //[pool drain];
     return [rowModel autorelease];
   }

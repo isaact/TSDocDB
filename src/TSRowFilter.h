@@ -55,6 +55,7 @@ typedef enum {
 +(NSString *)makePrimaryRowKey:(NSString *)rowType andRowID:(NSString *)rowID;
 +(NSString *)makeRowDefinitionKey:(NSString *)rowType;
 +(NSString *)makeRowTypeKey;
++(NSString *)makeOriginalDataKey;
 +(NSString *)makeRowVersionKey;
 +(NSString *)makeRowTextColKey;
 

@@ -49,6 +49,13 @@ typedef enum {
 -(id)TSModelObjectForData:(NSDictionary *)rowData andRowType:(NSString *)rowType;
 
 @end
+
+//Hack to force include JSONKit
+void useTSDB();
+
+@interface NSObject (TSDB)
+@end
+
 @class TSDBQuery;
 @interface TSDB : NSObject {
   TSRowFilterChain *filterChain;

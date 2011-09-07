@@ -162,6 +162,10 @@
 		36AAE13313AED404007C0430 /* CityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36AAE13113AED404007C0430 /* CityTableViewController.xib */; };
 		36AAE13513AED42F007C0430 /* CityTableViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36AAE13413AED42F007C0430 /* CityTableViewController-iPad.xib */; };
 		36DE805213A59FC400B2CAAC /* countryInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 36DE805013A59F9F00B2CAAC /* countryInfo.txt */; };
+		36F9A0551416F9260086EF95 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 36F9A0521416F9260086EF95 /* JSONKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36F9A0561416F9260086EF95 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 36F9A0521416F9260086EF95 /* JSONKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36F9A0571416F9260086EF95 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9A0531416F9260086EF95 /* JSONKit.m */; };
+		36F9A0581416F9260086EF95 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9A0531416F9260086EF95 /* JSONKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,6 +302,10 @@
 		36AAE13113AED404007C0430 /* CityTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityTableViewController.xib; sourceTree = "<group>"; };
 		36AAE13413AED42F007C0430 /* CityTableViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CityTableViewController-iPad.xib"; sourceTree = "<group>"; };
 		36DE805013A59F9F00B2CAAC /* countryInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countryInfo.txt; sourceTree = "<group>"; };
+		36F9A0511416F9260086EF95 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
+		36F9A0521416F9260086EF95 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		36F9A0531416F9260086EF95 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		36F9A0541416F9260086EF95 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -638,6 +646,7 @@
 		36A4EA2513A95DD200411208 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				36F9A0501416F9260086EF95 /* JSONKit */,
 				362C9B5313A95EA200FCD8A4 /* TSTools */,
 				362C9AC513A95E9200FCD8A4 /* TokyoCabinet */,
 				362C9AEA13A95E9200FCD8A4 /* ZipArchive */,
@@ -666,6 +675,17 @@
 			name = CityTableViewController;
 			sourceTree = "<group>";
 		};
+		36F9A0501416F9260086EF95 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				36F9A0511416F9260086EF95 /* CHANGELOG.md */,
+				36F9A0521416F9260086EF95 /* JSONKit.h */,
+				36F9A0531416F9260086EF95 /* JSONKit.m */,
+				36F9A0541416F9260086EF95 /* README.md */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -692,6 +712,7 @@
 				362C9B4913A95E9200FCD8A4 /* mztools.h in Headers */,
 				362C9B4D13A95E9200FCD8A4 /* unzip.h in Headers */,
 				362C9B5113A95E9200FCD8A4 /* zip.h in Headers */,
+				36F9A0551416F9260086EF95 /* JSONKit.h in Headers */,
 				362C9B6C13A95EA200FCD8A4 /* TSFileReader.h in Headers */,
 				362C9B5D13A95EA200FCD8A4 /* NSDate+TSTools.h in Headers */,
 				362C9B6213A95EA200FCD8A4 /* NSNull+TSTools.h in Headers */,
@@ -723,6 +744,7 @@
 				362C9B4A13A95E9200FCD8A4 /* mztools.h in Headers */,
 				362C9B4E13A95E9200FCD8A4 /* unzip.h in Headers */,
 				362C9B5213A95E9200FCD8A4 /* zip.h in Headers */,
+				36F9A0561416F9260086EF95 /* JSONKit.h in Headers */,
 				362C9B6D13A95EA200FCD8A4 /* TSFileReader.h in Headers */,
 				362C9B5E13A95EA200FCD8A4 /* NSDate+TSTools.h in Headers */,
 				362C9B6313A95EA200FCD8A4 /* NSNull+TSTools.h in Headers */,
@@ -919,6 +941,7 @@
 				362C9B6413A95EA200FCD8A4 /* NSNull+TSTools.m in Sources */,
 				362C9B6913A95EA200FCD8A4 /* NSString+TSTools.m in Sources */,
 				362C9B6E13A95EA200FCD8A4 /* TSFileReader.m in Sources */,
+				36F9A0571416F9260086EF95 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -954,6 +977,7 @@
 				362C9B6513A95EA200FCD8A4 /* NSNull+TSTools.m in Sources */,
 				362C9B6A13A95EA200FCD8A4 /* NSString+TSTools.m in Sources */,
 				362C9B6F13A95EA200FCD8A4 /* TSFileReader.m in Sources */,
+				36F9A0581416F9260086EF95 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1119,7 +1143,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = supported;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TSDocDB.OSX/TSDocDB.OSX-Prefix.pch";
@@ -1146,7 +1170,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = supported;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TSDocDB.OSX/TSDocDB.OSX-Prefix.pch";
 				GCC_VERSION = "";

@@ -38,6 +38,9 @@
 +(NSString *)makeRowTypeKey{
   return [NSString stringWithFormat:@"_TSDB.DT"];
 }
++(NSString *)makeOriginalDataKey{
+  return [NSString stringWithFormat:@"_TSDB.OD"];
+}
 +(NSString *)makeRowVersionKey{
   return [NSString stringWithFormat:@"_TSDB.DTVer"];
 }
@@ -209,7 +212,12 @@
     count++;
   }
   //NSLog(@"#######Looking for %@: %@", colName, str);
-  tctdbqryaddcond(qry, [colName UTF8String], qop, [str UTF8String]);
+  if (![colName isEqualToString:@"_TSDB.DT"]) {
+    tctdbqryaddcond(qry, [colName UTF8String], qop, [[str lowercaseString] UTF8String]);
+  }else{
+    tctdbqryaddcond(qry, [colName UTF8String], qop, [str UTF8String]);
+  }
+  
   [str release];
 }
 -(NSString *)getFilterSig{
