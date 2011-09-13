@@ -47,6 +47,6 @@
 -(void)restoreDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath fromBackup:(NSString *)backupID andCompletionBlock:(void(^)(BOOL success))completionBlock;
 -(BOOL)backupDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath;
 -(void)backupDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath withCompletionBlock:(void(^)(BOOL success))completionBlock;
--(NSArray *)listOfBackupsForDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath;
+-(NSArray *)listOfBackupsForDB:(NSString *)dbName newerThanDateOrNil:(NSDate *)date atPathOrNil:(NSString *)dbPath;
 
 @end

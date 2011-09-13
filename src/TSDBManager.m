@@ -406,7 +406,8 @@ static dispatch_queue_t tsDBMainQueue = NULL;
     completionBlock(success);
   }
 }
--(NSArray *)listOfBackupsForDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath{
+
+-(NSArray *)listOfBackupsForDB:(NSString *)dbName newerThanDateOrNil:(NSDate *)date atPathOrNil:(NSString *)dbPath{
   NSFileManager *fm = [NSFileManager defaultManager];
   NSString *dbSig = [[self directoryForDB:dbName withPathOrNil:dbPath] MD5];
   NSString *backupPath = [NSString stringWithFormat:@"%@/%@-%@", TSDB_BACKUP_DIR, dbName, dbSig];
@@ -415,13 +416,18 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   BOOL exists;
   BOOL isDirectory;
   [fm changeCurrentDirectoryPath:backupPath];
-  
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
+
   for (NSString *dir in dirs) {
+    NSDate *dirDate = [dateFormatter dateFromString:dir];
     exists = [fm fileExistsAtPath:dir isDirectory:&isDirectory];
-    if (exists && isDirectory) {
+    //NSLog(@"%@ d: %f z: %f", dir, [dirDate timeIntervalSince1970], [date timeIntervalSince1970]);
+    if (exists && isDirectory && (date == nil || [dirDate timeIntervalSince1970] > [date timeIntervalSince1970])) {
       [paths addObject:dir];
     }
   }
+  [dateFormatter release];
   if ([paths count]) {
     return paths;
   }
