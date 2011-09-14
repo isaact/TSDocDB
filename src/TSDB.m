@@ -46,7 +46,7 @@
 #import "ZipArchive.h"
 
 //JSONKit
-#import "JSONKit.h"
+#import "TSMutableDictionary.h"
 
 void useTSDB(){
   //Do nothing
@@ -331,7 +331,8 @@ void useTSDB(){
     NSString *realRowID = [self makePrimaryRowKey:rowType andRowID:rowID];
     //NSLog(@"%@", rowData);
     NSMutableDictionary *tmpData = [NSMutableDictionary dictionaryWithCapacity:[rowData count]];
-    [tmpData setObject:[rowData JSONString] forKey:[self makeOriginalDataKey]];
+    [(TSMutableDictionary *)rowData removeObjectsWithNullValue];
+    [tmpData setObject:rowData forKey:[self makeOriginalDataKey]];
     for (NSString *key in [rowData allKeys]) {
       if([rowData objectForKey:key] != [NSNull null]){
         if ([[rowData objectForKey:key] isKindOfClass:[NSString class]]) {
@@ -899,8 +900,11 @@ void useTSDB(){
       tcmapput2(tcMap, [colKey UTF8String], [[[rowData objectForKey:colKey] stringValue] UTF8String]);
       //tcmapput(cols, [colKey UTF8String], strlen([colKey UTF8String]), [[[rowData objectForKey:colKey] stringValue] UTF8String], strlen([[[rowData objectForKey:colKey] stringValue] UTF8String]));
     } else if ([[rowData objectForKey:colKey] isKindOfClass:[NSArray class]] || [[rowData objectForKey:colKey] isKindOfClass:[NSDictionary class]]) {
-      tcmapput2(tcMap, [colKey UTF8String], [[[rowData objectForKey:colKey] description] UTF8String]);
-      //tcmapput(cols, [colKey UTF8String], strlen([colKey UTF8String]), [[[rowData objectForKey:colKey] description] UTF8String], strlen([[[rowData objectForKey:colKey] description] UTF8String]));
+      NSData *dataRep;
+      NSString *errorStr = nil;
+      dataRep = [NSPropertyListSerialization dataFromPropertyList: [rowData objectForKey:[self makeOriginalDataKey]] format: NSPropertyListBinaryFormat_v1_0 errorDescription: &errorStr];
+      //tcmapput2(tcMap, [colKey UTF8String], [[[rowData objectForKey:colKey] description] UTF8String]);
+      tcmapput(tcMap, [colKey UTF8String], strlen([colKey UTF8String]), [dataRep bytes], [dataRep length]);
     }
     
   }
@@ -931,11 +935,19 @@ void useTSDB(){
     tcmapiterinit(cols);
     //rowData = [[[NSMutableDictionary alloc] initWithCapacity:1] autorelease];
     //NSAutoreleasePool *pool;
-    const char *jsonData = tcmapget2(cols, [[self makeOriginalDataKey] UTF8String]);
+    NSData *dataRep = nil;
+    int length;
+    const char *buf = tcmapget(cols, [[self makeOriginalDataKey] UTF8String], strlen([[self makeOriginalDataKey] UTF8String]), &length);
+    dataRep = [NSData dataWithBytes:buf length:length];
+    NSString *errorStr = nil;
+    NSPropertyListFormat format;
+    
+    
+    rowData = [NSPropertyListSerialization propertyListFromData:dataRep mutabilityOption:NSPropertyListMutableContainers format:&format errorDescription:&errorStr];    
     rowType = [NSString stringWithUTF8String:tcmapget2(cols, [[self makeRowTypeKey] UTF8String])];
-    if (jsonData) {
-      rowData = [NSMutableDictionary dictionaryWithDictionary:[[NSString stringWithUTF8String:jsonData] objectFromJSONString]];
-    }
+   //if(jsonData) {
+   //  rowData = [NSMutableDictionary dictionaryWithDictionary:[[NSString stringWithUTF8String:jsonData] objectFromJSONString]];
+   //}
     //while((name = tcmapiternext2(cols)) != NULL){
       //pool = [[NSAutoreleasePool alloc] init];
       //NSLog(@"Getting %s", name);

@@ -166,10 +166,10 @@
 		36F9A0561416F9260086EF95 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 36F9A0521416F9260086EF95 /* JSONKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		36F9A0571416F9260086EF95 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9A0531416F9260086EF95 /* JSONKit.m */; };
 		36F9A0581416F9260086EF95 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9A0531416F9260086EF95 /* JSONKit.m */; };
-		6A2959751419404000431279 /* NSMutableDictionary+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A29597214193CD600431279 /* NSMutableDictionary+TSTools.h */; };
-		6A2959761419404000431279 /* NSMutableDictionary+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A29597314193CD600431279 /* NSMutableDictionary+TSTools.m */; };
-		6A2959771419404100431279 /* NSMutableDictionary+TSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A29597214193CD600431279 /* NSMutableDictionary+TSTools.h */; };
-		6A2959781419404100431279 /* NSMutableDictionary+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A29597314193CD600431279 /* NSMutableDictionary+TSTools.m */; };
+		6A2959751419404000431279 /* TSMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A29597214193CD600431279 /* TSMutableDictionary.h */; };
+		6A2959761419404000431279 /* TSMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A29597314193CD600431279 /* TSMutableDictionary.m */; };
+		6A2959771419404100431279 /* TSMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A29597214193CD600431279 /* TSMutableDictionary.h */; };
+		6A2959781419404100431279 /* TSMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A29597314193CD600431279 /* TSMutableDictionary.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,8 +310,8 @@
 		36F9A0521416F9260086EF95 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		36F9A0531416F9260086EF95 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		36F9A0541416F9260086EF95 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		6A29597214193CD600431279 /* NSMutableDictionary+TSTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+TSTools.h"; sourceTree = "<group>"; };
-		6A29597314193CD600431279 /* NSMutableDictionary+TSTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+TSTools.m"; sourceTree = "<group>"; };
+		6A29597214193CD600431279 /* TSMutableDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSMutableDictionary.h; sourceTree = "<group>"; };
+		6A29597314193CD600431279 /* TSMutableDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSMutableDictionary.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,8 +492,8 @@
 				362C9B5A13A95EA200FCD8A4 /* TSFileReader.h */,
 				362C9B5B13A95EA200FCD8A4 /* TSFileReader.m */,
 				362C9B5C13A95EA200FCD8A4 /* TSMacros.h */,
-				6A29597214193CD600431279 /* NSMutableDictionary+TSTools.h */,
-				6A29597314193CD600431279 /* NSMutableDictionary+TSTools.m */,
+				6A29597214193CD600431279 /* TSMutableDictionary.h */,
+				6A29597314193CD600431279 /* TSMutableDictionary.m */,
 			);
 			path = TSTools;
 			sourceTree = "<group>";
@@ -726,7 +726,7 @@
 				362C9B6213A95EA200FCD8A4 /* NSNull+TSTools.h in Headers */,
 				362C9B6713A95EA200FCD8A4 /* NSString+TSTools.h in Headers */,
 				362C9B7113A95EA200FCD8A4 /* TSMacros.h in Headers */,
-				6A2959751419404000431279 /* NSMutableDictionary+TSTools.h in Headers */,
+				6A2959751419404000431279 /* TSMutableDictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,7 +759,7 @@
 				362C9B6313A95EA200FCD8A4 /* NSNull+TSTools.h in Headers */,
 				362C9B6813A95EA200FCD8A4 /* NSString+TSTools.h in Headers */,
 				362C9B7213A95EA200FCD8A4 /* TSMacros.h in Headers */,
-				6A2959771419404100431279 /* NSMutableDictionary+TSTools.h in Headers */,
+				6A2959771419404100431279 /* TSMutableDictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,7 +952,7 @@
 				362C9B6913A95EA200FCD8A4 /* NSString+TSTools.m in Sources */,
 				362C9B6E13A95EA200FCD8A4 /* TSFileReader.m in Sources */,
 				36F9A0571416F9260086EF95 /* JSONKit.m in Sources */,
-				6A2959761419404000431279 /* NSMutableDictionary+TSTools.m in Sources */,
+				6A2959761419404000431279 /* TSMutableDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,7 +989,7 @@
 				362C9B6A13A95EA200FCD8A4 /* NSString+TSTools.m in Sources */,
 				362C9B6F13A95EA200FCD8A4 /* TSFileReader.m in Sources */,
 				36F9A0581416F9260086EF95 /* JSONKit.m in Sources */,
-				6A2959781419404100431279 /* NSMutableDictionary+TSTools.m in Sources */,
+				6A2959781419404100431279 /* TSMutableDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  NSMutableDictionary+TSTools.h
+//  TSMutableDictionary.h
 //  TSDocDB
 //
 //  Created by Isaac Tewolde on 11-09-08.
@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-void useTSDictionaryTools();
 
-@interface NSMutableDictionary (TSTools)
+@interface TSMutableDictionary: NSMutableDictionary
 -(NSUInteger)removeObjectsWithValue:(NSString *)value;
 -(NSUInteger)removeObjectsWithNullValue;
 @end
