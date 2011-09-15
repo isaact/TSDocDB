@@ -40,7 +40,11 @@ TSDB is the main object you'll be using in you application. Each TSDB object rep
 
 You will need to create a class that implements this protocol. TSDB uses this delegate object to determine the different types of rows your application will use and what columns should be indexed. See the sample app(`CityDBDelegate`) to see how to make a proper TSDBDefinitionsDelegate object.
 
-By default rows are represented as NSDictionary objects. If you want search queries to return model objects instead, implement the method `-(id)TSModelObjectForData:(NSDictionary *)rowData andRowType:(NSString *)rowType;` in the delegate object. TSDB will call this method to create the model object out of the raw data and return that in the search result.
+By default rows are represented as NSDictionary objects. Keys must be NSString objects or they must respond to the stringValue message. Values may be NSString, NSNumber, NSDictionary or NSArray. The last two will be serialized before being stored in the db.
+
+If you want search queries to return model objects instead, implement the method `-(id)TSModelObjectForData:(NSDictionary *)rowData andRowType:(NSString *)rowType;` in the delegate object. TSDB will call this method to create the model object out of the raw data and return that in the search result.
+
+
 
 ##TSDBManager
 
