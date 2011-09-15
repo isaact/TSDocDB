@@ -29,6 +29,7 @@
 #import "TSDBManager.h"
 
 #import "TSRowFilter.h"
+#import "TSMutableDictionary.h"
 
 //Predefined query objects
 #import "TSDBQuery.h"
@@ -45,8 +46,7 @@
 
 #import "ZipArchive.h"
 
-//JSONKit
-#import "TSMutableDictionary.h"
+
 
 void useTSDB(){
   //Do nothing
