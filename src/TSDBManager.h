@@ -48,5 +48,5 @@
 -(BOOL)backupDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath;
 -(void)backupDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath withCompletionBlock:(void(^)(BOOL success))completionBlock;
 -(NSArray *)listOfBackupsForDB:(NSString *)dbName newerThanDateOrNil:(NSDate *)date atPathOrNil:(NSString *)dbPath;
-
+-(void)removeOlderBackupsForDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath;
 @end

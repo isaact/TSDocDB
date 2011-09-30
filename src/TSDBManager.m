@@ -433,6 +433,18 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   }
   return nil;
 }
+-(void)removeOlderBackupsForDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath{
+  NSFileManager *fm = [NSFileManager defaultManager];
+  NSString *dbSig = [[self directoryForDB:dbName withPathOrNil:dbPath] MD5];
+  NSString *backupPath = [NSString stringWithFormat:@"%@/%@-%@", TSDB_BACKUP_DIR, dbName, dbSig];
+  NSArray *dirs = [self listOfBackupsForDB:dbName newerThanDateOrNil:nil atPathOrNil:nil];
+  int numToDelete = [dirs count] - 10;
+  NSString *dirPath = nil;
+  for (int i=0; i < numToDelete; i++) {
+    dirPath = [backupPath stringByAppendingPathComponent:[dirs objectAtIndex:i]];
+    [fm removeItemAtPath:dirPath error:NULL];
+  }
+}
 -(NSString *)backupDirForDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath{
   NSString *dbSig = [[self directoryForDB:dbName withPathOrNil:dbPath] MD5];
   return [NSString stringWithFormat:@"%@/%@-%@", TSDB_BACKUP_DIR, dbName, dbSig];
