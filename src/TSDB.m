@@ -331,7 +331,6 @@ void useTSDB(){
     NSString *realRowID = [self makePrimaryRowKey:rowType andRowID:rowID];
     //NSLog(@"%@", rowData);
     NSMutableDictionary *tmpData = [NSMutableDictionary dictionaryWithCapacity:[rowData count]];
-    [(TSMutableDictionary *)rowData removeObjectsWithNullValue];
     [tmpData setObject:rowData forKey:[self makeOriginalDataKey]];
     for (NSString *key in [rowData allKeys]) {
       if([rowData objectForKey:key] != [NSNull null]){

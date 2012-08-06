@@ -159,7 +159,7 @@ static dispatch_queue_t tsDBMainQueue = NULL;
   return [NSString stringWithUTF8String:tctdberrmsg(ecode)];
 }
 +(NSString *)getQueueSig{
-  return [NSString stringWithString:@"com.ticklespace.tsdocdb"];
+  return @"com.ticklespace.tsdocdb";
 }
 +(NSString *)getQueueSigForDbPath:(NSString *)dbPath{
   return [NSString stringWithFormat:@"tsqueue-%d", [dbPath hash]];
@@ -384,7 +384,13 @@ static dispatch_queue_t tsDBMainQueue = NULL;
 }
 -(BOOL)backupDB:(NSString *)dbName atPathOrNil:(NSString *)dbPath{
   NSString *dbSig = [[self directoryForDB:dbName withPathOrNil:dbPath] MD5];
-  NSString *backupPath = [NSString stringWithFormat:@"%@/%@-%@/%@", TSDB_BACKUP_DIR, dbName, dbSig, [[NSDate date] descriptionWithCalendarFormat:nil timeZone:nil locale:nil]];
+  NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+  
+  [dateFormatter setDateFormat:@"yyyy-MM-dd HH.mm"];
+  NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+  [dateFormatter release];
+  
+  NSString *backupPath = [NSString stringWithFormat:@"%@/%@-%@/%@", TSDB_BACKUP_DIR, dbName, dbSig, dateString];
   NSString *tcBackupPath = [NSString stringWithFormat:@"%@/%@.tct", backupPath, dbName];
   BOOL success = [[NSFileManager defaultManager]
                   createDirectoryAtPath:backupPath
