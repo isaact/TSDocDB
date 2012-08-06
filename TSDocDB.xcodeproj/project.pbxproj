@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36024BA615CF47E800B427CF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36024BA515CF47E800B427CF /* libz.dylib */; };
+		36024BA815CF47EE00B427CF /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36024BA715CF47EE00B427CF /* libbz2.dylib */; };
+		36024BAA15CF480100B427CF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36024BA915CF480100B427CF /* libz.dylib */; };
+		36024BAC15CF480700B427CF /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36024BAB15CF480700B427CF /* libbz2.dylib */; };
+		36024BAE15CF492600B427CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36024BAD15CF492600B427CF /* UIKit.framework */; };
 		3606F18F13A8F5D200E45C4F /* TSSearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606F18E13A8F5D200E45C4F /* TSSearchField.m */; };
-		3609E19B13ABE0DB00063663 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3609E19A13ABE0DB00063663 /* UIKit.framework */; };
 		3609E19C13ABE0DB00063663 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368F1E5313A3B80000835CBD /* Foundation.framework */; };
 		3609E19E13ABE0DB00063663 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3609E19D13ABE0DB00063663 /* CoreGraphics.framework */; };
 		3609E1A413ABE0DB00063663 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3609E1A213ABE0DB00063663 /* InfoPlist.strings */; };
@@ -26,8 +30,6 @@
 		3609E1C413ABE28F00063663 /* NSString+TSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5913A95EA200FCD8A4 /* NSString+TSTools.m */; };
 		3609E1C513ABE28F00063663 /* TSFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9B5B13A95EA200FCD8A4 /* TSFileReader.m */; };
 		3609E1C613ABE2D700063663 /* libTSDocDB.iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 368F1E5213A3B80000835CBD /* libTSDocDB.iOS.a */; };
-		3609E1CC13ABE36600063663 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3609E1CB13ABE36600063663 /* libz.1.2.3.dylib */; };
-		3609E1CE13ABE37B00063663 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3609E1CD13ABE37B00063663 /* libbz2.1.0.dylib */; };
 		3609E1D213ABE5CF00063663 /* DBImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3609E1D013ABE5CF00063663 /* DBImportViewController.m */; };
 		3609E1D313ABE5CF00063663 /* DBImportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3609E1D113ABE5CF00063663 /* DBImportViewController.xib */; };
 		3609E1D513ABEC2700063663 /* DBImportViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3609E1D413ABEC2700063663 /* DBImportViewController-iPad.xib */; };
@@ -155,8 +157,6 @@
 		368F1FE213A4427F00835CBD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368F1FE013A4427F00835CBD /* MainMenu.xib */; };
 		369E4F9F13A9584D005F33F3 /* TSDB.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 369E4F9E13A9584D005F33F3 /* TSDB.markdown */; };
 		36A6FD2F13A5B36A00DD667D /* CityDBDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F205813A52B5900835CBD /* CityDBDelegate.m */; };
-		36A6FD4A13A5C18F00DD667D /* libbz2.1.0.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A6FD4913A5C18F00DD667D /* libbz2.1.0.5.dylib */; };
-		36A6FD4C13A5C19B00DD667D /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A6FD4B13A5C19B00DD667D /* libz.1.2.3.dylib */; };
 		36A6FD4D13A5C1F100DD667D /* libTSDocDB.OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 368F1E3F13A3B7DA00835CBD /* libTSDocDB.OSX.a */; };
 		36AAE13213AED404007C0430 /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AAE13013AED404007C0430 /* CityTableViewController.m */; };
 		36AAE13313AED404007C0430 /* CityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36AAE13113AED404007C0430 /* CityTableViewController.xib */; };
@@ -186,6 +186,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36024BA515CF47E800B427CF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		36024BA715CF47EE00B427CF /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libbz2.dylib; sourceTree = DEVELOPER_DIR; };
+		36024BA915CF480100B427CF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		36024BAB15CF480700B427CF /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/lib/libbz2.dylib; sourceTree = DEVELOPER_DIR; };
+		36024BAD15CF492600B427CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		3606F18813A8E5F900E45C4F /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		3606F18D13A8F5D200E45C4F /* TSSearchField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSearchField.h; sourceTree = "<group>"; };
 		3606F18E13A8F5D200E45C4F /* TSSearchField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSearchField.m; sourceTree = "<group>"; };
@@ -311,10 +316,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3609E1CE13ABE37B00063663 /* libbz2.1.0.dylib in Frameworks */,
-				3609E1CC13ABE36600063663 /* libz.1.2.3.dylib in Frameworks */,
+				36024BAE15CF492600B427CF /* UIKit.framework in Frameworks */,
+				36024BAC15CF480700B427CF /* libbz2.dylib in Frameworks */,
+				36024BAA15CF480100B427CF /* libz.dylib in Frameworks */,
 				3609E1C613ABE2D700063663 /* libTSDocDB.iOS.a in Frameworks */,
-				3609E19B13ABE0DB00063663 /* UIKit.framework in Frameworks */,
 				3609E19C13ABE0DB00063663 /* Foundation.framework in Frameworks */,
 				3609E19E13ABE0DB00063663 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -340,9 +345,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36024BA815CF47EE00B427CF /* libbz2.dylib in Frameworks */,
+				36024BA615CF47E800B427CF /* libz.dylib in Frameworks */,
 				36A6FD4D13A5C1F100DD667D /* libTSDocDB.OSX.a in Frameworks */,
-				36A6FD4C13A5C19B00DD667D /* libz.1.2.3.dylib in Frameworks */,
-				36A6FD4A13A5C18F00DD667D /* libbz2.1.0.5.dylib in Frameworks */,
 				368F1FD013A4427E00835CBD /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +508,11 @@
 		368F1E3213A3B78D00835CBD = {
 			isa = PBXGroup;
 			children = (
+				36024BAD15CF492600B427CF /* UIKit.framework */,
+				36024BAB15CF480700B427CF /* libbz2.dylib */,
+				36024BA915CF480100B427CF /* libz.dylib */,
+				36024BA715CF47EE00B427CF /* libbz2.dylib */,
+				36024BA515CF47E800B427CF /* libz.dylib */,
 				3628738A13B81F490043DCBB /* capProject.png */,
 				3628738B13B81F490043DCBB /* capTarget.png */,
 				369E4F9E13A9584D005F33F3 /* TSDB.markdown */,
@@ -1105,10 +1115,10 @@
 		368F1E3913A3B78D00835CBD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_ENABLE_OBJC_GC = supported;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SYMROOT = "";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
 			name = Debug;
@@ -1116,10 +1126,10 @@
 		368F1E3A13A3B78D00835CBD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_ENABLE_OBJC_GC = supported;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SYMROOT = "";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
 			name = Release;
@@ -1133,7 +1143,6 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = supported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TSDocDB.OSX/TSDocDB.OSX-Prefix.pch";
@@ -1160,7 +1169,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TSDocDB.OSX/TSDocDB.OSX-Prefix.pch";
 				GCC_VERSION = "";
