@@ -142,14 +142,16 @@ static dispatch_queue_t tsDBMainQueue = NULL;
     int sp;
     NSString *dbFilePath, *dbPath;
     dbPath = [self directoryForDB:dbName withPathOrNil:dbContainerPathOrNil];
-    dbFilePath = [NSString stringWithFormat:@"%@/%@.tct", dbPath, dbName];
+    dbFilePath = [NSString stringWithFormat:@"%@.tct", dbPath];
     tdb = (TCTDB *)tcmapget(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]), &sp);
     if (tdb) {
       tctdbclose(tdb);
       tcmapout(tsDBs, [dbFilePath UTF8String], (int)strlen([dbFilePath UTF8String]));
     }
     NSFileManager *fm = [NSFileManager defaultManager];
-    [fm removeItemAtPath:dbPath error:NULL];
+    NSError* error = nil;
+    [fm removeItemAtPath:dbPath error:&error];
+    //NSLog([error localizedDescription]);
     
   });
 }

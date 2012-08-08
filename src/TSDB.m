@@ -83,7 +83,8 @@ void useTSDB(){
 -(BOOL)dbDel:(NSString *)rowID;
 -(BOOL)dbSearchAndDelete:(TDBQRY *)qry;
 
-- (NSString *)directoryForDB:(NSString *)dbName withPathOrNil:(NSString *)path;
+-(NSString *)directoryForDB:(NSString *)dbName withPathOrNil:(NSString *)path;
+-(NSString *)rootDirectoryForDBWithPathOrNil:(NSString *)path;
 -(NSString *)findOrCreateDirectory:(NSSearchPathDirectory)searchPathDirectory inDomain:(NSSearchPathDomainMask)domainMask appendPathComponent:(NSString *)appendComponent error:(NSError **)errorOut;
 
 -(NSString *)joinStringsFromDictionary:(NSDictionary *)dict andTargetCols:(NSArray *)keys glue:(NSString *)glue;
@@ -178,7 +179,7 @@ void useTSDB(){
       filterChain = [[TSRowFilterChain alloc] init];
       dbFilePath = [theDBPath retain];
       dbNamePrefix = [dbName retain];
-      rootDBDir = [theDBDir retain];
+      rootDBDir = [[self rootDirectoryForDBWithPathOrNil:path] retain];
       dbQueue = [self getQueue];
       //dispatch_retain(dbQueue);
     }else {
@@ -1001,6 +1002,35 @@ void useTSDB(){
      error:NULL];
     if (success) {
       return [NSString stringWithFormat:@"%@/%@", path, dbName];
+    }
+  }
+  
+  return result;
+}
+
+- (NSString *)rootDirectoryForDBWithPathOrNil:(NSString *)path{
+  NSString *result = nil;
+  if (path == nil) {
+    NSString *executableName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];
+    NSError *error;
+    result =
+    [self
+     findOrCreateDirectory:DB_STORAGE_AREA
+     inDomain:NSUserDomainMask
+     appendPathComponent:[NSString stringWithFormat:@"%@", executableName]
+     error:&error];
+    if (error)
+    {
+      NSLog(@"Unable to find or create application support directory:\n%@", error);
+    }
+  }else{
+    BOOL success = [[NSFileManager defaultManager]
+                    createDirectoryAtPath:[NSString stringWithFormat:@"%@", path]
+                    withIntermediateDirectories:YES
+                    attributes:nil
+                    error:NULL];
+    if (success) {
+      return [NSString stringWithFormat:@"%@", path];
     }
   }
   
